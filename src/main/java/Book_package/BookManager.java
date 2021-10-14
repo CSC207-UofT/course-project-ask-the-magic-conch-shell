@@ -17,13 +17,24 @@ public class BookManager {
         all_books.add(new Book(book_id, book_name, ISBN, publishDate, author, status, returnDate));
     }
 
-    public void deleteBook(int book_id){
+    public boolean deleteBook(int book_id){
         for (Book book: all_books){
             if (book.getBook_id() == book_id){
                 all_books.remove(book);
+                return true;
             }
         }
-
-
+        return false;
     }
+
+    public int searchBook(String book_ISBN){
+        for (Book book: all_books){
+            if (book.getISBN() == book_ISBN){
+                return book.getBook_id();
+            }
+        }
+        return -1;
+    }
+
+
 }
