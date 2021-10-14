@@ -1,6 +1,9 @@
 package User;
 import Book_package.Book;
 
+import Book_package.Book;
+
+
 public class Student extends User{
     private int CreditScore;
     private Book[] CurrentBorrowingRecords;
