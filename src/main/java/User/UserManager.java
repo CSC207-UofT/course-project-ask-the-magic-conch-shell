@@ -1,4 +1,4 @@
-package User;
+package Manager;
 import User.User;
 import User.Student;
 import User.Staff;
@@ -6,20 +6,20 @@ import User.Staff;
 
 import java.util.HashMap;
 
+package User;
 
-
-public class UserManager {
+public class User_Manager {
     private final HashMap<String, Student> all_student;
     private final HashMap<String, Staff> all_staff;
 
 
-    public UserManager() {
+    public User_Manager() {
         this.all_student = new HashMap<>();
         this.all_staff = new HashMap<>();
     }
 
 
-    public boolean check_student(String username) {
+    public static boolean check_student(String username) {
         return all_student.containsKey(username);
     }
 
