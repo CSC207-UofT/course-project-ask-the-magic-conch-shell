@@ -18,12 +18,7 @@ public class Inventory {
     }
 
     public boolean delete_book_from_inventory(int book_id){
-        for (Book book: BookManager.all_books){
-            if (book.getBook_id() == book_id){
-                all_books.remove(book);
-                return true;
-            }
-        }
-        return false;
+        return BookManager.deleteBook(book_id);
+
     }
 }

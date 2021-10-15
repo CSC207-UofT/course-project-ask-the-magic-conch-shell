@@ -8,16 +8,15 @@ import java.util.ArrayList;
 
 public class BookManager {
 
-    public ArrayList<Book> all_books;
+    public static ArrayList<Book> all_books;
 
     public BookManager() {
-        this.all_books = new ArrayList<>();
     }
 
-    public void addBook(Book book) { all_books.add(book);
+    public static void addBook(Book book) { all_books.add(book);
     }
 
-    public boolean deleteBook(int book_id) {
+    public static boolean deleteBook(int book_id) {
         for (Book book : all_books) {
             if (book.getBook_id() == book_id) {
                 all_books.remove(book);
