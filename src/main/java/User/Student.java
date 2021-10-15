@@ -1,6 +1,5 @@
 package User;
-import User.User;
-import Book_package.Book;
+import Book.Book;
 
 import java.util.ArrayList;
 

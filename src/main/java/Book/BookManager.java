@@ -1,7 +1,4 @@
-package Book_package;
-
-import Book_package.Book;
-import Book_package.Book_position_status;
+package Book;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
