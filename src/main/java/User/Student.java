@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 
 public class Student extends User {
-    private int CreditScore;
+    private int CreditScore = 100;
     private ArrayList<Book> CurrentBorrowingRecords;
 
 
