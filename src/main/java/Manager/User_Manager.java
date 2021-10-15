@@ -17,6 +17,9 @@ public class User_Manager {
         //TODO
         return true;
     }
+    public void modify_credit_score(int change_by){
+        //TODO
+    }
     public void modify_password(int password){
         //TODO
     }
