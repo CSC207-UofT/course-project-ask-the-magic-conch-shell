@@ -2,6 +2,7 @@ package Book;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class BookManager {
 
@@ -26,7 +27,7 @@ public class BookManager {
     public ArrayList<Integer> searchBook(String book_ISBN) {
         ArrayList<Integer> ids = new ArrayList<>();
         for (Book book : all_books) {
-            if (book.getISBN() == book_ISBN) {
+            if (Objects.equals(book.getISBN(), book_ISBN)) {
                 ids.add(book.getBook_id());
             }
         }

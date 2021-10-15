@@ -14,8 +14,8 @@ public class UserManager {
 
 
     public UserManager() {
-        this.all_student = new HashMap<String, Student>();
-        this.all_staff = new HashMap<String, Staff>();
+        this.all_student = new HashMap<>();
+        this.all_staff = new HashMap<>();
     }
 
 
