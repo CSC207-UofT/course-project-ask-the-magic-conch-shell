@@ -14,7 +14,7 @@ public class Inventory {
                         Book_position_status status, LocalDate returnDate){
 
         Book a = new Book(book_id, book_name, ISBN, publishDate, author, status, returnDate);
-        BookManager.all_books.add(a);
+        BookManager.addBook(a);
     }
 
     public boolean delete_book_from_inventory(int book_id){
