@@ -7,14 +7,14 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class BookManager {
+
     public ArrayList<Book> all_books;
 
     public BookManager() {
         this.all_books = new ArrayList<>();
     }
 
-    public void addBook(Book book) {
-        all_books.add(book);
+    public void addBook(Book book) { all_books.add(book);
     }
 
     public boolean deleteBook(int book_id) {
@@ -79,6 +79,8 @@ public class BookManager {
             }
         }
     }
+
+
 
 
 }
