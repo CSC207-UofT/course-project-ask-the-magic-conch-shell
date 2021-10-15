@@ -4,10 +4,10 @@ public class User {
     private String username;
     private long Password;
 
-    public void User(String username){
-
+    public User(String username) {
         this.username = username;
     }
+
     public void PasswordSetter(long password){
 
         this.Password = password;
