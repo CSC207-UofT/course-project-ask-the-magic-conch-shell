@@ -84,6 +84,13 @@ public class UserManager {
             }
 
         }
+
+    public int BorrowedBookAmount(String username) {
+        if (check_student(username)) {
+            return all_student.get(username).CurrentBorrowingRecordsGetter().size();
+        }
+        return -1;
+    }
     }
 
 
