@@ -55,9 +55,6 @@ public class User_Manager {
         }
     }
 
-    public void store_all_user() {
-        //TODO
-    }
 
     public int check_credit_score(String username) {
         if (check_student(username)) {
