@@ -37,11 +37,13 @@ public class command_executor {
     public static void select_service(){
         Scanner service = new Scanner(System.in);
         if (Objects.equals(member_info.get("usertype"), "student")){
-            System.out.println("\n Please select the service you need \n Borrow book \n Return book \n Change_password");
+            System.out.println("\n Please select the service you need \n Borrow book \n Return book \n Change_password " +
+                    "\n check credit score");
             String wished_service = service.nextLine();
             if(Objects.equals(wished_service, "Borrow book")){borrow_book();}
             else if (Objects.equals(wished_service, "Return book")){return_book();}
             else if (Objects.equals(wished_service, "Change_password")){change_password();}
+            else if (Objects.equals(wished_service, "check credit score")){check_credit();}
 
         }
         else if (Objects.equals(member_info.get("usertype"), "staff")){
@@ -140,6 +142,12 @@ public class command_executor {
         System.out.println("author: " + book_author);
 
         System.out.println("You have successfully add this book to inventory");
+        select_service();
+
+    }
+
+    public static void check_credit(){
+        System.out.println("Your credit score is 100.\n");
         select_service();
 
     }
