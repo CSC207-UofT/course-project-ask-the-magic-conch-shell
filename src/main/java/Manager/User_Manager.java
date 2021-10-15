@@ -14,12 +14,12 @@ public class User_Manager {
 
 
     public User_Manager() {
-        this.all_student = new HashMap<String, Student>();
-        this.all_staff = new HashMap<String, Staff>();
+        this.all_student = new HashMap<>();
+        this.all_staff = new HashMap<>();
     }
 
 
-    public boolean check_student(String username) {
+    public static boolean check_student(String username) {
         return all_student.containsKey(username);
     }
 
