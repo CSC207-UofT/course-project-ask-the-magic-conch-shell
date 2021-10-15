@@ -1,9 +1,10 @@
 package Book_package;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Book {
-    public Book(int book_id, String book_name, String ISBN, Date publishDate, String author, Book_position_status status, Date returnDate) {
+    public Book(int book_id, String book_name, String ISBN, Date publishDate, String author, Book_position_status status, LocalDate returnDate) {
         this.book_id = book_id;
         this.book_name = book_name;
         this.ISBN = ISBN;
@@ -18,7 +19,7 @@ public class Book {
     private final Date publishDate;
     private final String author;
     private Book_position_status status;
-    private Date returnDate;
+    private LocalDate returnDate;
 
     public int getBook_id(){
         return book_id;
@@ -48,11 +49,11 @@ public class Book {
         this.status = status;
     }
 
-    public Date getReturnDate() {
+    public LocalDate getReturnDate() {
         return returnDate;
     }
 
-    public void setReturnDate(Date returnDate) {
+    public void setReturnDate(LocalDate returnDate) {
         this.returnDate = returnDate;
     }
 }
