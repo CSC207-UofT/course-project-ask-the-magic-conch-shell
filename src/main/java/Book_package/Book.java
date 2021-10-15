@@ -1,10 +1,10 @@
 package Book_package;
 
 import java.time.LocalDate;
-import java.util.Date;
+
 
 public class Book {
-    public Book(int book_id, String book_name, String ISBN, Date publishDate, String author, Book_position_status status, LocalDate returnDate) {
+    public Book(int book_id, String book_name, String ISBN, LocalDate publishDate, String author, Book_position_status status, LocalDate returnDate) {
         this.book_id = book_id;
         this.book_name = book_name;
         this.ISBN = ISBN;
@@ -16,7 +16,7 @@ public class Book {
     private final int book_id;
     private final String book_name;
     private final String ISBN;
-    private final Date publishDate;
+    private final LocalDate publishDate;
     private final String author;
     private Book_position_status status;
     private LocalDate returnDate;
@@ -33,7 +33,7 @@ public class Book {
         return ISBN;
     }
 
-    public Date getPublishDate(){
+    public LocalDate getPublishDate(){
         return publishDate;
     }
 
