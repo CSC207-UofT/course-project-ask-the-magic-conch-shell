@@ -1,4 +1,4 @@
-package Manager;
+package User;
 import User.User;
 import User.Student;
 import User.Staff;
@@ -6,16 +6,15 @@ import User.Staff;
 
 import java.util.HashMap;
 
-package User;
 
-public class User_Manager {
-    private final HashMap<String, Student> all_student;
-    private final HashMap<String, Staff> all_staff;
+public class UserManager {
+    private static HashMap<String, Student> all_student;
+    private static HashMap<String, Staff> all_staff;
 
 
-    public User_Manager() {
-        this.all_student = new HashMap<>();
-        this.all_staff = new HashMap<>();
+    public UserManager() {
+        all_student = new HashMap<>();
+        all_staff = new HashMap<>();
     }
 
 
