@@ -1,10 +1,11 @@
 package User;
+import User.User;
 import Book_package.Book;
 
 import java.util.ArrayList;
 
 
-public class Student extends User{
+public class Student extends User {
     private int CreditScore;
     private ArrayList<Book> CurrentBorrowingRecords;
 
