@@ -4,16 +4,14 @@ import Book.Book_position_status;
 import Book.Book;
 import org.junit.*;
 import java.time.LocalDate;
+import static org.junit.jupiter.api.Assertions.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
-
-public class TestBook {
+public class BookTest {
     Book book1;
     Book book2;
     LocalDate publishDate1 = LocalDate.of(2001,7,15);
     LocalDate publishDate2 = LocalDate.of(2000,8,11);
-    LocalDate returnDate = LocalDate.of(2021,11,1);
+    LocalDate returnDate;
     @Before
     public void setUp(){
         book1 = new Book(1,"Iron Man", "123456", publishDate1,"Stan");
@@ -24,23 +22,21 @@ public class TestBook {
         book2.setReturnDate(returnDate);
     }
     @Test(timeout = 50)
-    public void Book_status_Test1(){
+    public void testStatus1(){
         assertEquals(Book_position_status.UNLENDED, book1.getStatus());
     }
     @Test(timeout = 50)
-    public void Book_status_Test2(){
-        assertEquals(Book_position_status.UNLENDED, book2.getStatus());
+    public void testStatus2(){
+        assertEquals(Book_position_status.LENDED, book2.getStatus());
     }
     @Test(timeout = 50)
-    public void Book_returnDate_Test1(){
+    public void testReturnDate1(){
         assertNull(book1.getReturnDate());
     }
     @Test(timeout = 50)
-    public void Book_returnDate_Test2(){
-        assertNull(book2.getReturnDate());
+    public void testReturnDate2(){
+        assertEquals(returnDate, book2.getReturnDate());
     }
-
-
 
 
 }
