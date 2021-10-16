@@ -32,3 +32,23 @@ LoginWindow controllers. For the main, we made a demo with command executor that
 how is the progrma intended to run.
 
 4. work assign plan for each group member
+what we have done:
+Miley: Organizing specification and senario walk-through into file, implement BookManager
+Nicole: Organizing and planning moethod skeleton, Implement UI and main
+Vannie: Implementing UserManager, BorrowBook, ReturnBook
+Stark: Implementing Book Entity, BookManager, LoginWindow controller
+Kris: Implement User Entity (student/staff)
+Hewitt: writing subclasses of Book
+
+what we planning on doing:
+Connect controller to UI including make UI more user friendly.
+Miley: Connect LoginWindow (controller) to UI
+Nicole: Connect BorrowBook(controller) to UI
+Vannie: Connect ReturnBook(controller) to UI
+Stark: Connect Inventory(controller) to UI
+Kris: complete testing for UserManager and BookManager(come up with more than one unit test for each method)
+Hewitt: complete tesing for the rest of the entities(come up with more than one unit test for each method)
+
+
+
+
