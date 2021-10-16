@@ -7,7 +7,7 @@ import Book.Book_position_status;
 import java.time.LocalDate;
 
 
-public class Inventory {
+public class InventoryController {
 
     public void add_book_to_inventory(int book_id, String book_name, String ISBN, LocalDate publishDate, String author){
         //generate a non_repeated book_id.
