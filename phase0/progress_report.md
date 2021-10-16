@@ -1,4 +1,4 @@
-**Progress Report for Phase0 - Team Magic Conch Shell**
+**Progress Report for Phase 0 - Team Magic Conch Shell**
 
 
 `1. Brief summary of specification, CRC model, scenario walk-through`
