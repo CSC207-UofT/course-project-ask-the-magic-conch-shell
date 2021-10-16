@@ -24,7 +24,7 @@ public class TestBookManager {
         all_books.add(book2);
         assertEquals(book1, all_books.get(0));
         assertEquals(book2, all_books.get(1));
-        assertTrue(all_books.size()==2);
+        Assert.assertEquals(2, all_books.size());
     }
 
     @Test
@@ -32,7 +32,7 @@ public class TestBookManager {
         all_books.add(book1);
         all_books.add(book2);
         assertTrue( all_books.remove(book2));
-        assertTrue(all_books.size() == 1);
+        Assert.assertEquals(1, all_books.size());
     }
 
 

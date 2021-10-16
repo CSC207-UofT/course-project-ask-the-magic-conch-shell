@@ -1,8 +1,7 @@
 package test_user;
 
 import Book.Book;
-import Book.Book;
-import User.Staff;
+
 import User.Student;
 import org.junit.*;
 
@@ -23,7 +22,7 @@ public class StudentTest {
         h = new Student("Harry");
         j = new Student("Jason");
         j.CreditScoreSetter(30);
-        empty_record= new ArrayList<Book>();
+        empty_record= new ArrayList<>();
         book1 = new Book(1,"Fade","ds134", date, "Jacob");
         j.AddToCurrentBorrowingRecords(book1);
     }

@@ -1,4 +1,4 @@
-## Replace this README.md!
+## README.md!
 
 This is a standard README.md file for you to replace. You'll want to include your own content here!
 

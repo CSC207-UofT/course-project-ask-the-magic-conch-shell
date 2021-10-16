@@ -2,7 +2,6 @@
 
 *Note: All terms in **bold** are our classes of entities /use cases /controllers.
 
-
 `Scenario 1 - Students’ perspective`
 
 In order to borrow a book in the library, a student needs to:
