@@ -25,11 +25,11 @@ public class Book {
     }
 
 
-    public int getbookID(){
+    public int getBookID(){
         return bookID;
     }
 
-    public String getbookName(){
+    public String getBookName(){
         return bookName;
     }
 

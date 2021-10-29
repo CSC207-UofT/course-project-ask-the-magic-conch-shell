@@ -16,7 +16,7 @@ public class BookManager {
 
     public static boolean deleteBook(int bookID) {
         for (Book book : all_books) {
-            if (book.getbookID() == bookID) {
+            if (book.getBookID() == bookID) {
                 all_books.remove(book);
                 return true;
             }
@@ -28,7 +28,7 @@ public class BookManager {
         ArrayList<Integer> ids = new ArrayList<>();
         for (Book book : all_books) {
             if (Objects.equals(book.getISBN(), book_ISBN)) {
-                ids.add(book.getbookID());
+                ids.add(book.getBookID());
             }
         }
         return ids;
@@ -39,7 +39,7 @@ public class BookManager {
         ArrayList<Book> book_unlended = new ArrayList<>();
         for(int id : book_searched){
             for (Book b : all_books){
-                if(b.getbookID() == id){
+                if(b.getBookID() == id){
                     if(b.getStatus() == BookPositionStatus.UNLENDED){
                         book_unlended.add(b);
                     }
@@ -54,7 +54,7 @@ public class BookManager {
     public LocalDate checkReturnDate(int bookID) {
         LocalDate d = null;
         for (Book book : all_books) {
-            if (book.getbookID() == bookID) {
+            if (book.getBookID() == bookID) {
                 d = book.getReturnDate();
             }
         }
@@ -63,7 +63,7 @@ public class BookManager {
 
     public void changeReturnDate(int bookID, LocalDate desire_date){
         for (Book book : all_books) {
-            if (book.getbookID() == bookID) {
+            if (book.getBookID() == bookID) {
                 book.setReturnDate(desire_date);
             }
         }
@@ -71,7 +71,7 @@ public class BookManager {
 
     public void changBookStatus(int bookID, BookPositionStatus status){
         for (Book book : all_books) {
-            if (book.getbookID() == bookID) {
+            if (book.getBookID() == bookID) {
                 book.setStatus(status);
             }
         }
