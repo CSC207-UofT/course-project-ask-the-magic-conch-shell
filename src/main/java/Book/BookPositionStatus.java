@@ -1,6 +1,6 @@
 package Book;
 
-public enum Book_position_status {
+public enum BookPositionStatus {
     UNLENDED, LENDED
 }
 

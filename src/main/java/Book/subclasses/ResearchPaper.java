@@ -9,9 +9,9 @@ public class ResearchPaper extends Book {
     final private String language;
     final private boolean peer_review_status;
 
-    public ResearchPaper(int book_id, String book_name, String ISBN, LocalDate publishDate, String author,
+    public ResearchPaper(int bookID, String bookName, String ISBN, LocalDate publishDate, String author,
                          String subject, String language, boolean peer_review_status) {
-        super(book_id, book_name, ISBN, publishDate, author);
+        super(bookID, bookName, ISBN, publishDate, author);
         this.subject = subject;
         this.language = language;
         this.peer_review_status = peer_review_status;

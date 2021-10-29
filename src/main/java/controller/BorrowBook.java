@@ -9,7 +9,7 @@ public class BorrowBook {
          */
 
     }
-    public void search_book(int book_id){
+    public void search_book(int bookID){
         /* Return Book
 
          */
@@ -17,18 +17,18 @@ public class BorrowBook {
     }
 
     public void borrow_book(String ISBN){
-        /* Return a hashmap of <key: int book_id, value: Book_position_status> which all books in
+        /* Return a hashmap of <key: int bookID, value: BookPositionStatus> which all books in
         the hashmap share the same ISBN
 
          */
 
     }
 
-    public void borrow_book(int book_id, String username){
+    public void borrow_book(int bookID, String username){
         /*
-        - check if book_id valid
+        - check if bookID valid
         if invalid print ("invalid book id")
-        if valid book_id:
+        if valid bookID:
             - check book position status:
                  - if lend print ("Book is unavailable at the moment")
                  - if not lend:
@@ -47,9 +47,9 @@ public class BorrowBook {
 
     }
 
-    public void extend_return_date(int book_id, int number_of_days, String username){
+    public void extend_return_date(int bookID, int number_of_days, String username){
         /*
-        if valid book_id:
+        if valid bookID:
             if user exists & credit score qualified to extend -> print("Extended number_of_day days")
             else print("Unable to extend")
 

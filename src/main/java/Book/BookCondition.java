@@ -1,5 +1,5 @@
 package Book;
 
-public enum Book_condition {
+public enum BookCondition {
     GOOD, DAMAGE
 }
