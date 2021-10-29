@@ -21,6 +21,6 @@ public class ResearchPaper extends Book {
 
     public String getLanguage(){ return language; }
 
-    public boolean get_peer_review_status(){ return peer_review_status; }
+    public boolean getPeerReviewStatus(){ return peer_review_status; }
 
 }

@@ -34,6 +34,7 @@ public class BookManager {
         return ids;
     }
 
+
     public int checkInventory(String book_ISBN) {
         ArrayList<Integer> book_searched = searchBook(book_ISBN);
         ArrayList<Book> book_unlended = new ArrayList<>();
