@@ -29,11 +29,11 @@ public class Book {
         return bookID;
     }
 
-    public String getBookName(){
+    public static String getBookName(){
         return bookName;
     }
 
-    public String getISBN(){
+    public static String getISBN(){
         return ISBN;
     }
 
