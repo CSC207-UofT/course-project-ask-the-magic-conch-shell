@@ -24,18 +24,15 @@ public class Book {
         this.returnDate = null;
     }
 
-
     public int getBookID(){
         return bookID;
     }
 
-    public static String getBookName(){
+    public String getBookName(){
         return bookName;
     }
 
-    public static String getISBN(){
-        return ISBN;
-    }
+    public String getISBN(){return ISBN;}
 
     public LocalDate getPublishDate(){
         return publishDate;

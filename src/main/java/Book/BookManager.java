@@ -60,27 +60,27 @@ public class BookManager {
         switch(book_type){
             case "Dictionary":
                 for (Dictionary dictionary: allDic){
-                books.put(Dictionary.getBookName(), Dictionary.getISBN());}
+                books.put(dictionary.getBookName(), dictionary.getISBN());}
                 break;
 
             case "Literature":
                 for (Literature literature: allLit){
-                    books.put(Literature.getBookName(), Literature.getISBN());}
+                    books.put(literature.getBookName(), literature.getISBN());}
                     break;
 
             case "Magazine":
                 for (Magazine magazine1: allMagazine){
-                    books.put(Magazine.getBookName(), Magazine.getISBN());}
+                    books.put(magazine1.getBookName(), magazine1.getISBN());}
                     break;
 
             case "ResearchPaper":
                 for (ResearchPaper researchPaper: allResearch){
-                    books.put(ResearchPaper.getBookName(), ResearchPaper.getISBN());}
+                    books.put(researchPaper.getBookName(), researchPaper.getISBN());}
                     break;
 
             case "Textbook":
                 for (Textbook textbook: allTextBook){
-                    books.put(Textbook.getBookName(), Textbook.getISBN());
+                    books.put(textbook.getBookName(), textbook.getISBN());
                     break;
                 }
         }
