@@ -6,31 +6,31 @@ import java.time.LocalDate;
 
 public class Book {
 
-    private final int book_id;
-    private final String book_name;
+    private final int bookID;
+    private final String bookName;
     private final String ISBN;
     private final LocalDate publishDate;
     private final String author;
-    public Book_position_status status;
+    public BookPositionStatus status;
     public LocalDate returnDate;
 
-    public Book(int book_id, String book_name, String ISBN, LocalDate publishDate, String author) {
-        this.book_id = book_id;
-        this.book_name = book_name;
+    public Book(int bookID, String bookName, String ISBN, LocalDate publishDate, String author) {
+        this.bookID = bookID;
+        this.bookName = bookName;
         this.ISBN = ISBN;
         this.publishDate = publishDate;
         this.author = author;
-        this.status = Book_position_status.UNLENDED;
+        this.status = BookPositionStatus.UNLENDED;
         this.returnDate = null;
     }
 
 
-    public int getBook_id(){
-        return book_id;
+    public int getBookID(){
+        return bookID;
     }
 
-    public String getBook_name(){
-        return book_name;
+    public String getBookName(){
+        return bookName;
     }
 
     public String getISBN(){
@@ -45,11 +45,11 @@ public class Book {
         return author;
     }
 
-    public Book_position_status getStatus(){
+    public BookPositionStatus getStatus(){
         return status;
     }
 
-    public void setStatus(Book_position_status status) {
+    public void setStatus(BookPositionStatus status) {
         this.status = status;
     }
 

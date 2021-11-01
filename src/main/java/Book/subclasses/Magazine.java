@@ -9,9 +9,9 @@ public class Magazine extends Book {
     final private String category;
 
 
-    public Magazine(int book_id, String book_name, String ISBN, LocalDate publishDate, String author,
+    public Magazine(int bookID, String bookName, String ISBN, LocalDate publishDate, String author,
                     String series_name, String category) {
-        super(book_id, book_name, ISBN, publishDate, author);
+        super(bookID, bookName, ISBN, publishDate, author);
         this.series_name = series_name;
         this.category = category;
     }

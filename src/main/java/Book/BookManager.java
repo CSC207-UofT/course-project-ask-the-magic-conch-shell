@@ -14,9 +14,9 @@ public class BookManager {
     public static void addBook(Book book) { all_books.add(book);
     }
 
-    public static boolean deleteBook(int book_id) {
+    public static boolean deleteBook(int bookID) {
         for (Book book : all_books) {
-            if (book.getBook_id() == book_id) {
+            if (book.getBookID() == bookID) {
                 all_books.remove(book);
                 return true;
             }
@@ -28,19 +28,20 @@ public class BookManager {
         ArrayList<Integer> ids = new ArrayList<>();
         for (Book book : all_books) {
             if (Objects.equals(book.getISBN(), book_ISBN)) {
-                ids.add(book.getBook_id());
+                ids.add(book.getBookID());
             }
         }
         return ids;
     }
+
 
     public int checkInventory(String book_ISBN) {
         ArrayList<Integer> book_searched = searchBook(book_ISBN);
         ArrayList<Book> book_unlended = new ArrayList<>();
         for(int id : book_searched){
             for (Book b : all_books){
-                if(b.getBook_id() == id){
-                    if(b.getStatus() == Book_position_status.UNLENDED){
+                if(b.getBookID() == id){
+                    if(b.getStatus() == BookPositionStatus.UNLENDED){
                         book_unlended.add(b);
                     }
                 }
@@ -51,27 +52,27 @@ public class BookManager {
     }
 
 
-    public LocalDate checkReturnDate(int book_id) {
+    public LocalDate checkReturnDate(int bookID) {
         LocalDate d = null;
         for (Book book : all_books) {
-            if (book.getBook_id() == book_id) {
+            if (book.getBookID() == bookID) {
                 d = book.getReturnDate();
             }
         }
         return d;
     }
 
-    public void changeReturnDate(int book_id, LocalDate desire_date){
+    public void changeReturnDate(int bookID, LocalDate desire_date){
         for (Book book : all_books) {
-            if (book.getBook_id() == book_id) {
+            if (book.getBookID() == bookID) {
                 book.setReturnDate(desire_date);
             }
         }
     }
 
-    public void changBookStatus(int book_id, Book_position_status status){
+    public void changBookStatus(int bookID, BookPositionStatus status){
         for (Book book : all_books) {
-            if (book.getBook_id() == book_id) {
+            if (book.getBookID() == bookID) {
                 book.setStatus(status);
             }
         }

@@ -65,9 +65,9 @@ public class command_executor {
         Scanner command = new Scanner(System.in);
         System.out.println("Please input the id of the book you wish to borrow, or type exit to return " +
                 "to the main menu");
-        String book_id = command.nextLine();
-        if (!Objects.equals(book_id, "exit")){
-            System.out.println("book id:" + book_id);
+        String bookID = command.nextLine();
+        if (!Objects.equals(bookID, "exit")){
+            System.out.println("book id:" + bookID);
             System.out.println("You have successfully borrowed this book. Please return this book by 2021-12-20");
         }
         select_service();
@@ -84,11 +84,11 @@ public class command_executor {
         }
         else if (Objects.equals(member_info.get("usertype"), "staff")){
             Scanner command = new Scanner(System.in);
-            System.out.println("Please input the book_id and the status of the book, " +
+            System.out.println("Please input the bookID and the status of the book, " +
                     "or type exit to return to the main menu \n the status of the book can be GOOD or DAMAGED");
             String chosen_command = command.nextLine();
             if (!Objects.equals(chosen_command, "exit")) {
-                System.out.println("book_id: " + chosen_command);
+                System.out.println("bookID: " + chosen_command);
                 String book_status = command.nextLine();
                 System.out.println("book_status: " + book_status);
                 if (Objects.equals(book_status, "GOOD")) {
@@ -127,29 +127,19 @@ public class command_executor {
 
     public static void add_new_book_to_inventory(){
         Scanner book_info = new Scanner(System.in);
-        System.out.println("Please input the type of you wish to add, you have option Magazine");
-        String book_type = book_info.nextLine();
-        if (book_type == "Magazine"){
-            System.out.println("Please input ISBN");
-            String isbn = book_info.nextLine();
-            System.out.println("Please input book name");
-            String book_name = book_info.nextLine();
-            System.out.println("Please input published date, in format yyyy/mm/dd");
-            String book_published_date = book_info.nextLine();
-            System.out.println("Please input author");
-            String book_author = book_info.nextLine();
-            System.out.println("Please input series name");
-            String series_name = book_info.nextLine();
-            //add_new_book_to_inventory(Magazine(isbn, book_name.....));
+        System.out.println("Please input ISBN");
+        String isbn = book_info.nextLine();
+        System.out.println("Please input book name");
+        String bookName = book_info.nextLine();
+        System.out.println("Please input published date, in format yyyy/mm/dd");
+        String book_published_date = book_info.nextLine();
+        System.out.println("Please input author");
+        String book_author = book_info.nextLine();
 
-
-            System.out.println("ISBN: " + isbn);
-            System.out.println("book name: " + book_name);
-            System.out.println("published dae: " + book_published_date);
-            System.out.println("author: " + book_author);
-
-        }
-
+        System.out.println("ISBN: " + isbn);
+        System.out.println("book name: " + bookName);
+        System.out.println("published dae: " + book_published_date);
+        System.out.println("author: " + book_author);
 
         System.out.println("You have successfully add this book to inventory");
         select_service();

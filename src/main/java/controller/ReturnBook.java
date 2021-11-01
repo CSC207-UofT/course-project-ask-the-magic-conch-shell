@@ -1,12 +1,12 @@
 package controller;
 
-import Book.Book_condition;
+import Book.BookCondition;
 
 public class ReturnBook {
 
 
 
-    public void return_book(int book_id, Book_condition book_condition, String username){
+    public void return_book(int bookID, BookCondition BookCondition, String username){
 
     }
 

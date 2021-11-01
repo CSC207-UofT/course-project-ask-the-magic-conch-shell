@@ -1,6 +1,6 @@
 package test_book;
 
-import Book.Book_position_status;
+import Book.BookPositionStatus;
 import Book.Book;
 import org.junit.*;
 import java.time.LocalDate;
@@ -18,18 +18,18 @@ public class TestBook {
     public void setUp(){
         book1 = new Book(1,"Iron Man", "123456", publishDate1,"Stan");
         book2 = new Book(2,"Captain American", "654321",publishDate2,"Tiffany");
-        book1.setStatus(Book_position_status.UNLENDED);
-        book2.setStatus(Book_position_status.LENDED);
+        book1.setStatus(BookPositionStatus.UNLENDED);
+        book2.setStatus(BookPositionStatus.LENDED);
         book1.setReturnDate(null);
         book2.setReturnDate(returnDate);
     }
     @Test(timeout = 50)
     public void testStatus1(){
-        assertEquals(Book_position_status.UNLENDED, book1.getStatus());
+        assertEquals(BookPositionStatus.UNLENDED, book1.getStatus());
     }
     @Test(timeout = 50)
     public void testStatus2(){
-        assertEquals(Book_position_status.LENDED, book2.getStatus());
+        assertEquals(BookPositionStatus.LENDED, book2.getStatus());
     }
     @Test(timeout = 50)
     public void testReturnDate1(){
