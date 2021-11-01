@@ -16,7 +16,7 @@ public class Student extends User {
 
     /**
      *
-     * @param username the username of a student
+     * @param username the username
      */
 
 
@@ -26,14 +26,28 @@ public class Student extends User {
 
     }
 
+    /**
+     *
+     * @param CreditScore the credit score
+     */
     public void CreditScoreSetter(int CreditScore){
         this.CreditScore = CreditScore;
     }
 
+    /**
+     *
+     * @return student's credit score
+     */
     public int CreditScoreGetter(){
         return this.CreditScore;
     }
 
+    /**
+     *
+     * @param book a book
+     * @return whether the student is able to borrow a new book base on numbers of book the student
+     * currently owns
+     */
     public boolean AddToCurrentBorrowingRecords(Book book){
         if (CurrentBorrowingRecords.size() >= 5){
             return false;
@@ -43,6 +57,10 @@ public class Student extends User {
 
     }
 
+    /**
+     *
+     * @return student's current borrowing records
+     */
     public ArrayList<Book> CurrentBorrowingRecordsGetter(){
         return this.CurrentBorrowingRecords;
     }
