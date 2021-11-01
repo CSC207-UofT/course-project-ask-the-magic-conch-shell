@@ -127,19 +127,29 @@ public class command_executor {
 
     public static void add_new_book_to_inventory(){
         Scanner book_info = new Scanner(System.in);
-        System.out.println("Please input ISBN");
-        String isbn = book_info.nextLine();
-        System.out.println("Please input book name");
-        String book_name = book_info.nextLine();
-        System.out.println("Please input published date, in format yyyy/mm/dd");
-        String book_published_date = book_info.nextLine();
-        System.out.println("Please input author");
-        String book_author = book_info.nextLine();
+        System.out.println("Please input the type of you wish to add, you have option Magazine");
+        String book_type = book_info.nextLine();
+        if (book_type == "Magazine"){
+            System.out.println("Please input ISBN");
+            String isbn = book_info.nextLine();
+            System.out.println("Please input book name");
+            String book_name = book_info.nextLine();
+            System.out.println("Please input published date, in format yyyy/mm/dd");
+            String book_published_date = book_info.nextLine();
+            System.out.println("Please input author");
+            String book_author = book_info.nextLine();
+            System.out.println("Please input series name");
+            String series_name = book_info.nextLine();
+            //add_new_book_to_inventory(Magazine(isbn, book_name.....));
 
-        System.out.println("ISBN: " + isbn);
-        System.out.println("book name: " + book_name);
-        System.out.println("published dae: " + book_published_date);
-        System.out.println("author: " + book_author);
+
+            System.out.println("ISBN: " + isbn);
+            System.out.println("book name: " + book_name);
+            System.out.println("published dae: " + book_published_date);
+            System.out.println("author: " + book_author);
+
+        }
+
 
         System.out.println("You have successfully add this book to inventory");
         select_service();
