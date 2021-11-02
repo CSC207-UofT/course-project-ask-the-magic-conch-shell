@@ -1,7 +1,4 @@
 package User;
-import User.User;
-import User.Student;
-import User.Staff;
 
 
 import java.util.HashMap;
@@ -31,7 +28,7 @@ public class UserManager {
      * @return whether the student exists in the system
      */
 
-    public static boolean check_student(String username) {
+    public static boolean checkStudent(String username) {
         return all_student.containsKey(username);
     }
 
@@ -41,7 +38,7 @@ public class UserManager {
      * @return whether the staff exists in the system
      */
 
-    public boolean check_staff(String username) {
+    public boolean checkStaff(String username) {
         return all_staff.containsKey(username);
     }
 
@@ -52,8 +49,8 @@ public class UserManager {
          * @return whether the new user has been successfully created
          */
 
-    public boolean create_new_user(Staff usertype, String username) {
-        if (!check_staff(username)) {
+    public boolean createNewUser(Staff usertype, String username) {
+        if (!checkStaff(username)) {
             all_staff.put(username, usertype);
             return true;
         } else {
@@ -67,8 +64,8 @@ public class UserManager {
          * @param username username
          * @return whether the new user has been successfully created
          */
-    public boolean create_new_user(Student usertype, String username) {
-        if (!check_student(username)) {
+    public boolean createNewUser(Student usertype, String username) {
+        if (!checkStudent(username)) {
             all_student.put(username, usertype);
             return true;
         } else {
@@ -82,8 +79,8 @@ public class UserManager {
          * @return whether the user has been successfully deleted
          */
 
-    public boolean delete_user(String username) {
-        if (check_student(username)) {
+    public boolean deleteUser(String username) {
+        if (checkStudent(username)) {
             all_student.remove(username);
             return true;
         } else {
@@ -97,8 +94,8 @@ public class UserManager {
          * @return credit score
          */
 
-    public int check_credit_score(String username) {
-        if (check_student(username)) {
+    public int checkCreditScore(String username) {
+        if (checkStudent(username)) {
             return all_student.get(username).CreditScoreGetter();
         }
         return -1;
@@ -110,8 +107,8 @@ public class UserManager {
          * @param change_by change the credit score by "change_by" amount of credit
          */
 
-    public void modify_credit_score(String username, int change_by) {
-        if (check_student(username)) {
+    public void modifyCreditScore(String username, int change_by) {
+        if (checkStudent(username)) {
             int old = all_student.get(username).CreditScoreGetter();
             all_student.get(username).CreditScoreSetter(old + change_by);
         }
@@ -124,8 +121,8 @@ public class UserManager {
          * @param new_password new password
          */
 
-    public void student_modify_password(String username, long old_password, long new_password) {
-        if (check_student(username) && all_student.get(username).PasswordGetter(username) == old_password) {
+    public void studentModifyPassword(String username, long old_password, long new_password) {
+        if (checkStudent(username) && all_student.get(username).PasswordGetter(username) == old_password) {
             all_student.get(username).PasswordSetter(new_password);
         }
     }
@@ -136,10 +133,10 @@ public class UserManager {
          * @param new_password new password
          */
 
-    public void staff_modify_password(String username, long new_password) {
-        if (check_staff(username)){
+    public void staffModifyPassword(String username, long new_password) {
+        if (checkStaff(username)){
             all_staff.get(username).PasswordSetter(new_password);}
-            else if(check_student(username)){
+            else if(checkStudent(username)){
                 all_student.get(username).PasswordSetter(new_password);
             }
 
@@ -152,7 +149,7 @@ public class UserManager {
          */
 
     public int BorrowedBookAmount(String username) {
-        if (check_student(username)) {
+        if (checkStudent(username)) {
             return all_student.get(username).CurrentBorrowingRecordsGetter().size();
         }
         return -1;

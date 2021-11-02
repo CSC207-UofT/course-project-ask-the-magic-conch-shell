@@ -6,11 +6,11 @@ public class ReturnBook {
 
 
 
-    public void return_book(int bookID, BookCondition BookCondition, String username){
+    public void returnBook(int bookID, BookCondition BookCondition, String username){
 
     }
 
-    public void change_credit_score(String username, int change_by) {
+    public void changeCreditScore(String username, int change_by) {
 
     }
 }

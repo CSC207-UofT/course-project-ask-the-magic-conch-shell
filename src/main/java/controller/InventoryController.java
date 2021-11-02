@@ -8,13 +8,13 @@ import java.time.LocalDate;
 
 public class InventoryController {
 
-    public void add_book_to_inventory(int bookID, String bookName, String ISBN, LocalDate publishDate, String author){
+    public void addBookToInventory(int bookID, String bookName, String ISBN, LocalDate publishDate, String author){
         //generate a non_repeated bookID.
         Book a = new Book(bookID, bookName, ISBN, publishDate, author);
         BookManager.addBook(a);
     }
 
-    public boolean delete_book_from_inventory(int bookID){
+    public boolean deleteBookFromInventory(int bookID){
         return BookManager.deleteBook(bookID);
 
     }
