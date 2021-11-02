@@ -1,27 +1,25 @@
-
 package Mongodb;
 
-import com.mongodb.*;
 
+import com.mongodb.*;
 import java.util.HashMap;
-import java.util.Map;
+
+
 
 public class MongoDB {
-    public static HashMap<String, DBObject> database;
-    public static void main(String[] args){
+    public  HashMap<String, DBObject> database;
+    public DBCollection coll;
+    public  void store(String collectionName, String keyname){
         try{
             MongoClient mongoclient = new MongoClient("localhost", 27017);
             DB db = mongoclient.getDB("local");
             System.out.println("MongoDB Connected");
-            DBCollection coll = db.getCollection("book");
+            coll = db.getCollection(collectionName);
             DBCursor cursor = coll.find();
             database = new HashMap<String, DBObject>();
             while (cursor.hasNext()){
                 DBObject data = cursor.next();
-
-                database.put(data.get("name").toString(), data);
-                //System.out.println(database);
-
+                database.put(data.get(keyname).toString(), data);
             }
         }catch(Exception e){
             System.out.println(e);
