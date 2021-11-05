@@ -1,5 +1,4 @@
 package User;
-import User.User;
 
 public class Staff extends User{
     /**
