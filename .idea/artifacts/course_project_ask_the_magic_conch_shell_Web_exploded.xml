@@ -1,0 +1,17 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="course-project-ask-the-magic-conch-shell:Web exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/course_project_ask_the_magic_conch_shell_Web_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="course-project-ask-the-magic-conch-shell/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="course-project-ask-the-magic-conch-shell" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="module" name="JUnit4" module-name="course-project-ask-the-magic-conch-shell" />
+          <element id="library" level="module" name="JUnit5.7.0" module-name="course-project-ask-the-magic-conch-shell" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
