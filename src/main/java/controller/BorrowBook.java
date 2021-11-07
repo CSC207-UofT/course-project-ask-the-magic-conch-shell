@@ -1,9 +1,15 @@
 package controller;
 
 
+import Book.Book;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+
 public class BorrowBook {
 
-    public void searchBook(String ISBN){
+    public ArrayList<Book> searchBook(String ISBN){
         /* Return ArrayList<Book>
         An arraylist of book
          */
@@ -16,7 +22,7 @@ public class BorrowBook {
 
     }
 
-    public void borrowBook(String ISBN){
+    public HashMap borrowBook(String ISBN){
         /* Return a hashmap of <key: int bookID, value: BookPositionStatus> which all books in
         the hashmap share the same ISBN
 
@@ -24,7 +30,7 @@ public class BorrowBook {
 
     }
 
-    public void borrowBook(int bookID, String username){
+    public String borrowBook(int bookID, String username){
         /*
         - check if bookID valid
         if invalid print ("invalid book id")

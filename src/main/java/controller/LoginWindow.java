@@ -7,7 +7,7 @@ public class LoginWindow {
     public void randomNameGenerator(){
     }
 
-    public void login(String user_type, String username, String password){
+    public boolean login(String user_type, String username, String password){
     }
 
     public void changePassword(String username, String new_password){
