@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/course-project-ask-the-magic-conch-shell.iml" filepath="$PROJECT_DIR$/.idea/course-project-ask-the-magic-conch-shell.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring_boot/Library.iml" filepath="$PROJECT_DIR$/spring_boot/Library.iml" />
     </modules>
   </component>
 </project>

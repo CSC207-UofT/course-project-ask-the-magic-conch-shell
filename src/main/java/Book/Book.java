@@ -1,18 +1,25 @@
 package Book;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.time.LocalDate;
 
 
-
+@Entity
 public class Book {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int bookID;
 
-    private final int bookID;
-    private final String bookName;
-    private final String ISBN;
-    private final LocalDate publishDate;
-    private final String author;
+    private String bookName;
+    private String ISBN;
+    private LocalDate publishDate;
+    private String author = null;
     public BookPositionStatus status;
     public LocalDate returnDate;
+
 
     public Book(int bookID, String bookName, String ISBN, LocalDate publishDate, String author) {
         this.bookID = bookID;
@@ -22,6 +29,23 @@ public class Book {
         this.author = author;
         this.status = BookPositionStatus.UNLENDED;
         this.returnDate = null;
+    }
+
+    public Book() {
+
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "bookID=" + bookID +
+                ", bookName='" + bookName + '\'' +
+                ", ISBN='" + ISBN + '\'' +
+                ", publishDate=" + publishDate +
+                ", author='" + author + '\'' +
+                ", status=" + status +
+                ", returnDate=" + returnDate +
+                '}';
     }
 
     public int getBookID(){
@@ -57,5 +81,7 @@ public class Book {
     public void setReturnDate(LocalDate returnDate) {
         this.returnDate = returnDate;
     }
+
 }
+
 
