@@ -100,6 +100,11 @@ public class MongoDBStudentMethods {
         MongoDBStudentMethods.addToOriginal(newObject);
     }
     public static boolean checkStudent(String userName){
+        if (dataStored == null) {
+            MongoDB dataServer = new MongoDB();
+            dataServer.store("Student", "username");
+            dataStored = dataServer.database;
+        }
         return dataStored.containsKey(userName);
     }
 

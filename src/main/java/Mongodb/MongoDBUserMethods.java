@@ -23,7 +23,6 @@ public class MongoDBUserMethods {
 
     public static void update(String userName, String passWord){
         if (dataStored == null){
-            System.out.println(1);
             MongoDB dataServer = new MongoDB();
             dataServer.store("UserTest","username");
             dataStored = dataServer.database;
@@ -61,6 +60,11 @@ public class MongoDBUserMethods {
         MongoDBUserMethods.addToOriginal(newObject);
     }
     public static boolean checkUser(String userName){
+        if (dataStored == null){
+            MongoDB dataServer = new MongoDB();
+            dataServer.store("UserTest","username");
+            dataStored = dataServer.database;
+        }
         return dataStored.containsKey(userName);
     }
 }
