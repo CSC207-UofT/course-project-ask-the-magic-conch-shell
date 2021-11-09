@@ -60,8 +60,7 @@ public class MongoDBUserMethods {
         dataStored.put(userName,newObject);
         MongoDBUserMethods.addToOriginal(newObject);
     }
-    //public static boolean checkUser(String userName){
-        //if
-        //return true;
-    //}
+    public static boolean checkUser(String userName){
+        return dataStored.containsKey(userName);
+    }
 }

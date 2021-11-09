@@ -61,7 +61,30 @@ public class MongoDBStudentMethods {
 
         return (String) dataStored.get(UserName).get("password");
     }
+    public static Integer getCreditScore(String UserName) {
+        if (dataStored == null) {
+            MongoDB dataServer = new MongoDB();
+            dataServer.store("Student", "username");
+            dataStored = dataServer.database;
+        }
 
+        return (Integer) dataStored.get(UserName).get("creditscore");
+    }
+    public static ArrayList<String> getBorrowingHistory(String UserName) {
+        if (dataStored == null) {
+            MongoDB dataServer = new MongoDB();
+            dataServer.store("Student", "username");
+            dataStored = dataServer.database;
+        }
+
+        return (ArrayList<String>) dataStored.get(UserName).get("borrowedbook");
+    }
+    public static void deleteStudent(String userName){
+        if(MongoDBStudentMethods.checkStudent(userName)){
+            MongoDBStudentMethods.deleteOriginal(dataStored.get(userName));
+            dataStored.remove(userName);
+        }
+    }
     public static void addStudent(String userName, String passWord, Integer creditScore, ArrayList<String> borrowingRecords) {
         if (dataStored == null) {
             MongoDB dataServer = new MongoDB();
@@ -76,4 +99,8 @@ public class MongoDBStudentMethods {
         dataStored.put(userName, newObject);
         MongoDBStudentMethods.addToOriginal(newObject);
     }
+    public static boolean checkStudent(String userName){
+        return dataStored.containsKey(userName);
+    }
+
 }

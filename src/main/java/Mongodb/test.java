@@ -10,12 +10,14 @@ import java.util.Objects;
 public class test {
     public static void main(String[] args) {
         System.out.println(MongoDBStudentMethods.getPassword("amy"));
-        ArrayList<Book> bookArray = new ArrayList<Book>();
         Book book = new Book(1006,"Computer","23135-asd564",LocalDate.now(),"Author1");
-        bookArray.add(book);
         ArrayList<String> newArray = new ArrayList<>();
         newArray.add("1006");
+        MongoDBStudentMethods.deleteStudent("Jason");
+        System.out.println(MongoDBStudentMethods.checkStudent("Jason"));
+        System.out.println(MongoDBStudentMethods.getPassword("Jason"));
         MongoDBStudentMethods.addStudent("Jason","abc",100, newArray);
+        System.out.println(MongoDBStudentMethods.getPassword("Jason"));
 //        MongoDBUserMethods.update("James", "updated2");
 //        System.out.println(MongoDBUserMethods.getPassword("James"));
 //        System.out.println(MongoDBUserMethods.getPassword("James"));
