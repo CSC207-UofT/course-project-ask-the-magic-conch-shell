@@ -1,6 +1,5 @@
 package Mongodb;
 
-import Book.Book;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBObject;
@@ -8,16 +7,6 @@ import com.mongodb.MongoClient;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
-
-import com.mongodb.*;
-import com.mongodb.BasicDBObject;
-import com.mongodb.DB;
-import com.mongodb.DBObject;
-import com.mongodb.MongoClient;
-
-import java.util.HashMap;
-import java.util.Objects;
 
 public class MongoDBStudentMethods {
     public static HashMap<String, DBObject> dataStored;
@@ -47,8 +36,8 @@ public class MongoDBStudentMethods {
         newObject.put("creditscore", creditScore);
         newObject.put("borrowedbook", borrowingRecords);
         dataStored.replace(userName, dataStored.get(userName), newObject);
-        MongoDBUserMethods.deleteOriginal(delete);
-        MongoDBUserMethods.addToOriginal(newObject);
+        MongoDBStudentMethods.deleteOriginal(delete);
+        MongoDBStudentMethods.addToOriginal(newObject);
 
     }
 
@@ -80,10 +69,14 @@ public class MongoDBStudentMethods {
         return (ArrayList<String>) dataStored.get(UserName).get("borrowedbook");
     }
     public static void deleteStudent(String userName){
+
         if(MongoDBStudentMethods.checkStudent(userName)){
             MongoDBStudentMethods.deleteOriginal(dataStored.get(userName));
             dataStored.remove(userName);
+
         }
+
+
     }
     public static void addStudent(String userName, String passWord, Integer creditScore, ArrayList<String> borrowingRecords) {
         if (dataStored == null) {
