@@ -5,6 +5,7 @@ import Book.Book;
 import java.time.LocalDate;
 
 public class ResearchPaper extends Book {
+
     final private String subject;
     final private String language;
     final private boolean peer_review_status;

@@ -5,7 +5,8 @@ import Book.Book;
 import java.time.LocalDate;
 
 public class Magazine extends Book {
-    final private String series_name;
+
+    final private String series_name; // Namely, the sub-name of the magazine that focus on a more specific topic.
     final private String magazineCategory;
 
 
