@@ -15,7 +15,7 @@ public class Book {
     public LocalDate returnDate;
 
     public Book(int bookID, String bookName, String ISBN, LocalDate publishDate, String author) {
-        this.bookID = bookID;
+        this.bookID = bookID
         this.bookName = bookName;
         this.ISBN = ISBN;
         this.publishDate = publishDate;
