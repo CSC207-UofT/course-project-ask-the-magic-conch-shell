@@ -7,24 +7,24 @@ import com.mongodb.MongoClient;
 
 import java.util.HashMap;
 
-public class MongoDBUserMethods {
+public class MongoDBStaffMethods {
     public static HashMap<String, DBObject> dataStored;
 
     public static void addToOriginal(DBObject dbObject){
         MongoClient mongoclient = new MongoClient("localhost", 27017);
         DB db = mongoclient.getDB("local");
-        db.getCollection("UserTest").insert(dbObject);
+        db.getCollection("Staff").insert(dbObject);
     }
     public static void deleteOriginal(DBObject dbObject){
         MongoClient mongoclient = new MongoClient("localhost", 27017);
         DB db = mongoclient.getDB("local");
-        db.getCollection("UserTest").remove(dbObject);
+        db.getCollection("Staff").remove(dbObject);
     }
 
     public static void update(String userName, String passWord){
         if (dataStored == null){
             MongoDB dataServer = new MongoDB();
-            dataServer.store("UserTest","username");
+            dataServer.store("Staff","username");
             dataStored = dataServer.database;
         }
         DBObject delete = dataStored.get(userName);
@@ -32,15 +32,15 @@ public class MongoDBUserMethods {
         newObject.put("username", userName);
         newObject.put("password", passWord);
         dataStored.replace(userName, dataStored.get(userName), newObject);
-        MongoDBUserMethods.deleteOriginal(delete);
-        MongoDBUserMethods.addToOriginal(newObject);
+        MongoDBStaffMethods.deleteOriginal(delete);
+        MongoDBStaffMethods.addToOriginal(newObject);
 
     }
 
     public static String getPassword(String UserName) {
         if (dataStored == null) {
             MongoDB dataServer = new MongoDB();
-            dataServer.store("UserTest","username");
+            dataServer.store("Staff","username");
             dataStored = dataServer.database;
         }
 
@@ -50,19 +50,19 @@ public class MongoDBUserMethods {
     public static void addUser(String userName, String passWord) {
         if (dataStored == null) {
             MongoDB dataServer = new MongoDB();
-            dataServer.store("UserTest","username");
+            dataServer.store("Staff","username");
             dataStored = dataServer.database;
         }
         DBObject newObject = new BasicDBObject();
         newObject.put("username", userName);
         newObject.put("password", passWord);
         dataStored.put(userName,newObject);
-        MongoDBUserMethods.addToOriginal(newObject);
+        MongoDBStaffMethods.addToOriginal(newObject);
     }
     public static boolean checkUser(String userName){
         if (dataStored == null){
             MongoDB dataServer = new MongoDB();
-            dataServer.store("UserTest","username");
+            dataServer.store("Staff","username");
             dataStored = dataServer.database;
         }
         return dataStored.containsKey(userName);
