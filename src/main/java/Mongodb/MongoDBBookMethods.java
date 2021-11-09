@@ -87,5 +87,13 @@ public class MongoDBBookMethods {
         dataStored.put(bookID,newObject);
         MongoDBBookMethods.addToOriginal(newObject);
     }
+    public static boolean checkBook(String bookID){
+        if (dataStored == null) {
+            MongoDB dataServer = new MongoDB();
+            dataServer.store("book", "bookID");
+            dataStored = dataServer.database;
+        }
+        return dataStored.containsKey(bookID);
+    }
 }
 
