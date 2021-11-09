@@ -3,20 +3,20 @@ package controller;
 
 public class BorrowBook {
 
-    public void search_book(String ISBN){
+    public void searchBook(String ISBN){
         /* Return ArrayList<Book>
         An arraylist of book
          */
 
     }
-    public void search_book(int bookID){
+    public void searchBook(int bookID){
         /* Return Book
 
          */
 
     }
 
-    public void borrow_book(String ISBN){
+    public void borrowBook(String ISBN){
         /* Return a hashmap of <key: int bookID, value: BookPositionStatus> which all books in
         the hashmap share the same ISBN
 
@@ -24,7 +24,7 @@ public class BorrowBook {
 
     }
 
-    public void borrow_book(int bookID, String username){
+    public void borrowBook(int bookID, String username){
         /*
         - check if bookID valid
         if invalid print ("invalid book id")
@@ -47,7 +47,7 @@ public class BorrowBook {
 
     }
 
-    public void extend_return_date(int bookID, int number_of_days, String username){
+    public void extendReturnDate(int bookID, int number_of_days, String username){
         /*
         if valid bookID:
             if user exists & credit score qualified to extend -> print("Extended number_of_day days")

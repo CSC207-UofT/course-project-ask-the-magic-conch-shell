@@ -9,30 +9,30 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class TestBookManager {
     Book book1;
     Book book2;
-    ArrayList<Book> all_books = new ArrayList<>();
+    ArrayList<Book> allBooks = new ArrayList<>();
 
 
     @Before
     public void setUp(){
-        ArrayList<Book> all_books = new ArrayList<>();
+        ArrayList<Book> allBooks = new ArrayList<>();
 
     }
 
     @Test
     public void testaddBook(){
-        all_books.add(book1);
-        all_books.add(book2);
-        assertEquals(book1, all_books.get(0));
-        assertEquals(book2, all_books.get(1));
-        Assert.assertEquals(2, all_books.size());
+        allBooks.add(book1);
+        allBooks.add(book2);
+        assertEquals(book1, allBooks.get(0));
+        assertEquals(book2, allBooks.get(1));
+        Assert.assertEquals(2, allBooks.size());
     }
 
     @Test
     public void testdeleteBook(){
-        all_books.add(book1);
-        all_books.add(book2);
-        assertTrue( all_books.remove(book2));
-        Assert.assertEquals(1, all_books.size());
+        allBooks.add(book1);
+        allBooks.add(book2);
+        assertTrue( allBooks.remove(book2));
+        Assert.assertEquals(1, allBooks.size());
     }
 
 

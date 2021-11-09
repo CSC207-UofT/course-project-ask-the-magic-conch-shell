@@ -24,7 +24,6 @@ public class Book {
         this.returnDate = null;
     }
 
-
     public int getBookID(){
         return bookID;
     }
@@ -33,9 +32,7 @@ public class Book {
         return bookName;
     }
 
-    public String getISBN(){
-        return ISBN;
-    }
+    public String getISBN(){return ISBN;}
 
     public LocalDate getPublishDate(){
         return publishDate;

@@ -10,12 +10,12 @@ public class LoginWindow {
     public void login(String user_type, String username, String password){
     }
 
-    public void change_Password(String username, String new_password){
+    public void changePassword(String username, String new_password){
     }
 
-    private void  if_correct_password(String username, String password){
+    private void  checkPassword(String username, String password){
     }
 
-    public void forget_password(String username, String new_password){
+    public void forgetPassword(String username, String new_password){
     }
 }
