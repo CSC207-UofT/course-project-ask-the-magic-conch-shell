@@ -7,7 +7,7 @@ import com.mongodb.MongoClient;
 
 import java.util.HashMap;
 
-public class MongoDBUserMethods {
+public class MongoDBStaffMethods {
     public static HashMap<String, DBObject> dataStored;
 
     public static void addToOriginal(DBObject dbObject){
@@ -32,8 +32,8 @@ public class MongoDBUserMethods {
         newObject.put("username", userName);
         newObject.put("password", passWord);
         dataStored.replace(userName, dataStored.get(userName), newObject);
-        MongoDBUserMethods.deleteOriginal(delete);
-        MongoDBUserMethods.addToOriginal(newObject);
+        MongoDBStaffMethods.deleteOriginal(delete);
+        MongoDBStaffMethods.addToOriginal(newObject);
 
     }
 
@@ -57,7 +57,7 @@ public class MongoDBUserMethods {
         newObject.put("username", userName);
         newObject.put("password", passWord);
         dataStored.put(userName,newObject);
-        MongoDBUserMethods.addToOriginal(newObject);
+        MongoDBStaffMethods.addToOriginal(newObject);
     }
     public static boolean checkUser(String userName){
         if (dataStored == null){
