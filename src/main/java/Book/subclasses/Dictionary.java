@@ -6,7 +6,7 @@ import java.time.LocalDate;
 
 public class Dictionary extends Book {
 
-    /* The language that we use English to interpret. */
+    /* The language that we use English to interpret/translate. */
     final private String language;
 
     public Dictionary(int bookID, String bookName, String ISBN, LocalDate publishDate, String author, String language) {

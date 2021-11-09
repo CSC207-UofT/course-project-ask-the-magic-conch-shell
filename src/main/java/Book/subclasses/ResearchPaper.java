@@ -7,7 +7,7 @@ import java.time.LocalDate;
 public class ResearchPaper extends Book {
 
     final private String subject;
-    final private String language;
+    final private String language; //The language in which the paper was written.
     final private boolean peer_review_status;
 
     public ResearchPaper(int bookID, String bookName, String ISBN, LocalDate publishDate, String author,
