@@ -2,8 +2,11 @@ package Mongodb;
 
 
 import com.mongodb.*;
-import java.util.HashMap;
+import com.mongodb.client.MongoClients;
 
+import java.security.cert.CollectionCertStoreParameters;
+import java.util.HashMap;
+import java.util.Objects;
 
 
 public class MongoDB {
@@ -11,8 +14,13 @@ public class MongoDB {
     public DBCollection coll;
     public  void store(String collectionName, String keyname){
         try{
-            MongoClient mongoclient = new MongoClient("localhost", 27017);
-            DB db = mongoclient.getDB("local");
+            MongoClient mongoclient = (MongoClient) MongoClients.create("mongodb+srv://Hewitt:C*gh8%40f8R*9Hw%40U@cluster0.hmi0f.mongodb.net/User?retryWrites=true&w=majority");
+            DB db;
+            if (Objects.equals(collectionName, "book")) {
+                db = mongoclient.getDB("Book");
+            } else {
+                db = mongoclient.getDB("User");
+            }
             System.out.println("MongoDB Connected");
             coll = db.getCollection(collectionName);
             DBCursor cursor = coll.find();

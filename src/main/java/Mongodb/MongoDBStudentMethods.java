@@ -4,6 +4,7 @@ import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
+import com.mongodb.client.MongoClients;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,14 +13,14 @@ public class MongoDBStudentMethods {
     public static HashMap<String, DBObject> dataStored;
 
     public static void addToOriginal(DBObject dbObject) {
-        MongoClient mongoclient = new MongoClient("localhost", 27017);
-        DB db = mongoclient.getDB("local");
+        MongoClient mongoclient = (MongoClient) MongoClients.create("mongodb+srv://Hewitt:C*gh8%40f8R*9Hw%40U@cluster0.hmi0f.mongodb.net/User?retryWrites=true&w=majority");
+        DB db = mongoclient.getDB("User");
         db.getCollection("Student").insert(dbObject);
     }
 
     public static void deleteOriginal(DBObject dbObject) {
-        MongoClient mongoclient = new MongoClient("localhost", 27017);
-        DB db = mongoclient.getDB("local");
+        MongoClient mongoclient = (MongoClient) MongoClients.create("mongodb+srv://Hewitt:C*gh8%40f8R*9Hw%40U@cluster0.hmi0f.mongodb.net/User?retryWrites=true&w=majority");
+        DB db = mongoclient.getDB("User");
         db.getCollection("Student").remove(dbObject);
     }
 
