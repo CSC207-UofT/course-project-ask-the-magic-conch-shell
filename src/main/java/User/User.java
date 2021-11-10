@@ -1,7 +1,7 @@
 package User;
 
 /**
- * Represents a User in the system (either Staff or Student)
+ * Represents a User in the system 
  */
 public abstract class User {
     /**
