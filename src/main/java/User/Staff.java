@@ -1,10 +1,12 @@
 package User;
-import User.User;
 
+/**
+ * A subclass of User
+ */
 public class Staff extends User{
     /**
-     *
-     * @param username staff username
+     * A new Staff with username
+     * @param username staff's username
      */
 
     public Staff(String username) {
