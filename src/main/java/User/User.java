@@ -1,17 +1,20 @@
 package User;
 
+/**
+ * Represents a User in the system (either Staff or Student)
+ */
 public abstract class User {
     /**
-     * The username
+     * The username of a User
      */
     private String username;
     /**
-     * The password
+     * User's password
      */
     private long Password;
 
     /**
-     *
+     * A new User with username
      * @param username username
      */
 
@@ -20,7 +23,7 @@ public abstract class User {
     }
 
     /**
-     *
+     * To set up a User's password
      * @param password user's password
      */
 
@@ -30,7 +33,7 @@ public abstract class User {
     }
 
     /**
-     *
+     * Return a User's password
      * @param username username
      * @return user's password
      */
@@ -40,7 +43,7 @@ public abstract class User {
     }
 
     /**
-     *
+     * Return the a User's username
      * @return username
      */
     public String UsernameGetter(){
