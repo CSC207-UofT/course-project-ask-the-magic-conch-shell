@@ -3,10 +3,6 @@ package Mongodb;
 
 import com.mongodb.*;
 import com.mongodb.MongoClient;
-import com.mongodb.client.*;
-import com.mongodb.client.internal.MongoClientImpl;
-
-import java.security.cert.CollectionCertStoreParameters;
 import java.util.HashMap;
 import java.util.Objects;
 

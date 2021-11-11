@@ -1,8 +1,6 @@
 package Mongodb;
 
 import com.mongodb.*;
-import com.mongodb.client.MongoClients;
-
 import java.util.HashMap;
 
 public class MongoDBBookMethods {
