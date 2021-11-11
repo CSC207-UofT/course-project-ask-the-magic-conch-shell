@@ -1,9 +1,6 @@
 package Mongodb;
 
-import com.mongodb.BasicDBObject;
-import com.mongodb.DB;
-import com.mongodb.DBObject;
-import com.mongodb.MongoClient;
+import com.mongodb.*;
 import com.mongodb.client.MongoClients;
 
 import java.util.ArrayList;
@@ -13,13 +10,15 @@ public class MongoDBStudentMethods {
     public static HashMap<String, DBObject> dataStored;
 
     public static void addToOriginal(DBObject dbObject) {
-        MongoClient mongoclient = (MongoClient) MongoClients.create("mongodb+srv://Hewitt:C*gh8%40f8R*9Hw%40U@cluster0.hmi0f.mongodb.net/User?retryWrites=true&w=majority");
+        MongoClientURI uri = new MongoClientURI("mongodb+srv://Hewitt:C*gh8%40f8R*9Hw%40U@cluster0.hmi0f.mongodb.net/User?retryWrites=true&w=majority");
+        MongoClient mongoclient = new MongoClient(uri);
         DB db = mongoclient.getDB("User");
         db.getCollection("Student").insert(dbObject);
     }
 
     public static void deleteOriginal(DBObject dbObject) {
-        MongoClient mongoclient = (MongoClient) MongoClients.create("mongodb+srv://Hewitt:C*gh8%40f8R*9Hw%40U@cluster0.hmi0f.mongodb.net/User?retryWrites=true&w=majority");
+        MongoClientURI uri = new MongoClientURI("mongodb+srv://Hewitt:C*gh8%40f8R*9Hw%40U@cluster0.hmi0f.mongodb.net/User?retryWrites=true&w=majority");
+        MongoClient mongoclient = new MongoClient(uri);
         DB db = mongoclient.getDB("User");
         db.getCollection("Student").remove(dbObject);
     }
@@ -93,6 +92,7 @@ public class MongoDBStudentMethods {
         dataStored.put(userName, newObject);
         MongoDBStudentMethods.addToOriginal(newObject);
     }
+
     public static boolean checkStudent(String userName){
         if (dataStored == null) {
             MongoDB dataServer = new MongoDB();

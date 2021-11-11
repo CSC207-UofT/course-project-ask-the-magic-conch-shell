@@ -2,7 +2,9 @@ package Mongodb;
 
 
 import com.mongodb.*;
-import com.mongodb.client.MongoClients;
+import com.mongodb.MongoClient;
+import com.mongodb.client.*;
+import com.mongodb.client.internal.MongoClientImpl;
 
 import java.security.cert.CollectionCertStoreParameters;
 import java.util.HashMap;
@@ -14,7 +16,8 @@ public class MongoDB {
     public DBCollection coll;
     public  void store(String collectionName, String keyname){
         try{
-            MongoClient mongoclient = (MongoClient) MongoClients.create("mongodb+srv://Hewitt:C*gh8%40f8R*9Hw%40U@cluster0.hmi0f.mongodb.net/User?retryWrites=true&w=majority");
+            MongoClientURI uri = new MongoClientURI("mongodb+srv://Hewitt:C*gh8%40f8R*9Hw%40U@cluster0.hmi0f.mongodb.net/User?retryWrites=true&w=majority");
+            MongoClient mongoclient = new MongoClient(uri);
             DB db;
             if (Objects.equals(collectionName, "book")) {
                 db = mongoclient.getDB("Book");
