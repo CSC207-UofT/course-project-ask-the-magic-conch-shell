@@ -1,21 +1,21 @@
 package Mongodb;
 
 
-import Book.Book;
-
 import java.util.ArrayList;
-import java.time.LocalDate;
-import java.util.Objects;
 
 public class test {
     public static void main(String[] args) {
-
-        MongoDBStaffMethods.addUser("Leo","abb123");
         ArrayList<String> newArray = new ArrayList<>();
         newArray.add("1006");
         newArray.add("1007");
-        MongoDBStudentMethods.addStudent("amy","123",100, newArray);
-        MongoDBBookMethods.addBook("1001","book1","983-23-5326-324-1","2011","james","fiction");
+        IMongoDBStudentMethods.addStudent("Mike","123456",100, newArray);
+
+////        MongoDBStaffMethods.addStaff("Leo","abb123");
+//        ArrayList<String> newArray = new ArrayList<>();
+//        newArray.add("1006");
+//        newArray.add("1007");
+//        MongoDBStudentMethods.addStudent("amy","123",100, newArray);
+//        MongoDBBookMethods.addBook("1001","book1","983-23-5326-324-1","2011","james","fiction");
 //        MongoDBStudentMethods.deleteStudent("Jason");
 //        System.out.println(MongoDBStudentMethods.checkStudent("Jason"));
 //        System.out.println(MongoDBStudentMethods.getPassword("Jason"));
