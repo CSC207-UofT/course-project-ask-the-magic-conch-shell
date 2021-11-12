@@ -1,5 +1,7 @@
 package Book;
 
+import UseCase.BookPositionStatus;
+
 import java.time.LocalDate;
 
 
@@ -13,8 +15,9 @@ public class Book {
     private final String author;
     public BookPositionStatus status;
     public LocalDate returnDate;
+    public String type;
 
-    public Book(int bookID, String bookName, String ISBN, LocalDate publishDate, String author) {
+    public Book(int bookID, String bookName, String ISBN, LocalDate publishDate, String author, String type) {
         this.bookID = bookID;
         this.bookName = bookName;
         this.ISBN = ISBN;
@@ -22,6 +25,7 @@ public class Book {
         this.author = author;
         this.status = BookPositionStatus.UNLENDED;
         this.returnDate = null;
+        this.type = type;
     }
 
     public int getBookID(){

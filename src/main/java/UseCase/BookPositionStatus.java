@@ -1,4 +1,4 @@
-package Book;
+package UseCase;
 
 public enum BookPositionStatus {
     UNLENDED, LENDED
