@@ -30,7 +30,12 @@ public class test {
 //        System.out.println(MongoDBStaffMethods.getPassword("James"));
 //        System.out.println(MongoDBStaffMethods.getPassword("lily"));
 //        System.out.println(MongoDBBookMethods.getAuthor("1006"));
-//        MongoDBBookMethods.addBook("1001","book1","983-23-5326-324-1","2011","amy","fiction");
+        MongoDBBookMethods.addBook("1001","book1","983-23-5326-324-1","2011","amy","UNLENDED", "2021-10-10","Dictionary");
+        System.out.println(MongoDBBookMethods.checkBook("1001"));
+        MongoDBBookMethods.update("1001","book1","983-23-5326-324-1","2011","amy","UNLENDED", "2021-10-10","Textbook");
+        System.out.println(MongoDBBookMethods.getType("1001"));
+        MongoDBBookMethods.update("1001","book1","983-23-5326-324-1","2011","John","UNLENDED", "2021-10-10","Mathematics");
+        System.out.println(MongoDBBookMethods.getSubject("1001"));
 //        System.out.println(MongoDBBookMethods.getAuthor("1001"));
 //        MongoDBBookMethods.update("1001","book1","983-23-5326-324-1","2011","james","fiction");
 //        System.out.println(MongoDBBookMethods.getAuthor("1001"));
