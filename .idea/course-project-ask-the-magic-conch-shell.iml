@@ -87,5 +87,10 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="bson-3.9.1 (3)" level="project" />
+    <orderEntry type="library" name="mongo-java-driver-3.9.1-javadoc (4)" level="project" />
+    <orderEntry type="library" name="mongo-java-driver-3.9.1-sources (3)" level="project" />
+    <orderEntry type="library" name="mongodb-driver-3.9.1 (3)" level="project" />
+    <orderEntry type="library" name="mongodb-driver-core-3.9.1 (3)" level="project" />
   </component>
 </module>
