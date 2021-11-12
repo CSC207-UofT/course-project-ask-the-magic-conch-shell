@@ -48,6 +48,7 @@ public class MongoDBStudentMethods {
 
         return (String) dataStored.get(UserName).get("password");
     }
+
     public static Integer getCreditScore(String UserName) {
         if (dataStored == null) {
             MongoDB dataServer = new MongoDB();
@@ -63,9 +64,9 @@ public class MongoDBStudentMethods {
             dataServer.store("Student", "username");
             dataStored = dataServer.database;
         }
-
         return (ArrayList<String>) dataStored.get(UserName).get("borrowedbook");
     }
+
     public static void deleteStudent(String userName){
 
         if(MongoDBStudentMethods.checkStudent(userName)){
