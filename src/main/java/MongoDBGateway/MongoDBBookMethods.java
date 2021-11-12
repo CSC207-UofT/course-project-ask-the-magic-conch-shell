@@ -1,4 +1,4 @@
-package Mongodb;
+package MongoDBGateway;
 
 import com.mongodb.*;
 import java.util.HashMap;

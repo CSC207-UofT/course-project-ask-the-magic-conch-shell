@@ -1,6 +1,6 @@
 package test_book;
 
-import Book.BookPositionStatus;
+import UseCase.BookPositionStatus;
 import Book.Book;
 import org.junit.*;
 import java.time.LocalDate;
@@ -16,8 +16,8 @@ public class TestBook {
     LocalDate returnDate;
     @Before
     public void setUp(){
-        book1 = new Book(1,"Iron Man", "123456", publishDate1,"Stan");
-        book2 = new Book(2,"Captain American", "654321",publishDate2,"Tiffany");
+        book1 = new Book(1,"Iron Man", "123456", publishDate1,"Stan", "Literature");
+        book2 = new Book(2,"Captain American", "654321",publishDate2,"Tiffany", "Literature");
         book1.setStatus(BookPositionStatus.UNLENDED);
         book2.setStatus(BookPositionStatus.LENDED);
         book1.setReturnDate(null);
