@@ -83,13 +83,17 @@ public class MongoDBStudentMethods {
             dataServer.store("Student", "username");
             dataStored = dataServer.database;
         }
-        DBObject newObject = new BasicDBObject();
-        newObject.put("username", userName);
-        newObject.put("password", passWord);
-        newObject.put("creditscore", creditScore);
-        newObject.put("borrowedbook", borrowingRecords);
-        dataStored.put(userName, newObject);
-        MongoDBStudentMethods.addToOriginal(newObject);
+        if (checkStudent(userName)){
+            update(userName, passWord, creditScore, borrowingRecords);
+        } else {
+            DBObject newObject = new BasicDBObject();
+            newObject.put("username", userName);
+            newObject.put("password", passWord);
+            newObject.put("creditscore", creditScore);
+            newObject.put("borrowedbook", borrowingRecords);
+            dataStored.put(userName, newObject);
+            MongoDBStudentMethods.addToOriginal(newObject);
+        }
     }
 
     public static boolean checkStudent(String userName){

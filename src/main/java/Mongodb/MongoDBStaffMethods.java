@@ -55,11 +55,15 @@ public class MongoDBStaffMethods {
             dataServer.store("Staff","username");
             dataStored = dataServer.database;
         }
-        DBObject newObject = new BasicDBObject();
-        newObject.put("username", userName);
-        newObject.put("password", passWord);
-        dataStored.put(userName,newObject);
-        MongoDBStaffMethods.addToOriginal(newObject);
+        if (checkUser(userName)) {
+            update(userName, passWord);
+        }else{
+            DBObject newObject = new BasicDBObject();
+            newObject.put("username", userName);
+            newObject.put("password", passWord);
+            dataStored.put(userName, newObject);
+            MongoDBStaffMethods.addToOriginal(newObject);
+        }
     }
 
     public static boolean checkUser(String userName){
