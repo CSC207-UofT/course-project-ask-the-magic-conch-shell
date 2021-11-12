@@ -1,5 +1,6 @@
-package Book;
+package UseCase;
 
+import Book.Book;
 import Book.subclasses.*;
 
 import java.time.LocalDate;

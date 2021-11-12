@@ -1,23 +1,21 @@
-package Mongodb;
+package MongoDBGateway;
 
-import com.mongodb.BasicDBObject;
-import com.mongodb.DB;
-import com.mongodb.DBObject;
-import com.mongodb.MongoClient;
-
+import com.mongodb.*;
 import java.util.HashMap;
 
 public class MongoDBBookMethods {
     public static HashMap<String, DBObject> dataStored;
 
     public static void addToOriginal(DBObject dbObject){
-        MongoClient mongoclient = new MongoClient("localhost", 27017);
-        DB db = mongoclient.getDB("local");
+        MongoClientURI uri = new MongoClientURI("mongodb+srv://Hewitt:C*gh8%40f8R*9Hw%40U@cluster0.hmi0f.mongodb.net/User?retryWrites=true&w=majority");
+        MongoClient mongoclient = new MongoClient(uri);
+        DB db = mongoclient.getDB("Book");
         db.getCollection("book").insert(dbObject);
     }
     public static void deleteOriginal(DBObject dbObject){
-        MongoClient mongoclient = new MongoClient("localhost", 27017);
-        DB db = mongoclient.getDB("local");
+        MongoClientURI uri = new MongoClientURI("mongodb+srv://Hewitt:C*gh8%40f8R*9Hw%40U@cluster0.hmi0f.mongodb.net/User?retryWrites=true&w=majority");
+        MongoClient mongoclient = new MongoClient(uri);
+        DB db = mongoclient.getDB("Book");
         db.getCollection("book").remove(dbObject);
     }
 
