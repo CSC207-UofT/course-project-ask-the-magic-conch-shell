@@ -1,12 +1,17 @@
 package controller;
 
 
+import Book.Book;
+import UseCase.BookManager;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class BorrowBook {
 
-    public void searchBook(String ISBN){
-        /* Return ArrayList<Book>
-        An arraylist of book
-         */
+    public ArrayList<Integer> searchBook_by_ISBN(String ISBN){
+        return BookManager.searchBook(ISBN);
+
 
     }
     public void searchBook(int bookID){
