@@ -7,9 +7,9 @@
     <style>
         .container {
             display: grid;
-            grid-template-columns: 0.9fr 2.1fr 0fr;
-            grid-template-rows: 0.3fr 2.2fr 0.5fr;
-            gap: 0px 0px;
+            grid-template-columns: 0.9fr 2.9fr 0fr;
+            grid-template-rows: 0.3fr 2.2fr 0fr;
+            gap: 0 0;
             grid-auto-flow: column;
             grid-template-areas:
     "topOfThePage topOfThePage topOfThePage"
@@ -31,18 +31,6 @@
             grid-area: accountInfo; background-color: #6c6c69
         }
 
-        .account{
-            height: 100%;
-            width: 0;
-            position: fixed;
-            z-index: 1;
-            top: 0;
-            right: 0;
-            background-color: #868886;
-            overflow-x: hidden;
-            transition: 0.5s;
-            padding-top: 60px;
-        }
 
         .accountButton {
             background-color: #4CAF50;
@@ -59,13 +47,6 @@
             right:1rem;
         }
 
-/*        .accountInfo a {
-            color: black;
-            position: absolute;
-            top:1rem;
-            right:1rem;
-            cursor: pointer;
-        }*/
 
         .crossButton a {
             padding: 8px 8px 8px 32px;
@@ -105,11 +86,6 @@
             color: black;
         }
 
-        .serviceOption a.active {
-            background-color: dodgerblue;
-            color: white;
-        }
-
         #header {
             transition: margin-left .5s;
             padding: 16px;
@@ -117,7 +93,7 @@
 
     </style>
 </head>
-<body>
+<body onload="closeNav()">
 <div class="container">
     <div id="header" class="topOfThePage">
         <h2 style="text-align:left; margin:2%; color:white">Home (Student)</h2>
@@ -133,9 +109,9 @@
     </div>
     <div class="menu serviceOption">
         <a href="studentBorrowBook.html">Borrow Book</a>
-        <a href="#">Return Book</a>
-        <a href="#">Extend Return Date</a>
-        <a href="#">Change Password</a>
+        <a href="studentReturnBook.html">Return Book</a>
+        <a href="extend_return_date.html">Extend Return Date</a>
+        <a href="student_change_password.html">Change Password</a>
     </div>
     <div class="messages" id="message"></div>
 
