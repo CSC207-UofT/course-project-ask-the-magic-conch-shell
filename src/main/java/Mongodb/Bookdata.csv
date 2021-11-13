@@ -1,27 +1,27 @@
 id,name,ISBN/ISSN,Pdate,Author,Status,Rdate,Language,Period,Seriesname,Category,Subject,PeerStatus,subclass
-00001,English Vocabulary in Use: Advanced,"9781316631188",2017-12-08,Michael McCarchy,null,null,,,,,English,,Textbook
-00002,Microeconomics,9781319120054,2018-06-08,Paul Krugman,null,null,,,,,Economics,,Textbook
-00003,Complex Variables,9780521534291,2003-05-15,Mark J. Ablowitz,null,null,,,,,Mathematics,,Textbook
-00004,Clean Architecture,9780134494166 ,2018-01-13,Robert.C.Martin,null,null,,,,,Computer Science,,Textbook
-00005,Science,00368075,2021-10-29,American Association for the Advancement of Science,null,null,,,Why We Sleep?,Physiology,,,Magazine
-00006,The New England Journal of Medicine,00284793,2021-10-28,Massachusetts Medical Society,null,null,,,A Therapeutic Relationship,Medicine,,,Magazine
-00007,Macbeth,9780140707052,1967-01-01,William Shakespeare,null,null,,The Renaissance,,,,,Literature
-00008,The Quintessence of Ibsenism,9780809005093,1984-03-21,Bernard Shaw,null,null,,The Victorian Age,,,,,Literature
-00009,The Man of Property,9780435270308,1979-01-01,John Galsworthy,null,null,,Modernism,,,,,Literature
-00010,Oxford English Dictionary,9780195219425,2002-01-01,Oxford University Press,null,null,English,,,,,,Dictionary
-00011,Xinhua Dictionary with English Translation,9787801031983,2000-01-01,Commercial Pr Intl,null,null,Chinese,,,,,,Dictionary
-00012,Oxford Essential French Dictionary,9780199576388,2010-01-13,Oxford University Press,null,null,French,,,,,,Dictionary
-00013,Webster's Spanish-English Dictionary for Students,9781596951655,2014-07-21,Federal Street Pr,null,null,Spanish,,,,,,Dictionary
-00014,Collins German Dictionary And Grammar 6th Edition,9780007323166,2010-05-30,Collins,null,null,German,,,,,,Dictionary
-00015,Cambridge Learner's Dictionary English-Russian with CD-ROM,9780521181976,2011-10-31,Cambridge University Press,null,null,Russian,,,,,,Dictionary
-00016,Random House Japanese-English English-Japanese Dictionary,9780345405487,1996-06-30,Ballantine Books,null,null,Japanese,,,,,,Dictionary
-00017,The Prelude: A Parallel Text,9780140433692,1996-05-01,William Wordsworth,null,null,,The Romantic Period,,,,,Literature
-00018,The Triumphs of Petrarch: Translated Into English Verse,9781331748465,2018-04-22,Francesco Petrarca,null,null,"",The Renaissance,,,,,Literature
-00019,Geophysical Research Letters,00948276,2019-12-04,American Geophysical Union,null,null,,,Evaluating the Performance of Past Climate Model Projections,Geophysics,,,Magazine
-00020,TIME,0040781X,2021-10-25,"Richard Stengel, Adi Ignatius",null,null,,,Next Generation Leaders,News,,,Magazine
-00021,The New Yorker,0028792X,2021-11-08,Condé Nast,null,null,,,Season's turn,Hybrid,,,Magazine
-00022,"Probability with Applications in Engineering, Science, and Technology",9783319524009,2017-04-07,R. DeVeaux,null,null,,,,,Statistics,,Textbook
-00023,A Readable Introduction to Real,9783030006310,2019-04-11,Daniel Rosenthal,null,null,,,,,Mathematics,,Textbook
-00024,Practical Programming,9781680502688,2017-12-26,Paul Gries,null,null,,,,,Computer Science,,Textbook
+00001,English Vocabulary in Use: Advanced,"9781316631188",2017-12-08,Michael McCarchy,unlended,null,,,,,English,,Textbook
+00002,Microeconomics,9781319120054,2018-06-08,Paul Krugman,unlended,null,,,,,Economics,,Textbook
+00003,Complex Variables,9780521534291,2003-05-15,Mark J. Ablowitz,unlended,null,,,,,Mathematics,,Textbook
+00004,Clean Architecture,9780134494166 ,2018-01-13,Robert.C.Martin,unlended,null,,,,,Computer Science,,Textbook
+00005,Science,00368075,2021-10-29,American Association for the Advancement of Science,unlended,null,,,Why We Sleep?,Physiology,,,Magazine
+00006,The New England Journal of Medicine,00284793,2021-10-28,Massachusetts Medical Society,unlended,null,,,A Therapeutic Relationship,Medicine,,,Magazine
+00007,Macbeth,9780140707052,1967-01-01,William Shakespeare,unlended,null,,The Renaissance,,,,,Literature
+00008,The Quintessence of Ibsenism,9780809005093,1984-03-21,Bernard Shaw,unlended,null,,The Victorian Age,,,,,Literature
+00009,The Man of Property,9780435270308,1979-01-01,John Galsworthy,unlended,null,,Modernism,,,,,Literature
+00010,Oxford English Dictionary,9780195219425,2002-01-01,Oxford University Press,unlended,null,English,,,,,,Dictionary
+00011,Xinhua Dictionary with English Translation,9787801031983,2000-01-01,Commercial Pr Intl,unlended,null,Chinese,,,,,,Dictionary
+00012,Oxford Essential French Dictionary,9780199576388,2010-01-13,Oxford University Press,unlended,null,French,,,,,,Dictionary
+00013,Webster's Spanish-English Dictionary for Students,9781596951655,2014-07-21,Federal Street Pr,unlended,null,Spanish,,,,,,Dictionary
+00014,Collins German Dictionary And Grammar 6th Edition,9780007323166,2010-05-30,Collins,unlended,null,German,,,,,,Dictionary
+00015,Cambridge Learner's Dictionary English-Russian with CD-ROM,9780521181976,2011-10-31,Cambridge University Press,unlended,null,Russian,,,,,,Dictionary
+00016,Random House Japanese-English English-Japanese Dictionary,9780345405487,1996-06-30,Ballantine Books,unlended,null,Japanese,,,,,,Dictionary
+00017,The Prelude: A Parallel Text,9780140433692,1996-05-01,William Wordsworth,unlended,null,,The Romantic Period,,,,,Literature
+00018,The Triumphs of Petrarch: Translated Into English Verse,9781331748465,2018-04-22,Francesco Petrarca,unlended,null,"",The Renaissance,,,,,Literature
+00019,Geophysical Research Letters,00948276,2019-12-04,American Geophysical Union,unlended,null,,,Evaluating the Performance of Past Climate Model Projections,Geophysics,,,Magazine
+00020,TIME,0040781X,2021-10-25,"Richard Stengel, Adi Ignatius",unlended,null,,,Next Generation Leaders,News,,,Magazine
+00021,The New Yorker,0028792X,2021-11-08,Condé Nast,unlended,null,,,Season's turn,Hybrid,,,Magazine
+00022,"Probability with Applications in Engineering, Science, and Technology",9783319524009,2017-04-07,R. DeVeaux,unlended,null,,,,,Statistics,,Textbook
+00023,A Readable Introduction to Real,9783030006310,2019-04-11,Daniel Rosenthal,unlended,null,,,,,Mathematics,,Textbook
+00024,Practical Programming,9781680502688,2017-12-26,Paul Gries,unlended,null,,,,,Computer Science,,Textbook
 00025,"Acute urinary retention and risk of cancer: population based Danish cohort study
-",None,2021-09-20,Maria Bisgaard Bengtsen,null,null,English,,,,Medicine,true,ReseachPaper
+",None,2021-09-20,Maria Bisgaard Bengtsen,unlended,null,English,,,,Medicine,true,ReseachPaper

@@ -2,9 +2,13 @@ package Mongodb;
 
 import Book.BookPositionStatus;
 import com.mongodb.*;
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.model.Filters;
+import org.bson.Document;
+import org.bson.conversions.Bson;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
@@ -443,7 +447,56 @@ public class MongoDBBookMethods {
         }
         return dataStored.containsKey(bookID);
     }
+
+    public static ArrayList<Integer> searchByISBN(String ISBN) {
+        if (dataStored == null) {
+            MongoDB dataServer = new MongoDB();
+            dataServer.store("book", "id");
+            dataStored = dataServer.database;
+        }
+        ArrayList<Integer> ar = new ArrayList<>();
+        for (String bookID : dataStored.keySet()) {
+            if (dataStored.get(bookID).get("ISBN/ISSN").equals(ISBN)) {
+                Integer bid = Integer.parseInt(bookID);
+                ar.add(bid);
+            }
+        }
+        return ar;
+    }
+
+    public static ArrayList<Integer> searchByAuthor(String author){
+            if (dataStored == null) {
+                MongoDB dataServer = new MongoDB();
+                dataServer.store("book", "id");
+                dataStored = dataServer.database;
+            }
+            ArrayList<Integer> arr = new ArrayList<>();
+            for (String bookID : dataStored.keySet()) {
+                if (dataStored.get(bookID).get("Author").equals(author)) {
+                    Integer bid = Integer.parseInt(bookID);
+                    arr.add(bid);
+                }
+            }
+            return arr;
+        }
+
+    public static ArrayList<Integer> searchByType(String type) {
+        if (dataStored == null){
+            MongoDB dataServer = new MongoDB();
+            dataServer.store("book", "id");
+            dataStored = dataServer.database;
+        }
+        ArrayList<Integer> arra = new ArrayList<>();
+        for (String bookID : dataStored.keySet()){
+            if (dataStored.get(bookID).get("subclass").equals(type)){
+                Integer bid = Integer.parseInt(bookID);
+                arra.add(bid);
+            }
+        }
+        return arra;
+    }
 }
+
 
 
 
