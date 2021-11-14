@@ -69,7 +69,7 @@ public class Book {
      * @return int that indicate bookID of the corresponding book
      */
     public int getBookID(){
-        return bookID;
+        return this.bookID;
     }
 
     /**
@@ -77,21 +77,21 @@ public class Book {
      * @return Strings that indicate bookName of the corresponding book
      */
     public String getBookName(){
-        return bookName;
+        return this.bookName;
     }
 
     /**
      * To get the ISBN
      * @return Strings that indicate ISBN of the corresponding book
      */
-    public String getISBN(){return ISBN;}
+    public String getISBN(){return this.ISBN;}
 
     /**
      * To get the publishing date of a book
      * @return LocalDate of the publishDate of the corresponding book
      */
     public LocalDate getPublishDate(){
-        return publishDate;
+        return this.publishDate;
     }
 
     /**
@@ -99,7 +99,7 @@ public class Book {
      * @return Strings that indicate author of the corresponding book
      */
     public String getAuthor(){
-        return author;
+        return this.author;
     }
 
     /**
@@ -107,7 +107,7 @@ public class Book {
      * @return Strings that indicate the current status of the corresponding book
      */
     public BookPositionStatus getStatus(){
-        return status;
+        return this.status;
     }
 
     /**
@@ -122,7 +122,7 @@ public class Book {
      * @return LocalDate of returnDate of the corresponding book
      */
     public LocalDate getReturnDate() {
-        return returnDate;
+        return this.returnDate;
     }
 
     /**
@@ -131,6 +131,14 @@ public class Book {
      */
     public void setReturnDate(LocalDate returnDate) {
         this.returnDate = returnDate;
+    }
+
+    /**
+     * To get the book type
+     * @return string that indicate type of the corresponding book
+     */
+    public String getType(){
+        return this.type;
     }
 }
 

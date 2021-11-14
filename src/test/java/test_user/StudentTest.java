@@ -23,7 +23,7 @@ public class StudentTest {
         j = new Student("Jason");
         j.CreditScoreSetter(30);
         empty_record= new ArrayList<>();
-        book1 = new Book(1,"Fade","ds134", date, "Jacob");
+        book1 = new Book(1,"Fade","ds134", date, "Jacob", "Textbook");
         j.AddToCurrentBorrowingRecords(book1);
     }
 

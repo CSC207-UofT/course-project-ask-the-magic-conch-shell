@@ -12,11 +12,11 @@ public class Literature extends Book {
      */
     final private String period;
 
-    public Literature(int bookID, String bookName, String ISBN, LocalDate publishDate, String author, String period) {
-        super(bookID, bookName, ISBN, publishDate, author);
+    public Literature(int bookID, String bookName, String ISBN, LocalDate publishDate, String author, String period, String type) {
+        super(bookID, bookName, ISBN, publishDate, author, type);
         this.period = period;
     }
 
-    public String getPeriod(){ return period; }
+    public String getPeriod(){ return this.period; }
 
 }

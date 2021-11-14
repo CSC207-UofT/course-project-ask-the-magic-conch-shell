@@ -1,21 +1,20 @@
 package controller;
 
 import Book.Book;
-import UseCase.BookManager;
+import UseCase.DBbookManager;
 
 import java.time.LocalDate;
 
-
-public class InventoryController {
-
-    public void addBookToInventory(int bookID, String bookName, String ISBN, LocalDate publishDate, String author, String type){
-        //generate a non_repeated bookID.
-        Book a = new Book(bookID, bookName, ISBN, publishDate, author, type);
-        BookManager.addBook(a);
-    }
-
-    public boolean deleteBookFromInventory(int bookID){
-        return BookManager.deleteBook(bookID);
-
-    }
-}
+//
+//public class InventoryController {
+//    //TODO : ADD A IMONGODBBOOK METHODS PARAMETER TO THE INPUT
+//
+//    public void addBookToInventory(int bookID, String bookName, String ISBN, LocalDate publishDate, String author, String type){
+////        if type.equals("m"){
+////    }
+////    }
+//
+////    public boolean deleteBookFromInventory(int bookID) {
+//////        return DBbookManager.deleteBook(bookID);
+////
+////    }

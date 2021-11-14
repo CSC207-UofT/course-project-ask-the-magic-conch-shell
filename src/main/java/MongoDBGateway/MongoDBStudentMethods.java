@@ -2,6 +2,7 @@ package MongoDBGateway;
 
 import com.mongodb.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class MongoDBStudentMethods implements IMongoDBStudentMethods {
@@ -19,5 +20,86 @@ public class MongoDBStudentMethods implements IMongoDBStudentMethods {
         MongoClient mongoclient = new MongoClient(uri);
         DB db = mongoclient.getDB("User");
         db.getCollection("Student").remove(dbObject);
+    }
+
+    public void update(String userName, String passWord, Integer creditScore, ArrayList<String> borrowingRecords){
+        if (MongoDBStudentMethods.dataStored == null) {
+            MongoDB dataServer = new MongoDB();
+            dataServer.store("Student", "username");
+            dataStored = dataServer.database;
+        }
+        DBObject delete = dataStored.get(userName);
+        DBObject newObject = new BasicDBObject();
+        newObject.put("username", userName);
+        newObject.put("password", passWord);
+        newObject.put("creditscore", creditScore);
+        newObject.put("borrowedbook", borrowingRecords);
+        dataStored.replace(userName, dataStored.get(userName), newObject);
+        MongoDBStudentMethods.deleteOriginal(delete);
+        MongoDBStudentMethods.addToOriginal(newObject);
+    }
+
+    public String getPassword(String UserName) {
+        if (MongoDBStudentMethods.dataStored == null) {
+            MongoDB dataServer = new MongoDB();
+            dataServer.store("Student", "username");
+            dataStored = dataServer.database;
+        }
+
+        return (String) dataStored.get(UserName).get("password");
+
+    }
+
+    public Integer getCreditScore(String UserName) {
+        if (MongoDBStudentMethods.dataStored == null) {
+            MongoDB dataServer = new MongoDB();
+            dataServer.store("Student", "username");
+            dataStored = dataServer.database;
+        }
+
+        return (Integer) dataStored.get(UserName).get("creditscore");
+    }
+
+    public ArrayList<String> getBorrowingHistory(String UserName) {
+        if (MongoDBStudentMethods.dataStored == null) {
+            MongoDB dataServer = new MongoDB();
+            dataServer.store("Student", "username");
+            dataStored = dataServer.database;
+        }
+
+        return (ArrayList<String>) dataStored.get(UserName).get("borrowedbook");
+    }
+
+    public void deleteStudent(String userName) {
+
+        if (checkStudent(userName)) {
+            MongoDBStudentMethods.deleteOriginal(MongoDBStudentMethods.dataStored.get(userName));
+            dataStored.remove(userName);
+
+        }
+    }
+
+    public void addStudent(String userName, String passWord, Integer creditScore, ArrayList<String> borrowingRecords) {
+        if (MongoDBStudentMethods.dataStored == null) {
+            MongoDB dataServer = new MongoDB();
+            dataServer.store("Student", "username");
+            dataStored = dataServer.database;
+        }
+        DBObject newObject = new BasicDBObject();
+        newObject.put("username", userName);
+        newObject.put("password", passWord);
+        newObject.put("creditscore", creditScore);
+        newObject.put("borrowedbook", borrowingRecords);
+        dataStored.put(userName, newObject);
+        MongoDBStudentMethods.addToOriginal(newObject);
+    }
+
+    public boolean checkStudent(String userName) {
+        if (MongoDBStudentMethods.dataStored == null) {
+            MongoDB dataServer = new MongoDB();
+            dataServer.store("Student", "username");
+            dataStored = dataServer.database;
+        }
+        return dataStored.containsKey(userName);
     }
 }
