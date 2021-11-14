@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
 
-public class MongoDBBookMethods {
+public class MongoDBBookMethods implements IMongoDBBookMethods {
     public static HashMap<String, DBObject> dataStored;
 
     public static void addToOriginal(DBObject dbObject) {
@@ -26,13 +26,14 @@ public class MongoDBBookMethods {
         db.getCollection("book").remove(dbObject);
     }
 
-    public static void update(String bookID, String name, String ISBN, String publishDate, String author, String status, String returnDate, String dynamic) {
+
+    public void update(String bookID, String name, String ISBN, String publishDate, String author, String status, String returnDate, String dynamic) {
         if (dataStored == null) {
             MongoDB dataServer = new MongoDB();
             dataServer.store("book", "id");
             dataStored = dataServer.database;
         }
-        DBObject delete = dataStored.get(bookID);
+        DBObject delete = MongoDBBookMethods.dataStored.get(bookID);
         DBObject newObject = new BasicDBObject();
         newObject.put("id", bookID);
         newObject.put("name", name);
@@ -68,20 +69,20 @@ public class MongoDBBookMethods {
             }
         }
         dataStored.replace(bookID, dataStored.get(bookID), newObject);
-        MongoDBBookMethods.deleteOriginal(delete);
-        MongoDBBookMethods.addToOriginal(newObject);
+        deleteOriginal(delete);
+        addToOriginal(newObject);
     }
 
     /*
-     The overloaded update() method provides a way for people to update the book the same as that in the package subclasses in which one don't need to specify the type.
-     */
-    public static void update(String bookID, String name, String ISBN, String publishDate, String author, String status, String returnDate, String seriesname, String category) {
-        if (dataStored == null) {
+         The overloaded update() method provides a way for people to update the book the same as that in the package subclasses in which one don't need to specify the type.
+         */
+    public void update(String bookID, String name, String ISBN, String publishDate, String author, String status, String returnDate, String seriesname, String category) {
+        if (MongoDBBookMethods.dataStored == null) {
             MongoDB dataServer = new MongoDB();
             dataServer.store("book", "id");
             dataStored = dataServer.database;
         }
-        DBObject delete = dataStored.get(bookID);
+        DBObject delete = MongoDBBookMethods.dataStored.get(bookID);
         DBObject newObject = new BasicDBObject();
         newObject.put("id", bookID);
         newObject.put("name", name);
@@ -94,17 +95,17 @@ public class MongoDBBookMethods {
         newObject.put("Category", category);
         newObject.put("subclass", "Magazine");
         dataStored.replace(bookID, dataStored.get(bookID), newObject);
-        MongoDBBookMethods.deleteOriginal(delete);
-        MongoDBBookMethods.addToOriginal(newObject);
+        deleteOriginal(delete);
+        addToOriginal(newObject);
     }
 
-    public static void update(String bookID, String name, String ISBN, String publishDate, String author, String status, String returnDate, String language, String subject, String peerstatus) {
-        if (dataStored == null) {
+    public void update(String bookID, String name, String ISBN, String publishDate, String author, String status, String returnDate, String language, String subject, String peerstatus) {
+        if (MongoDBBookMethods.dataStored == null) {
             MongoDB dataServer = new MongoDB();
             dataServer.store("book", "id");
-            dataStored = dataServer.database;
+            MongoDBBookMethods.dataStored = dataServer.database;
         }
-        DBObject delete = dataStored.get(bookID);
+        DBObject delete = MongoDBBookMethods.dataStored.get(bookID);
         DBObject newObject = new BasicDBObject();
         newObject.put("id", bookID);
         newObject.put("name", name);
@@ -117,179 +118,230 @@ public class MongoDBBookMethods {
         newObject.put("Subject", subject);
         newObject.put("PeerStatus", peerstatus);
         newObject.put("subclass", "ResearchPaper");
-        dataStored.replace(bookID, dataStored.get(bookID), newObject);
+        MongoDBBookMethods.dataStored.replace(bookID, MongoDBBookMethods.dataStored.get(bookID), newObject);
         MongoDBBookMethods.deleteOriginal(delete);
         MongoDBBookMethods.addToOriginal(newObject);
     }
 
-    public static String getName(String bookID) {
-        if (dataStored == null) {
+    public String getName(String bookID) {
+        if (MongoDBBookMethods.dataStored == null) {
             MongoDB dataServer = new MongoDB();
             dataServer.store("book", "id");
-            dataStored = dataServer.database;
+            MongoDBBookMethods.dataStored = dataServer.database;
         }
-        String date = (String) dataStored.get(bookID).get("Pdate");;
+        String date = (String) MongoDBBookMethods.dataStored.get(bookID).get("Pdate");
+        ;
 
-        return (String) dataStored.get(bookID).get("name");
+        return (String) MongoDBBookMethods.dataStored.get(bookID).get("name");
     }
 
-    public static String getISBN(String bookID) {
-        if (dataStored == null) {
+    public String getISBN(String bookID) {
+        if (MongoDBBookMethods.dataStored == null) {
             MongoDB dataServer = new MongoDB();
             dataServer.store("book", "id");
-            dataStored = dataServer.database;
+            MongoDBBookMethods.dataStored = dataServer.database;
         }
 
-        return (String) dataStored.get(bookID).get("ISBN/ISSN");
+        return (String) MongoDBBookMethods.dataStored.get(bookID).get("ISBN/ISSN");
     }
 
-    public static LocalDate getPublishDate(String bookID) {
-        if (dataStored == null) {
+    public ArrayList<Integer> searchByISBN(String ISBN){
+        if (MongoDBBookMethods.dataStored == null) {
             MongoDB dataServer = new MongoDB();
             dataServer.store("book", "id");
-            dataStored = dataServer.database;
+            MongoDBBookMethods.dataStored = dataServer.database;
         }
-        String date = (String) dataStored.get(bookID).get("Pdate");;
+        ArrayList<Integer> ar = new ArrayList<>();
+        for (String bookID : MongoDBBookMethods.dataStored.keySet()) {
+            if (MongoDBBookMethods.dataStored.get(bookID).get("ISBN/ISSN").equals(ISBN)){
+                Integer bid = Integer.parseInt(bookID);
+                ar.add(bid);
+            }
+        }
+        return ar;
+    }
+
+    public ArrayList<Integer> searchByAuthor(String author){
+        if (MongoDBBookMethods.dataStored == null) {
+            MongoDB dataServer = new MongoDB();
+            dataServer.store("book", "id");
+            MongoDBBookMethods.dataStored = dataServer.database;
+        }
+        ArrayList<Integer> arr = new ArrayList<>();
+        for (String bookID : MongoDBBookMethods.dataStored.keySet()) {
+            if (MongoDBBookMethods.dataStored.get(bookID).get("Author").equals(author)) {
+                Integer bid = Integer.parseInt(bookID);
+                arr.add(bid);
+            }
+        }
+        return arr;
+    }
+
+    public ArrayList<Integer> searchByType(String type) {
+        if (MongoDBBookMethods.dataStored == null){
+            MongoDB dataServer = new MongoDB();
+            dataServer.store("book", "id");
+            MongoDBBookMethods.dataStored = dataServer.database;
+        }
+        ArrayList<Integer> arra = new ArrayList<>();
+        for (String bookID : MongoDBBookMethods.dataStored.keySet()){
+            if (MongoDBBookMethods.dataStored.get(bookID).get("subclass").equals(type)){
+                Integer bid = Integer.parseInt(bookID);
+                arra.add(bid);
+            }
+        }
+        return arra;
+    }
+
+    public LocalDate getPublishDate(String bookID) {
+        if (MongoDBBookMethods.dataStored == null) {
+            MongoDB dataServer = new MongoDB();
+            dataServer.store("book", "id");
+            MongoDBBookMethods.dataStored = dataServer.database;
+        }
+        String date = (String) MongoDBBookMethods.dataStored.get(bookID).get("Pdate");
+        ;
 
         //convert String to LocalDate
         return LocalDate.parse(date);
     }
 
-    public static String getAuthor(String bookID) {
-        if (dataStored == null) {
+    public String getAuthor(String bookID) {
+        if (MongoDBBookMethods.dataStored == null) {
             MongoDB dataServer = new MongoDB();
             dataServer.store("book", "id");
-            dataStored = dataServer.database;
+            MongoDBBookMethods.dataStored = dataServer.database;
         }
 
-        return (String) dataStored.get(bookID).get("Author");
+        return (String) MongoDBBookMethods.dataStored.get(bookID).get("Author");
     }
 
-    public static BookPositionStatus getStatus(String bookID) {
-        if (dataStored == null) {
+    public BookPositionStatus getStatus(String bookID) {
+        if (MongoDBBookMethods.dataStored == null) {
             MongoDB dataServer = new MongoDB();
             dataServer.store("book", "id");
-            dataStored = dataServer.database;
+            MongoDBBookMethods.dataStored = dataServer.database;
         }
 
-        return (BookPositionStatus) dataStored.get(bookID).get("Status");
+        return (BookPositionStatus) MongoDBBookMethods.dataStored.get(bookID).get("Status");
     }
 
-    public static LocalDate getReturnDate(String bookID) {
-        if (dataStored == null) {
+    public LocalDate getReturnDate(String bookID) {
+        if (MongoDBBookMethods.dataStored == null) {
             MongoDB dataServer = new MongoDB();
             dataServer.store("book", "id");
-            dataStored = dataServer.database;
+            MongoDBBookMethods.dataStored = dataServer.database;
         }
-        String date = (String) dataStored.get(bookID).get("Rdate");;
+        String date = (String) MongoDBBookMethods.dataStored.get(bookID).get("Rdate");
+        ;
 
         //convert String to LocalDate
         return LocalDate.parse(date);
     }
 
-    public static String getType(String bookID) {
-        if (dataStored == null) {
+    public String getType(String bookID) {
+        if (MongoDBBookMethods.dataStored == null) {
             MongoDB dataServer = new MongoDB();
             dataServer.store("book", "id");
-            dataStored = dataServer.database;
+            MongoDBBookMethods.dataStored = dataServer.database;
         }
 
-        return (String) dataStored.get(bookID).get("subclass");
+        return (String) MongoDBBookMethods.dataStored.get(bookID).get("subclass");
     }
 
-    public static String getLanguage(String bookID) {
-        if (dataStored == null) {
+    public String getLanguage(String bookID) {
+        if (MongoDBBookMethods.dataStored == null) {
             MongoDB dataServer = new MongoDB();
             dataServer.store("book", "id");
-            dataStored = dataServer.database;
+            MongoDBBookMethods.dataStored = dataServer.database;
         }
         if (Objects.equals(getType(bookID), "Dictionary")) {
-            return (String) dataStored.get(bookID).get("Language");
+            return (String) MongoDBBookMethods.dataStored.get(bookID).get("Language");
         } else if (Objects.equals(getType(bookID), "ResearchPaper")) {
-            return (String) dataStored.get(bookID).get("Language");
+            return (String) MongoDBBookMethods.dataStored.get(bookID).get("Language");
         } else {
             System.out.println("This is not a dictionary or research paper, so it has no language tag.");
             return null;
         }
     }
 
-    public static String getSubject(String bookID) {
-        if (dataStored == null) {
+    public String getSubject(String bookID) {
+        if (MongoDBBookMethods.dataStored == null) {
             MongoDB dataServer = new MongoDB();
             dataServer.store("book", "id");
-            dataStored = dataServer.database;
+            MongoDBBookMethods.dataStored = dataServer.database;
         }
         if (Objects.equals(getType(bookID), "Textbook")) {
-            return (String) dataStored.get(bookID).get("Subject");
+            return (String) MongoDBBookMethods.dataStored.get(bookID).get("Subject");
         } else if (Objects.equals(getType(bookID), "ResearchPaper")) {
-            return (String) dataStored.get(bookID).get("Subject");
+            return (String) MongoDBBookMethods.dataStored.get(bookID).get("Subject");
         } else {
             System.out.println("This is not a textbook or research paper, so it has no subject tag.");
             return null;
         }
     }
 
-    public static String getSeriesName(String bookID) {
-        if (dataStored == null) {
+    public String getSeriesName(String bookID) {
+        if (MongoDBBookMethods.dataStored == null) {
             MongoDB dataServer = new MongoDB();
             dataServer.store("book", "id");
-            dataStored = dataServer.database;
+            MongoDBBookMethods.dataStored = dataServer.database;
         }
         if (Objects.equals(getType(bookID), "Magazine")) {
-            return (String) dataStored.get(bookID).get("Seriesname");
+            return (String) MongoDBBookMethods.dataStored.get(bookID).get("Seriesname");
         } else {
             System.out.println("This is not a magazine, so it has no series name tag.");
             return null;
         }
     }
 
-    public static String getCategory(String bookID) {
-        if (dataStored == null) {
+    public String getCategory(String bookID) {
+        if (MongoDBBookMethods.dataStored == null) {
             MongoDB dataServer = new MongoDB();
             dataServer.store("book", "id");
-            dataStored = dataServer.database;
+            MongoDBBookMethods.dataStored = dataServer.database;
         }
         if (Objects.equals(getType(bookID), "Magazine")) {
-            return (String) dataStored.get(bookID).get("Category");
+            return (String) MongoDBBookMethods.dataStored.get(bookID).get("Category");
         } else {
             System.out.println("This is not a magazine, so it has no category tag.");
             return null;
         }
     }
 
-    public static String getPeriod(String bookID) {
-        if (dataStored == null) {
+    public String getPeriod(String bookID) {
+        if (MongoDBBookMethods.dataStored == null) {
             MongoDB dataServer = new MongoDB();
             dataServer.store("book", "id");
-            dataStored = dataServer.database;
+            MongoDBBookMethods.dataStored = dataServer.database;
         }
         if (Objects.equals(getType(bookID), "Literature")) {
-            return (String) dataStored.get(bookID).get("Period");
+            return (String) MongoDBBookMethods.dataStored.get(bookID).get("Period");
         } else {
             System.out.println("This is not a literature, so it has no period tag.");
             return null;
         }
     }
 
-    public static Comparable<Boolean> getPeerstatus(String bookID) {
-        if (dataStored == null) {
+    public Comparable<Boolean> getPeerstatus(String bookID) {
+        if (MongoDBBookMethods.dataStored == null) {
             MongoDB dataServer = new MongoDB();
             dataServer.store("book", "id");
-            dataStored = dataServer.database;
+            MongoDBBookMethods.dataStored = dataServer.database;
         }
         if (Objects.equals(getType(bookID), "ResearchPaper")) {
-            return (boolean) dataStored.get(bookID).get("PeerStatus");
+            return (boolean) MongoDBBookMethods.dataStored.get(bookID).get("PeerStatus");
         } else {
             System.out.println("This is not a research paper, so it has no peer review status.");
             return null;
         }
     }
 
-    public static void addBook(String bookID, String name, String ISBN, String publishDate, String author, String status, String returnDate, String type) {
-        if (dataStored == null) {
+    public void addBook(String bookID, String name, String ISBN, String publishDate, String author, String status, String returnDate, String type) {
+        if (MongoDBBookMethods.dataStored == null) {
             MongoDB dataServer = new MongoDB();
             dataServer.store("book", "id");
-            dataStored = dataServer.database;
+            MongoDBBookMethods.dataStored = dataServer.database;
         }
         DBObject newObject = new BasicDBObject();
         newObject.put("id", bookID);
@@ -324,126 +376,137 @@ public class MongoDBBookMethods {
                 newObject.put("Subject", mark);
                 newObject.put("PeerStatus", mark);
         }
-        dataStored.put(bookID, newObject);
+        MongoDBBookMethods.dataStored.put(bookID, newObject);
         MongoDBBookMethods.addToOriginal(newObject);
     }
 
-    public static void addDictionary(String bookID, String name, String ISBN, String publishDate, String author, String status, String returnDate, String language) {
-        if (dataStored == null) {
-            MongoDB dataServer = new MongoDB();
-            dataServer.store("book", "id");
-            dataStored = dataServer.database;
+    public void deleteDBBook(String bookID) {
+
+        if (checkBook(bookID)) {
+            MongoDBStudentMethods.deleteOriginal(MongoDBStudentMethods.dataStored.get(bookID));
+            MongoDBStudentMethods.dataStored.remove(bookID);
+
         }
-        DBObject newObject = new BasicDBObject();
-        newObject.put("id", bookID);
-        newObject.put("name", name);
-        newObject.put("ISBN/ISSN", ISBN);
-        newObject.put("Pdate", publishDate);
-        newObject.put("Author", author);
-        newObject.put("Status", status);
-        newObject.put("Rdate", returnDate);
-        newObject.put("Language", language);
-        String type = "Dictionary";
-        newObject.put("Subclass", type);
-        dataStored.put(bookID, newObject);
-        MongoDBBookMethods.addToOriginal(newObject);
+
     }
 
-    public static void addLiterature(String bookID, String name, String ISBN, String publishDate, String author, String status, String returnDate, String period) {
-        if (dataStored == null) {
+    public boolean checkBook(String bookID) {
+        if (MongoDBBookMethods.dataStored == null) {
             MongoDB dataServer = new MongoDB();
             dataServer.store("book", "id");
-            dataStored = dataServer.database;
+            MongoDBBookMethods.dataStored = dataServer.database;
         }
-        DBObject newObject = new BasicDBObject();
-        newObject.put("id", bookID);
-        newObject.put("name", name);
-        newObject.put("ISBN/ISSN", ISBN);
-        newObject.put("Pdate", publishDate);
-        newObject.put("Author", author);
-        newObject.put("Status", status);
-        newObject.put("Rdate", returnDate);
-        newObject.put("Period", period);
-        String type = "Literature";
-        newObject.put("Subclass", type);
-        dataStored.put(bookID, newObject);
-        MongoDBBookMethods.addToOriginal(newObject);
+        return MongoDBBookMethods.dataStored.containsKey(bookID);
     }
 
-    public static void addMagazine(String bookID, String name, String ISBN, String publishDate, String author, String status, String returnDate, String seriesname, String category) {
-        if (dataStored == null) {
-            MongoDB dataServer = new MongoDB();
-            dataServer.store("book", "id");
-            dataStored = dataServer.database;
-        }
-        DBObject newObject = new BasicDBObject();
-        newObject.put("id", bookID);
-        newObject.put("name", name);
-        newObject.put("ISBN/ISSN", ISBN);
-        newObject.put("Pdate", publishDate);
-        newObject.put("Author", author);
-        newObject.put("Status", status);
-        newObject.put("Rdate", returnDate);
-        newObject.put("Seriesname", seriesname);
-        newObject.put("Category", category);
-        String type = "Magagzine";
-        newObject.put("Subclass", type);
-        dataStored.put(bookID, newObject);
-        MongoDBBookMethods.addToOriginal(newObject);
-    }
+//    public void addDictionary(String bookID, String name, String ISBN, String publishDate, String author, String status, String returnDate, String language) {
+//        if (dataStored == null) {
+//            MongoDB dataServer = new MongoDB();
+//            dataServer.store("book", "id");
+//            dataStored = dataServer.database;
+//        }
+//        DBObject newObject = new BasicDBObject();
+//        newObject.put("id", bookID);
+//        newObject.put("name", name);
+//        newObject.put("ISBN/ISSN", ISBN);
+//        newObject.put("Pdate", publishDate);
+//        newObject.put("Author", author);
+//        newObject.put("Status", status);
+//        newObject.put("Rdate", returnDate);
+//        newObject.put("Language", language);
+//        String type = "Dictionary";
+//        newObject.put("Subclass", type);
+//        dataStored.put(bookID, newObject);
+//        MongoDBBookMethods.addToOriginal(newObject);
+//    }
+//
+//    public void addLiterature(String bookID, String name, String ISBN, String publishDate, String author, String status, String returnDate, String period) {
+//        if (dataStored == null) {
+//            MongoDB dataServer = new MongoDB();
+//            dataServer.store("book", "id");
+//            dataStored = dataServer.database;
+//        }
+//        DBObject newObject = new BasicDBObject();
+//        newObject.put("id", bookID);
+//        newObject.put("name", name);
+//        newObject.put("ISBN/ISSN", ISBN);
+//        newObject.put("Pdate", publishDate);
+//        newObject.put("Author", author);
+//        newObject.put("Status", status);
+//        newObject.put("Rdate", returnDate);
+//        newObject.put("Period", period);
+//        String type = "Literature";
+//        newObject.put("Subclass", type);
+//        dataStored.put(bookID, newObject);
+//        MongoDBBookMethods.addToOriginal(newObject);
+//    }
+//
+//    public void addMagazine(String bookID, String name, String ISBN, String publishDate, String author, String status, String returnDate, String seriesname, String category) {
+//        if (dataStored == null) {
+//            MongoDB dataServer = new MongoDB();
+//            dataServer.store("book", "id");
+//            dataStored = dataServer.database;
+//        }
+//        DBObject newObject = new BasicDBObject();
+//        newObject.put("id", bookID);
+//        newObject.put("name", name);
+//        newObject.put("ISBN/ISSN", ISBN);
+//        newObject.put("Pdate", publishDate);
+//        newObject.put("Author", author);
+//        newObject.put("Status", status);
+//        newObject.put("Rdate", returnDate);
+//        newObject.put("Seriesname", seriesname);
+//        newObject.put("Category", category);
+//        String type = "Magagzine";
+//        newObject.put("Subclass", type);
+//        dataStored.put(bookID, newObject);
+//        MongoDBBookMethods.addToOriginal(newObject);
+//    }
+//
+//    public void addTextbook(String bookID, String name, String ISBN, String publishDate, String author, String status, String returnDate, String subject) {
+//        if (dataStored == null) {
+//            MongoDB dataServer = new MongoDB();
+//            dataServer.store("book", "id");
+//            dataStored = dataServer.database;
+//        }
+//        DBObject newObject = new BasicDBObject();
+//        newObject.put("id", bookID);
+//        newObject.put("name", name);
+//        newObject.put("ISBN/ISSN", ISBN);
+//        newObject.put("Pdate", publishDate);
+//        newObject.put("Author", author);
+//        newObject.put("Status", status);
+//        newObject.put("Rdate", returnDate);
+//        newObject.put("Subject", subject);
+//        String type = "Textbook";
+//        newObject.put("Subclass", type);
+//        dataStored.put(bookID, newObject);
+//        MongoDBBookMethods.addToOriginal(newObject);
+//    }
+//
+//    public void addResearchPaper(String bookID, String name, String ISBN, String publishDate, String author, String status, String returnDate, String language, String subject, String peerreviewstatus) {
+//        if (dataStored == null) {
+//            MongoDB dataServer = new MongoDB();
+//            dataServer.store("book", "id");
+//            dataStored = dataServer.database;
+//        }
+//        DBObject newObject = new BasicDBObject();
+//        newObject.put("id", bookID);
+//        newObject.put("name", name);
+//        newObject.put("ISBN/ISSN", ISBN);
+//        newObject.put("Pdate", publishDate);
+//        newObject.put("Author", author);
+//        newObject.put("Status", status);
+//        newObject.put("Rdate", returnDate);
+//        newObject.put("Language", language);
+//        newObject.put("Subject", subject);
+//        newObject.put("PeerStatus", peerreviewstatus);
+//        String type = "ResearchPaper";
+//        newObject.put("Subclass", type);
+//        dataStored.put(bookID, newObject);
+//        MongoDBBookMethods.addToOriginal(newObject);
+//    }
 
-    public static void addTextbook(String bookID, String name, String ISBN, String publishDate, String author, String status, String returnDate, String subject) {
-        if (dataStored == null) {
-            MongoDB dataServer = new MongoDB();
-            dataServer.store("book", "id");
-            dataStored = dataServer.database;
-        }
-        DBObject newObject = new BasicDBObject();
-        newObject.put("id", bookID);
-        newObject.put("name", name);
-        newObject.put("ISBN/ISSN", ISBN);
-        newObject.put("Pdate", publishDate);
-        newObject.put("Author", author);
-        newObject.put("Status", status);
-        newObject.put("Rdate", returnDate);
-        newObject.put("Subject", subject);
-        String type = "Textbook";
-        newObject.put("Subclass", type);
-        dataStored.put(bookID, newObject);
-        MongoDBBookMethods.addToOriginal(newObject);
-    }
-
-    public static void addResearchPaper(String bookID, String name, String ISBN, String publishDate, String author, String status, String returnDate, String language, String subject, String peerreviewstatus) {
-        if (dataStored == null) {
-            MongoDB dataServer = new MongoDB();
-            dataServer.store("book", "id");
-            dataStored = dataServer.database;
-        }
-        DBObject newObject = new BasicDBObject();
-        newObject.put("id", bookID);
-        newObject.put("name", name);
-        newObject.put("ISBN/ISSN", ISBN);
-        newObject.put("Pdate", publishDate);
-        newObject.put("Author", author);
-        newObject.put("Status", status);
-        newObject.put("Rdate", returnDate);
-        newObject.put("Language", language);
-        newObject.put("Subject", subject);
-        newObject.put("PeerStatus", peerreviewstatus);
-        String type = "ResearchPaper";
-        newObject.put("Subclass", type);
-        dataStored.put(bookID, newObject);
-        MongoDBBookMethods.addToOriginal(newObject);
-    }
-
-    public static boolean checkBook(String bookID) {
-        if (dataStored == null) {
-            MongoDB dataServer = new MongoDB();
-            dataServer.store("book", "id");
-            dataStored = dataServer.database;
-        }
-        return dataStored.containsKey(bookID);
-    }
 }
 
 

@@ -11,7 +11,7 @@ import User.Student;
      * checking and modifying Students' credit score and changing Users' passwords.
      */
 
-public class UserLoginManager {
+public class UserLoginManager implements IUserLoginManager {
 
     Student currentStudent;
     Staff currentStaff;
@@ -33,6 +33,7 @@ public class UserLoginManager {
          * @param changeBy change the credit score by "changeBy" amount of credit
          */
 
+    @Override
     public void modifyCreditScore(int changeBy) {
         int old = currentStudent.CreditScoreGetter();
         currentStudent.CreditScoreSetter(old + changeBy);
@@ -47,6 +48,7 @@ public class UserLoginManager {
          * @param newPassword student's new password
          */
 
+    @Override
     public void studentModifyPassword(String username, long oldPassword, long newPassword) {
         if (currentStudent.PasswordGetter(username) == oldPassword) {
             currentStudent.PasswordSetter(newPassword);
@@ -60,6 +62,7 @@ public class UserLoginManager {
          * @param newPassword staff's new password
          */
 
+    @Override
     public void staffModifyPassword(String username, long oldPassword, long newPassword) {
         if (currentStaff.PasswordGetter(username) == oldPassword) {
             currentStaff.PasswordSetter(newPassword);
@@ -72,6 +75,7 @@ public class UserLoginManager {
          * @return numbers of book a student is currently borrowing, return -1 if username cannot be found
          */
 
+    @Override
     public int BorrowedBookAmount() {
         return currentStudent.CurrentBorrowingRecordsGetter().size();
     }

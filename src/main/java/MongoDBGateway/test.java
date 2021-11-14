@@ -1,14 +1,20 @@
 package MongoDBGateway;
 
 
+import Book.subclasses.Magazine;
+import UseCase.DBbookManager;
+
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class test {
     public static void main(String[] args) {
-        ArrayList<String> newArray = new ArrayList<>();
-        newArray.add("1006");
-        newArray.add("1007");
-        IMongoDBStudentMethods.addStudent("Mike","123456",100, newArray);
+//        ArrayList<String> newArray = new ArrayList<>();
+//        newArray.add("1006");
+//        newArray.add("1007");
+//        IMongoDBStudentMethods.addStudent("Mike","123456",100, newArray);
+
+//          System.out.println(IMongoDBBookMethods.searchByISBN("9781319120054"));
 
 ////        MongoDBStaffMethods.addStaff("Leo","abb123");
 //        ArrayList<String> newArray = new ArrayList<>();
