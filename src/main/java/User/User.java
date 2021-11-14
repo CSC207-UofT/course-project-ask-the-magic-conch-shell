@@ -11,7 +11,7 @@ public abstract class User {
     /**
      * User's password
      */
-    private long Password;
+    private String Password;
 
     /**
      * A new User with username
@@ -27,7 +27,7 @@ public abstract class User {
      * @param password user's password
      */
 
-    public void PasswordSetter(long password){
+    public void PasswordSetter(String password){
 
         this.Password = password;
     }
@@ -37,7 +37,7 @@ public abstract class User {
      * @param username username
      * @return user's password
      */
-    public long PasswordGetter(String username){
+    public String PasswordGetter(String username){
 
         return this.Password;
     }
