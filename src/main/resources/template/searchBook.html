@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search A Book</title>
+    <style>
+
+        form {
+            position: fixed;
+            top: 30%;
+            left: 30%;
+        }
+    </style>
+</head>
+<body onload="closeNav()">
+
+<form action="">
+    <label for="books">Choose a type:</label>
+    <select name="books" id="books">
+        <option value="Book ID">Book ID</option>
+        <option value="ISBN">ISBN</option>
+        <option value="Author">Author</option>
+        <option value="Book Type">Book Type</option>
+    </select>
+    <br><br>
+    <label for="data_type"></label>
+    <input id="data_type" type="search" value="">
+    <button id="Submit" class="Submit" onclick="goToMenu()">Search</button>
+</form>
+
+<!--<div style="padding-left:16px">-->
+<!--    <h2>Notice</h2>-->
+<!--    <p>You have successfully borrowed... Please return before...</p>-->
+<!--    <p>Sorry! Your credit score is too low to borrow ... books.</p>-->
+<!--    <p>Sorry! The book you wish to borrow has been lent.</p>-->
+<!--    <p>Sorry! You reached the maximum borrow no. under your account.</p>-->
+<!--</div>-->
+
+</body>
+</html>

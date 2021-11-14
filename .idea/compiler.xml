@@ -1,8 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="course-project-ask-the-magic-conch-shell" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="course-project-ask-the-magic-conch-shell" target="11" />
+    </bytecodeTargetLevel>
+  </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="course-project-ask-the-magic-conch-shell" options="--add-modules java.base" />
+      <module name="course-project-ask-the-magic-conch-shell" options="-parameters" />
     </option>
   </component>
 </project>
