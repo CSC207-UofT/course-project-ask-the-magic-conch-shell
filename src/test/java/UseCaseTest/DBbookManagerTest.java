@@ -17,6 +17,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class DBbookManagerTest {
 
+    /**
+     * tests for DBbookManager use case.
+     */
+
         Book book1;
         Book book2;
         Book book3;
@@ -46,13 +50,13 @@ public class DBbookManagerTest {
             dbm.addBook(book2,bm);
             dbm.addBook(book3,bm);
         }
-        /*
+        /**
          * Test whether we can search a book given its id.
          */
         @Test(timeout = 100)
         public void testSearchBookByID(){ assertEquals(book2.getBookID(), dbm.searchBookByID(27, bm).getBookID()); }
 
-        /*
+        /**
          * Test whether we can delete a book given its id and can't search it after deleting.
          */
         @Test(timeout = 1000)
@@ -61,7 +65,7 @@ public class DBbookManagerTest {
             assertNull(dbm.searchBookByID(2, bm));
         }
 
-        /*
+        /**
          * Test whether we can get a list of books given its author.
          */
         @Test(timeout = 100)
@@ -70,7 +74,7 @@ public class DBbookManagerTest {
             ar.add(book3.getBookID());
             assertEquals(ar, dbm.searchBookByAuthor("James", bm)); }
 
-        /*
+        /**
          * Test whether we can get a list of books given its type.
          */
         @Test(timeout = 100)
@@ -80,13 +84,13 @@ public class DBbookManagerTest {
             ar.add(book3.getBookID());
             assertEquals(ar, dbm.searchBookByType("Textbook", bm)); }
 
-        /*
+        /**
          * Test whether we can check a book's return date.
          */
         @Test(timeout = 100)
         public void testCheckReturnDate(){assertEquals(returnDate, dbm.checkReturnDate(book2.getBookID(), bm));}
 
-       /*
+       /**
         * Test whether we can change a book's return date.
         */
         @Test(timeout = 2000)
@@ -96,7 +100,7 @@ public class DBbookManagerTest {
             assertEquals(date, dbm.checkReturnDate(book2.getBookID(), bm));
         }
 
-        /*
+        /**
          * Test whether we can change a book's status and whether the return date is set correspondingly.
          */
         @Test(timeout = 100)

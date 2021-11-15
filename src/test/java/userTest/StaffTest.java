@@ -1,4 +1,4 @@
-package test_user;
+package userTest;
 
 import User.Staff;
 import org.junit.*;

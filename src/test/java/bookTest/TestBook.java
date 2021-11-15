@@ -1,4 +1,4 @@
-package test_book;
+package bookTest;
 
 import UseCase.BookPositionStatus;
 import Book.Book;

@@ -108,8 +108,7 @@ public class DBUserManager implements IDBUserManager {
     @Override
     public String studentDBGetPassword(String username, IMongoDBStudentMethods sum) {
         if (checkStudent(username, sum)) {
-            String passwordString = sum.getPassword(username);
-            return passwordString;
+            return sum.getPassword(username);
 
         }
         return null;
@@ -125,8 +124,7 @@ public class DBUserManager implements IDBUserManager {
     @Override
     public String staffDBGetPassword(String username, IMongoDBStaffMethods sm) {
         if (checkStaff(username, sm)) {
-            String passwordString = sm.getPassword(username);
-            return passwordString;
+            return sm.getPassword(username);
 
         }
         return null;
@@ -193,12 +191,10 @@ public class DBUserManager implements IDBUserManager {
 
     @Override
     public void studentDBModifyPassword(String username, String oldPassword, String newPassword, IMongoDBStudentMethods sum) {
-        String oldPw = oldPassword;
-        if (checkStudent(username, sum) && sum.getPassword(username).equals(oldPw)) {
+        if (checkStudent(username, sum) && sum.getPassword(username).equals(oldPassword)) {
             int cs = sum.getCreditScore(username);
             ArrayList<String> borrowRecord = sum.getBorrowingHistory(username);
-            String newPw = newPassword;
-            sum.update(username,  newPw, cs, borrowRecord);
+            sum.update(username, newPassword, cs, borrowRecord);
 
         }
     }
@@ -231,11 +227,9 @@ public class DBUserManager implements IDBUserManager {
 
     @Override
     public void staffDBModifyPassword(String username, String oldPassword, String newPassword, IMongoDBStaffMethods sm) {
-        String oldPw = oldPassword;
-        if (checkStaff(username, sm) && sm.getPassword(username).equals(oldPw)) {
+        if (checkStaff(username, sm) && sm.getPassword(username).equals(oldPassword)) {
 
-            String newPw = newPassword;
-            sm.update(username, newPw);
+            sm.update(username, newPassword);
 
         }
 
