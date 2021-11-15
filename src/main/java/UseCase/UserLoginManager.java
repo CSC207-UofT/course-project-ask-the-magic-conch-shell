@@ -15,8 +15,8 @@ import java.util.Objects;
 
 public class UserLoginManager implements IUserLoginManager {
 
-    Student currentStudent;
-    Staff currentStaff;
+    public Student currentStudent;
+    public Staff currentStaff;
 
 
     public UserLoginManager(Student currentStudent) {

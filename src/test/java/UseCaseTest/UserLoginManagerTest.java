@@ -13,6 +13,7 @@ public class UserLoginManagerTest {
     IUserLoginManager ulm1 = new UserLoginManager(a);
     IUserLoginManager ulm2 = new UserLoginManager(c);
 
+
     @Before
     public void setUp() throws Exception {
         a.CreditScoreSetter(100);
@@ -36,6 +37,7 @@ public class UserLoginManagerTest {
         c.PasswordSetter("a123456");
         ulm2.staffModifyPassword("Jason", "a123456", "a654321");
         assertEquals("a654321", c.PasswordGetter("Jason"));
+
     }
 
 }
