@@ -151,7 +151,7 @@ public class DBUserManagerTest {
     @Test
     public void TestStudentDelete() {
         UserManager.deleteStudent("Wang2389",StudentMethods);
-        assertEquals(false, UserManager.checkStudent("Wang2389",StudentMethods));
+        assertFalse(UserManager.checkStudent("Wang2389", StudentMethods));
     }
     /**
      * test Modify a student's borrowingHistory

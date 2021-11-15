@@ -244,7 +244,7 @@ public class DBbookManager implements IDBbookManager {
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             String publishDate = dtf.format(bm.getPublishDate(bookIDstring));
             String returnDate;
-            if (status.equals(BookPositionStatus.LENDED)) {
+            if (newStatus.equals(BookPositionStatus.LENDED.toString())) {
                 returnDate = dtf.format(LocalDate.now().plusDays(30));
             }else{
                 returnDate = "null";

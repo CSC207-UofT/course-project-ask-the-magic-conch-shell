@@ -158,11 +158,13 @@ this problem never appeared again.
 
 **The overall plan for phase2:**
 
-1. Implementing the 'shopping cart' features by adding the command design pattern: Miley & Vannie
+1. Implementing the 'shopping cart' features by adding the command design pattern and refactoring code: Miley & Vannie
 
 
-2. Connect html files to our controller using the @autowire in the Spring Boot framework, so that 
-our java code can recognize the value in these input boxes and call the corresponding methods in our backend: Nicole & Stark
+2. Connect html files to our controllers using the @autowire in the Spring Boot framework, so that 
+our java code can recognize the value in these input boxes and call the corresponding methods in our backend, also write
+test cases for them: Nicole & Stark
 
 
 3. Adjusting our DB methods with the Spring boot framework: Hewitt & Kris
+
