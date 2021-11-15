@@ -94,6 +94,7 @@ public class MongoDBStudentMethods implements IMongoDBStudentMethods {
         MongoDBStudentMethods.addToOriginal(newObject);
     }
 
+    @Override
     public boolean checkStudent(String userName) {
         if (MongoDBStudentMethods.dataStored == null) {
             MongoDB dataServer = new MongoDB();
