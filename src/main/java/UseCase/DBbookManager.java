@@ -37,7 +37,12 @@ public class DBbookManager implements IDBbookManager {
         String status = "UNLENDED";
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         String publishDate = dtf.format(book.getPublishDate());
-        String returnDate = dtf.format(book.getReturnDate());
+        String returnDate;
+        if (book.getReturnDate() != null){
+            returnDate = dtf.format(book.getReturnDate());
+        }else {
+            returnDate = "null";
+        }
         String type = book.getType();
         bm.addBook(bookID, name, ISBN, publishDate, author, status, returnDate, type);
         if (Objects.equals(type, "Magazine")){
@@ -46,15 +51,15 @@ public class DBbookManager implements IDBbookManager {
             bm.update(bookID,name,ISBN,publishDate,author,status,returnDate,ser,cat);
         }
         if (Objects.equals(type, "Dictionary")){
-                String lan = ((Dictionary) book).getLanguage();
+            String lan = ((Dictionary) book).getLanguage();
                 bm.update(bookID,name,ISBN,publishDate,author,status,returnDate,lan);
             }
         if (Objects.equals(type, "Literature")){
-                String per = ((Literature) book).getPeriod();
+            String per = ((Literature) book).getPeriod();
                 bm.update(bookID,name,ISBN,publishDate,author,status,returnDate,per);
             }
         if (Objects.equals(type, "Textbook")){
-                String sub = ((Textbook) book).getSubject();
+            String sub = ((Textbook) book).getSubject();
                 bm.update(bookID,name,ISBN,publishDate,author,status,returnDate,sub);
             }
         if (Objects.equals(type, "ResearchPaper")){
@@ -195,6 +200,7 @@ public class DBbookManager implements IDBbookManager {
             String publishDate = dtf.format(bm.getPublishDate(bookIDstring));
             String returnDate = dtf.format(desireDate);
             String type = bm.getType(bookIDstring);
+            bm.update(bookIDstring,name,ISBN,publishDate,author,status,returnDate,type);
             if (Objects.equals(type, "Magazine")){
                 String ser = bm.getSeriesName(bookIDstring);
                 String cat = bm.getCategory(bookIDstring);
@@ -244,9 +250,11 @@ public class DBbookManager implements IDBbookManager {
             String newStatus = BookPositionStatus.toString(status);
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             String publishDate = dtf.format(bm.getPublishDate(bookIDstring));
-            String returnDate = dtf.format(bm.getReturnDate(bookIDstring));
-            if (status == BookPositionStatus.LENDED) {
+            String returnDate;
+            if (status.equals(BookPositionStatus.LENDED)) {
                 returnDate = dtf.format(LocalDate.now().plusDays(30));
+            }else{
+                returnDate = "null";
             }
             String type = bm.getType(bookIDstring);
             if (Objects.equals(type, "Magazine")){
