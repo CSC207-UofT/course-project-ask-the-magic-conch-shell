@@ -20,7 +20,11 @@ public class LoginController {
     private Object IDBUserManager;
     private Object Student;
 
-
+    /**
+     * create a new account and add into our database
+     * @param user_type the user type of this to be created account
+     * @param username the username of the account
+     */
     public void creatNewUser(String user_type, String username){
         if (Objects.equals(user_type, "Student")){
             long pass = randomPasswordGenerator();
@@ -41,8 +45,16 @@ public class LoginController {
 
     }}
 
-    // login method will return true if the username exist in the database and the input password matches the record
-    // in the database, else return false, as the login is unsuccessful.
+
+    /**
+     * login method will return true if the username exist in the database and the input password matches the record
+     * in the database, else return false, as the login is unsuccessful.
+     * @param user_type type of the account that is requesting to log in.
+     * @param username username
+     * @param password password
+     * @return return true is the username exist in our database and the password match with the username, return
+     * false otherwise
+     */
     public boolean login(String user_type, String username, long password){
         IMongoDBStudentMethods sm = new MongoDBStudentMethods();
         IMongoDBStaffMethods sam = new MongoDBStaffMethods();
@@ -76,7 +88,11 @@ public class LoginController {
     }
 
 
-
+    /**
+     *
+     * @param curr_user the logged-in user
+     * @param new_password the new password that replace the old one
+     */
     public void changePassword(UserLoginManager curr_user, long new_password){
         if (curr_user.currentStudent != null){
             curr_user.studentModifyPassword(curr_user.currentStudent.getUsername(),
@@ -90,13 +106,18 @@ public class LoginController {
 
     }
 
-
-    // will generate a random length 5, all capital letter temporary password.
+    /**
+     *
+     * @return return a random length 5, all capital letter temporary password.
+     */
     private long randomPasswordGenerator() {
         return getString();
 
     }
 
+    /**
+     * @return return the desired long temporary password for the randomPasswordGenerator
+     */
     private long getString() {
         String ran_pick_lst = "QWERTYUIOPASDFGHJKLZXCVBNM";
         Random ran = new Random();
