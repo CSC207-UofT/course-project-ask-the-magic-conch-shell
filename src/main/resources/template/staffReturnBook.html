@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Return Book</title>
+    <style>
+        .container {
+            display: grid;
+            grid-template-columns: 0.9fr 2.1fr 0fr;
+            grid-template-rows: 0.3fr 2.2fr 0.5fr;
+            gap: 0 0;
+            grid-auto-flow: column;
+            grid-template-areas:
+    "topOfThePage topOfThePage topOfThePage"
+    "menu menu accountInfo"
+    "messages messages accountInfo";
+        }
+
+        .topOfThePage { grid-area: topOfThePage; background-color: #444441}
+
+        .menu {
+            grid-area: menu;
+            background-color: #444441;
+        }
+
+        .messages { grid-area: messages; background-color: #444441}
+
+        html, body , .container {
+            height: 100%;
+            margin: 0;
+        }
+        .accountInfo {
+            grid-area: accountInfo; background-color: #6c6c69
+        }
+
+        .accountButton {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: right;
+            text-decoration: none;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            position:absolute;
+            top:1rem;
+            right:1rem;
+        }
+
+        .crossButton a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 30px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .logout a{
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 30px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .account a:hover {
+            color: #f1f1f1;
+        }
+
+
+        #header {
+            transition: margin-left .5s;
+            padding: 16px;
+        }
+
+        form {
+            margin: 3rem 3rem;
+            color: white;
+        }
+
+        .returnToMenu {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: right;
+            text-decoration: none;
+            font-size: 16px;
+            margin: 2rem 2rem;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body onload="closeNav()">
+
+<div class="container">
+    <div id="header" class="topOfThePage">
+        <h2 style="text-align:left; margin:2%; color:white">Home (Stuff)</h2>
+        <button class="accountButton" onclick="openNav()">&#9776; Account</button>
+    </div>
+    <div id="account" class="accountInfo">
+        <a id="crossButton" class="closebtn" onclick="closeNav()">&times;</a>
+        <h5>Username:</h5> <p>admin</p>
+        <h5>User Type:</h5> <p>stuff</p>
+        <h5>Credit Score:</h5> <p>100</p>
+        <button id="logout" onclick="logout()">Log out</button>
+    </div>
+    <div class="menu">
+        <form>
+            <label for="input">Please Input the Book ID:</label>
+            <input type="text" id="input" name="input"><br><br>
+            <p> Please check the status of the book, if damaged, please dispose the book. </p>
+            <input type="submit" style="margin-left: 30px;" value="Return">
+            <input type="submit" style="margin-left: 300px;" value="Dispose">
+        </form>
+
+
+
+    </div>
+    <div class="messages" id="message">
+        <button id="returnToMenu" class="returnToMenu" onclick="goToMenu()">Go Back To Menu</button>
+    </div>
+
+
+</div>
+
+
+</body>
+</html>
+
+<script>
+
+    function openNav() {
+        document.getElementById("account").style.width = "200px";
+        //document.getElementById("header").style.marginRight="250px";
+    }
+
+    function closeNav() {
+        document.getElementById("account").style.width = "0";
+        document.getElementById("header").style.marginRight="0";
+
+    }
+
+    function logout() {
+        location.href = "login.html"
+    }
+
+    function goToMenu() {
+        location.href = "staffMenu.html"
+    }
+
+
+</script>
