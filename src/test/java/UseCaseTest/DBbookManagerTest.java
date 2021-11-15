@@ -9,7 +9,6 @@ import org.junit.*;
 import java.time.LocalDate;
 import MongoDBGateway.IMongoDBBookMethods;
 import UseCase.*;
-import org.junit.jupiter.api.AfterAll;
 
 import java.util.ArrayList;
 
@@ -27,7 +26,7 @@ public class DBbookManagerTest {
         LocalDate publishDate1 = LocalDate.of(2002,10,14);
         LocalDate publishDate2 = LocalDate.of(2000,6,1);
         LocalDate publishDate3 = LocalDate.of(2010,10,21);
-        LocalDate returnDate = LocalDate.of(2021,10,21);;
+        LocalDate returnDate = LocalDate.of(2021,10,21);
         IMongoDBBookMethods bm = new MongoDBBookMethods();
         DBbookManager dbm = new DBbookManager();
 
@@ -74,15 +73,6 @@ public class DBbookManagerTest {
             ar.add(book3.getBookID());
             assertEquals(ar, dbm.searchBookByAuthor("James", bm)); }
 
-        /**
-         * Test whether we can get a list of books given its type.
-         */
-        @Test(timeout = 100)
-        public void testSearchBookByType(){
-            ArrayList<Integer> ar = new ArrayList<>();
-            ar.add(book1.getBookID());
-            ar.add(book3.getBookID());
-            assertEquals(ar, dbm.searchBookByType("Textbook", bm)); }
 
         /**
          * Test whether we can check a book's return date.
@@ -100,13 +90,4 @@ public class DBbookManagerTest {
             assertEquals(date, dbm.checkReturnDate(book2.getBookID(), bm));
         }
 
-        /**
-         * Test whether we can change a book's status and whether the return date is set correspondingly.
-         */
-        @Test(timeout = 100)
-        public void testChangeBookStatus(){
-            dbm.changBookStatus(book1.getBookID(), BookPositionStatus.LENDED, bm);
-            assertEquals(BookPositionStatus.LENDED, book1.getStatus());
-//            assertEquals(LocalDate.now().plusDays(30), dbm.checkReturnDate(book1.getBookID(), bm));
-        }
     }
