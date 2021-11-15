@@ -1,4 +1,4 @@
-package test_Manager;
+package UseCaseTest;
 
 import Book.Book;
 import MongoDBGateway.MongoDBStaffMethods;
@@ -19,6 +19,10 @@ import static org.junit.Assert.*;
 
 
 public class DBUserManagerTest {
+    /**
+     * tests for DBUserManager use case.
+     */
+
     DBUserManager UserManager;
     IMongoDBStudentMethods StudentMethods;
     IMongoDBStaffMethods StaffMethods;

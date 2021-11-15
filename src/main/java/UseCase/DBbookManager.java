@@ -129,10 +129,8 @@ public class DBbookManager implements IDBbookManager {
     @Override
     public ArrayList<Integer> searchBookByISBN(String ISBN, IMongoDBBookMethods bm) {
 
-        ArrayList<Integer> id = bm.searchByISBN(ISBN);
 
-
-        return id;
+        return bm.searchByISBN(ISBN);
     }
 
 
@@ -145,9 +143,7 @@ public class DBbookManager implements IDBbookManager {
     @Override
     public ArrayList<Integer> searchBookByAuthor(String author, IMongoDBBookMethods bm) {
 
-        ArrayList<Integer> id = bm.searchByAuthor(author);
-
-        return id;
+        return bm.searchByAuthor(author);
     }
 
     /**
@@ -159,9 +155,7 @@ public class DBbookManager implements IDBbookManager {
     @Override
     public ArrayList<Integer> searchBookByType(String type, IMongoDBBookMethods bm) {
 
-        ArrayList<Integer> id = bm.searchByAuthor(type);
-
-        return id;
+        return bm.searchByAuthor(type);
     }
 
     /**
@@ -175,8 +169,7 @@ public class DBbookManager implements IDBbookManager {
     public LocalDate checkReturnDate(int bookID, IMongoDBBookMethods bm) {
         String bookIDstring = Integer.toString(bookID);
         if (bm.checkBook(bookIDstring)){
-        LocalDate rd = bm.getReturnDate(bookIDstring);
-        return rd;}
+            return bm.getReturnDate(bookIDstring);}
         else {return null;}
     }
 
