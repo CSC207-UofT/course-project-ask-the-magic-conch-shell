@@ -23,9 +23,9 @@ public interface IDBUserManager {
 
     String staffDBGetPassword(String username, IMongoDBStaffMethods sm);
 
-    public Integer DBGetCreditScore(String username, IMongoDBStudentMethods sum);
+    Integer DBGetCreditScore(String username, IMongoDBStudentMethods sum);
 
-    public ArrayList<String> DBGetBorrowingRecord(String username, IMongoDBStudentMethods sum);
+    ArrayList<String> DBGetBorrowingRecord(String username, IMongoDBStudentMethods sum);
 
     void modifyDBCreditScore(String username, int changeBy, IMongoDBStudentMethods sum);
 

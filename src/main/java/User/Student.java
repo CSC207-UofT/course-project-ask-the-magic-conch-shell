@@ -64,4 +64,8 @@ public class Student extends User {
     public ArrayList<Book> CurrentBorrowingRecordsGetter(){return this.CurrentBorrowingRecords;
     }
 
+    public void borrowingRecordsSetter(ArrayList<String> a){
+
+    }
+
 }
