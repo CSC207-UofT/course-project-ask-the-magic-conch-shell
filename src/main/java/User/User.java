@@ -4,21 +4,6 @@ package User;
  * Represents a User in the system 
  */
 public abstract class User {
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public long getPassword() {
-        return Password;
-    }
-
-    public void setPassword(long password) {
-        Password = password;
-    }
 
     /**
      * The username of a User
@@ -65,6 +50,19 @@ public abstract class User {
     public String UsernameGetter(){
 
         return this.username;
+    }
+
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return this.Password;
+    }
+
+    public void setPassword(String password) {
+        this.Password = password;
     }
 
 }
