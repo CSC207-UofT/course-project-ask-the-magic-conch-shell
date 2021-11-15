@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>stuff_menu</title>
+    <style>
+        .container {
+            display: grid;
+            grid-template-columns: 0.9fr 2.1fr 0fr;
+            grid-template-rows: 0.3fr 2.2fr 0.5fr;
+            gap: 0 0;
+            grid-auto-flow: column;
+            grid-template-areas:
+    "topOfThePage topOfThePage topOfThePage"
+    "menu menu accountInfo"
+    "messages messages accountInfo";
+        }
+
+        .topOfThePage { grid-area: topOfThePage; background-color: #444441}
+
+        .menu { grid-area: menu; background-color: #444441}
+
+        .messages { grid-area: messages; background-color: #444441}
+
+        html, body , .container {
+            height: 100%;
+            margin: 0;
+        }
+        .accountInfo {
+            grid-area: accountInfo; background-color: #6c6c69
+        }
+
+        .accountButton {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: right;
+            text-decoration: none;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            position:absolute;
+            top:1rem;
+            right:1rem;
+        }
+
+        /*        .accountInfo a {
+                    color: black;
+                    position: absolute;
+                    top:1rem;
+                    right:1rem;
+                    cursor: pointer;
+                }*/
+
+        .crossButton a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 30px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .logout a{
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 30px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .account a:hover {
+            color: #f1f1f1;
+        }
+
+        #header {
+            transition: margin-left .5s;
+            padding: 16px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div id="header" class="topOfThePage">
+        <h2 style="text-align:left; margin:2%; color:white">Home (Stuff)</h2>
+        <button class="accountButton" onclick="openNav()">&#9776; Account</button>
+    </div>
+    <div id="account" class="accountInfo">
+        <a id="crossButton" class="closebtn" onclick="closeNav()">&times;</a>
+        <h5>Username:</h5> <p>admin</p>
+        <h5>User Type:</h5> <p>stuff</p>
+        <button id="logout" onclick="logout()">Log out</button>
+    </div>
+    <div class="menu serviceOption">
+        <a href="staffReturnBook.html">Return Book</a>
+        <a href="addBook.html">Add new Book</a>
+        <a href="#">Change student password</a>
+        <a href="#">change my password</a>
+    </div>
+    <div class="messages" id="message"></div>
+
+
+</div>
+
+</body>
+</html>
+
+<script>
+    function openNav() {
+        document.getElementById("account").style.width = "250px";
+        //document.getElementById("header").style.marginRight="250px";
+    }
+
+    function closeNav() {
+        document.getElementById("account").style.width = "0";
+        document.getElementById("header").style.marginRight="0";
+
+    }
+
+    function logout() {
+        location.href = "login.html"
+    }
+</script>
