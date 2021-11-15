@@ -20,8 +20,6 @@ public class LoginController {
     private Object IDBUserManager;
     private Object Student;
 
-//    private Object IMongoDBStudentMethods;
-//    private Object IMongoDBStaffMethods;
 
     public void creatNewUser(String user_type, String username){
         if (Objects.equals(user_type, "Student")){
