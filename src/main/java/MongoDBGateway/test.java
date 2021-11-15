@@ -2,13 +2,25 @@ package MongoDBGateway;
 
 
 import Book.subclasses.Magazine;
+import UseCase.DBUserManager;
 import UseCase.DBbookManager;
+import UseCase.IDBUserManager;
+import User.Student;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class test {
     public static void main(String[] args) {
+//        Student s = new Student("aa");
+//        IMongoDBStudentMethods sm = new MongoDBStudentMethods();
+//        IDBUserManager um = new DBUserManager();
+//        um.createNewUser(s,sm);
+
+        String n = "abch1234";
+        long nl = Long.parseLong(n);
+        System.out.println(nl);
+
 //        ArrayList<String> newArray = new ArrayList<>();
 //        newArray.add("1006");
 //        newArray.add("1007");
