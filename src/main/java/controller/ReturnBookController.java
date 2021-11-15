@@ -2,7 +2,7 @@ package controller;
 
 import Book.BookCondition;
 
-public class ReturnBook {
+public class ReturnBookController {
 
 
 

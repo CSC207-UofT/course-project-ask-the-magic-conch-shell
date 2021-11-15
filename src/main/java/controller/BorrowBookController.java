@@ -2,15 +2,15 @@ package controller;
 
 
 import Book.Book;
-import UseCase.BookManager;
+import UseCase.IDBbookManager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class BorrowBook {
+public class BorrowBookController {
 
     public ArrayList<Integer> searchBook_by_ISBN(String ISBN){
-        return BookManager.searchBook(ISBN);
+        return IDBbookManager.searchBook(ISBN);
 
 
     }
