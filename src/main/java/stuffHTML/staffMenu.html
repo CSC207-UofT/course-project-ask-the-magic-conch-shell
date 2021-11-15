@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>student_menu</title>
+    <title>stuff_menu</title>
     <style>
         .container {
             display: grid;
@@ -76,23 +76,6 @@
             color: #f1f1f1;
         }
 
-
-        .serviceOption a {
-            display: block;
-            color: #ffffff;
-            padding: 14px;
-            text-decoration: none;
-            font-size: 17px;
-            border-radius: 5px;
-            text-align:center
-        }
-
-        .serviceOption a:hover {
-            background-color: #ddd;
-            color: black;
-        }
-
-
         #header {
             transition: margin-left .5s;
             padding: 16px;
@@ -100,7 +83,7 @@
 
     </style>
 </head>
-<body onload="closeNav()">
+<body>
 <div class="container">
     <div id="header" class="topOfThePage">
         <h2 style="text-align:left; margin:2%; color:white">Home (Stuff)</h2>
@@ -110,12 +93,11 @@
         <a id="crossButton" class="closebtn" onclick="closeNav()">&times;</a>
         <h5>Username:</h5> <p>admin</p>
         <h5>User Type:</h5> <p>stuff</p>
-        <h5>Credit Score:</h5> <p>100</p>
         <button id="logout" onclick="logout()">Log out</button>
     </div>
     <div class="menu serviceOption">
-        <a href="#">Return Book</a>
-        <a href="#">Add new Book</a>
+        <a href="staffReturnBook.html">Return Book</a>
+        <a href="addBook.html">Add new Book</a>
         <a href="#">Change student password</a>
         <a href="#">change my password</a>
     </div>
