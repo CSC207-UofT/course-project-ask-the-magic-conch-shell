@@ -49,7 +49,7 @@ public class UserLoginManager implements IUserLoginManager {
          */
 
     @Override
-    public void studentModifyPassword(String username, long oldPassword, long newPassword) {
+    public void studentModifyPassword(String username, String oldPassword, String newPassword) {
         if (currentStudent.PasswordGetter(username) == oldPassword) {
             currentStudent.PasswordSetter(newPassword);
         }
@@ -63,7 +63,7 @@ public class UserLoginManager implements IUserLoginManager {
          */
 
     @Override
-    public void staffModifyPassword(String username, long oldPassword, long newPassword) {
+    public void staffModifyPassword(String username, String oldPassword, String newPassword) {
         if (currentStaff.PasswordGetter(username) == oldPassword) {
             currentStaff.PasswordSetter(newPassword);
         }

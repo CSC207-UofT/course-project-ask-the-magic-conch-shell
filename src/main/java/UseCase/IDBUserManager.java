@@ -19,9 +19,9 @@ public interface IDBUserManager {
 
     boolean deleteStudent(String username, IMongoDBStudentMethods sum);
 
-    Long studentDBGetPassword(String username, IMongoDBStudentMethods sum);
+    String studentDBGetPassword(String username, IMongoDBStudentMethods sum);
 
-    Long staffDBGetPassword(String username, IMongoDBStaffMethods sm);
+    String staffDBGetPassword(String username, IMongoDBStaffMethods sm);
 
     public Integer DBGetCreditScore(String username, IMongoDBStudentMethods sum);
 
@@ -29,9 +29,9 @@ public interface IDBUserManager {
 
     void modifyDBCreditScore(String username, int changeBy, IMongoDBStudentMethods sum);
 
-    void studentDBModifyPassword(String username, long oldPassword, long newPassword, IMongoDBStudentMethods sum);
+    void studentDBModifyPassword(String username, String oldPassword, String newPassword, IMongoDBStudentMethods sum);
 
     void studentDBModifyBorrowRecord(String username, ArrayList<String> newBR, IMongoDBStudentMethods sum);
 
-    void staffDBModifyPassword(String username, long oldPassword, long newPassword, IMongoDBStaffMethods sm);
+    void staffDBModifyPassword(String username, String oldPassword, String newPassword, IMongoDBStaffMethods sm);
 }
