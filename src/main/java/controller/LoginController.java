@@ -6,11 +6,9 @@ import MongoDBGateway.MongoDBStudentMethods;
 import UseCase.*;
 import User.Staff;
 import User.Student;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Random;
 
@@ -27,7 +25,7 @@ public class LoginController {
      */
     public void creatNewUser(String user_type, String username){
         if (Objects.equals(user_type, "Student")){
-            long pass = randomPasswordGenerator();
+            String pass = randomPasswordGenerator();
             Student s = new Student(username);
             s.PasswordSetter(pass);
             IMongoDBStudentMethods sm = new MongoDBStudentMethods();
@@ -36,7 +34,7 @@ public class LoginController {
             um.createNewUser(s, sm);
         }
         else if (Objects.equals(user_type, "Staff")){
-            long pass = randomPasswordGenerator();
+            String pass = randomPasswordGenerator();
             Staff s = new Staff(username);
             s.PasswordSetter(pass);
             IMongoDBStaffMethods sm = new MongoDBStaffMethods();
@@ -93,14 +91,14 @@ public class LoginController {
      * @param curr_user the logged-in user
      * @param new_password the new password that replace the old one
      */
-    public void changePassword(UserLoginManager curr_user, long new_password){
+    public void changePassword(UserLoginManager curr_user, String new_password){
         if (curr_user.currentStudent != null){
-            curr_user.studentModifyPassword(curr_user.currentStudent.getUsername(),
+            curr_user.studentModifyPassword(curr_user.currentStudent.UsernameGetter(),
                     curr_user.currentStudent.getPassword(), new_password);
         }
 
         else if (curr_user.currentStaff != null){
-            curr_user.staffModifyPassword(curr_user.currentStaff.getUsername(),
+            curr_user.staffModifyPassword(curr_user.currentStaff.UsernameGetter(),
                     curr_user.currentStaff.getPassword(), new_password);
         }
 
@@ -110,7 +108,7 @@ public class LoginController {
      *
      * @return return a random length 5, all capital letter temporary password.
      */
-    private long randomPasswordGenerator() {
+    private String randomPasswordGenerator() {
         return getString();
 
     }
@@ -118,7 +116,7 @@ public class LoginController {
     /**
      * @return return the desired long temporary password for the randomPasswordGenerator
      */
-    private long getString() {
+    private String getString() {
         String ran_pick_lst = "QWERTYUIOPASDFGHJKLZXCVBNM";
         Random ran = new Random();
         String pass = "";
@@ -128,6 +126,6 @@ public class LoginController {
         pass += ran_pick_lst.charAt(ran.nextInt(ran_pick_lst.length() - 1));
         pass += ran_pick_lst.charAt(ran.nextInt(ran_pick_lst.length() - 1));
 
-        return Long.parseLong(pass);
+        return pass;
     }
 }
