@@ -4,7 +4,6 @@ import UseCase.BookPositionStatus;
 import com.mongodb.*;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
@@ -51,21 +50,16 @@ public class MongoDBBookMethods implements IMongoDBBookMethods {
         if (subclass.contains(dynamic)) {    // The last parameter dynamic can be the name of type or attributes of some subclasses.
             newObject.put("subclass", dynamic);
         } else {                                         // The case that last parameter dynamic is the attributes of some subclasses.
-            switch (getType(bookID)) {                   // we use the former type because if someone wants to change the type, dynamic should be the name of types.
-                case "Dictionary":
-                    newObject.put("Language", dynamic);
-                    newObject.put("subclass", "Dictionary");
-                    break;
-
-                case "Textbook":
-                    newObject.put("Subject", dynamic);
-                    newObject.put("subclass", "Textbook");
-                    break;
-
-                case "Literature":
-                    newObject.put("Period", dynamic);
-                    newObject.put("subclass", "Literature");
-                    break;
+            // we use the former type because if someone wants to change the type, dynamic should be the name of types.
+            if (Objects.equals(dynamic, "Dictionary")) {
+                newObject.put("Language", dynamic);
+                newObject.put("subclass", "Dictionary");
+            } else if (Objects.equals(dynamic,"Textbook")){
+                newObject.put("Subject", dynamic);
+                newObject.put("subclass", "Textbook");
+            } else if (Objects.equals(dynamic,"Literature")) {
+                newObject.put("Period", dynamic);
+                newObject.put("subclass", "Literature");
             }
         }
         dataStored.replace(bookID, dataStored.get(bookID), newObject);
@@ -130,7 +124,7 @@ public class MongoDBBookMethods implements IMongoDBBookMethods {
             MongoDBBookMethods.dataStored = dataServer.database;
         }
         String date = (String) MongoDBBookMethods.dataStored.get(bookID).get("Pdate");
-        ;
+
 
         return (String) MongoDBBookMethods.dataStored.get(bookID).get("name");
     }
@@ -200,7 +194,6 @@ public class MongoDBBookMethods implements IMongoDBBookMethods {
             MongoDBBookMethods.dataStored = dataServer.database;
         }
         String date = (String) MongoDBBookMethods.dataStored.get(bookID).get("Pdate");
-        ;
 
         //convert String to LocalDate
         return LocalDate.parse(date);
@@ -222,8 +215,12 @@ public class MongoDBBookMethods implements IMongoDBBookMethods {
             dataServer.store("book", "id");
             MongoDBBookMethods.dataStored = dataServer.database;
         }
-
-        return (BookPositionStatus) MongoDBBookMethods.dataStored.get(bookID).get("Status");
+        if (dataStored.get(bookID).get("Status") != "unlended") {
+            return BookPositionStatus.UNLENDED;
+        }else if (dataStored.get(bookID).get("Status") != "lended"){
+            return BookPositionStatus.LENDED;
+        }
+        return null;
     }
 
     public LocalDate getReturnDate(String bookID) {
@@ -233,10 +230,11 @@ public class MongoDBBookMethods implements IMongoDBBookMethods {
             MongoDBBookMethods.dataStored = dataServer.database;
         }
         String date = (String) MongoDBBookMethods.dataStored.get(bookID).get("Rdate");
-        ;
-
-        //convert String to LocalDate
-        return LocalDate.parse(date);
+        if (!Objects.equals(date, "null")) {
+            //convert String to LocalDate
+            return LocalDate.parse(date);
+        }
+        return null;
     }
 
     public String getType(String bookID) {
@@ -351,7 +349,7 @@ public class MongoDBBookMethods implements IMongoDBBookMethods {
         newObject.put("Author", author);
         newObject.put("Status", status);
         newObject.put("Rdate", returnDate);
-        newObject.put("Subclass", type);
+        newObject.put("subclass", type);
         String mark = "null"; // This means it supposes to have value, but no value has been inputted yet.
         switch (type) {
             case "Dictionary":
@@ -383,8 +381,8 @@ public class MongoDBBookMethods implements IMongoDBBookMethods {
     public void deleteDBBook(String bookID) {
 
         if (checkBook(bookID)) {
-            MongoDBStudentMethods.deleteOriginal(MongoDBStudentMethods.dataStored.get(bookID));
-            MongoDBStudentMethods.dataStored.remove(bookID);
+            deleteOriginal(dataStored.get(bookID));
+            dataStored.remove(bookID);
 
         }
 

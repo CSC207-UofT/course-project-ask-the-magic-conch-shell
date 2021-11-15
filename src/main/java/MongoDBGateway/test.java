@@ -2,13 +2,25 @@ package MongoDBGateway;
 
 
 import Book.subclasses.Magazine;
+import UseCase.DBUserManager;
 import UseCase.DBbookManager;
+import UseCase.IDBUserManager;
+import User.Student;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class test {
     public static void main(String[] args) {
+//        Student s = new Student("aa");
+//        IMongoDBStudentMethods sm = new MongoDBStudentMethods();
+//        IDBUserManager um = new DBUserManager();
+//        um.createNewUser(s,sm);
+
+        String n = "abch1234";
+        long nl = Long.parseLong(n);
+        System.out.println(nl);
+
 //        ArrayList<String> newArray = new ArrayList<>();
 //        newArray.add("1006");
 //        newArray.add("1007");
@@ -16,14 +28,13 @@ public class test {
 
 //          System.out.println(IMongoDBBookMethods.searchByISBN("9781319120054"));
 
-////        MongoDBStaffMethods.addStaff("Leo","abb123");
-//        ArrayList<String> newArray = new ArrayList<>();
-//        newArray.add("1006");
+///        MongoDBStaffMethods.addStaff("Leo","abb123");
+
 //        newArray.add("1007");
 //        MongoDBStudentMethods.addStudent("amy","123",100, newArray);
 //        MongoDBBookMethods.addBook("1001","book1","983-23-5326-324-1","2011","james","fiction");
 //        MongoDBStudentMethods.deleteStudent("Jason");
-//        System.out.println(MongoDBStudentMethods.checkStudent("Jason"));
+
 //        System.out.println(MongoDBStudentMethods.getPassword("Jason"));
 //        System.out.println(MongoDBStudentMethods.checkStudent("amy"));
 //        MongoDBStudentMethods.addStudent("amy","123",100, newArray);

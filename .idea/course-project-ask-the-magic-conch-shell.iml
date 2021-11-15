@@ -105,6 +105,11 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="bson-3.9.1 (4)" level="project" />
+    <orderEntry type="library" name="mongo-java-driver-3.9.1-javadoc (5)" level="project" />
+    <orderEntry type="library" name="mongo-java-driver-3.9.1-sources (4)" level="project" />
+    <orderEntry type="library" name="mongodb-driver-3.9.1 (4)" level="project" />
+    <orderEntry type="library" name="mongodb-driver-core-3.9.1 (4)" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-data-mongodb:2.5.6" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter:2.5.6" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot:2.5.6" level="project" />
@@ -123,6 +128,7 @@
     <orderEntry type="library" name="Maven: org.springframework.data:spring-data-mongodb:3.2.6" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-tx:5.3.12" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-context:5.3.12" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-beans:5.3.12" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-expression:5.3.12" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.data:spring-data-commons:2.5.6" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.32" level="project" />
@@ -138,6 +144,7 @@
     <orderEntry type="library" name="Maven: org.apache.tomcat.embed:tomcat-embed-core:9.0.54" level="project" />
     <orderEntry type="library" name="Maven: org.apache.tomcat.embed:tomcat-embed-el:9.0.54" level="project" />
     <orderEntry type="library" name="Maven: org.apache.tomcat.embed:tomcat-embed-websocket:9.0.54" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-web:5.3.12" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-webmvc:5.3.12" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aop:5.3.12" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework.boot:spring-boot-starter-test:2.5.6" level="project" />
@@ -170,7 +177,10 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-jcl:5.3.12" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.springframework:spring-test:5.3.12" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.xmlunit:xmlunit-core:2.8.3" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-web:5.3.12" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-beans:5.3.12" level="project" />
+    <orderEntry type="library" name="mongo-java-driver-3.9.1-javadoc" level="project" />
+    <orderEntry type="library" name="bson-3.9.1" level="project" />
+    <orderEntry type="library" name="mongo-java-driver-3.9.1-sources" level="project" />
+    <orderEntry type="library" name="mongodb-driver-core-3.9.1" level="project" />
+    <orderEntry type="library" name="mongodb-driver-3.9.1" level="project" />
   </component>
 </module>

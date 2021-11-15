@@ -49,10 +49,10 @@ public class DBUserManager implements IDBUserManager {
     @Override
     public boolean createNewUser(Staff staff, IMongoDBStaffMethods sm) {
         String username = staff.UsernameGetter();
-        Long password = staff.PasswordGetter(username);
+        String password = staff.PasswordGetter(username);
         if (!checkStaff(username, sm)) {
-            String pw = Long.toString(password);
-            sm.addStaff(username,pw);
+
+            sm.addStaff(username,password);
             return true;
         } else {
             return false;
@@ -68,12 +68,12 @@ public class DBUserManager implements IDBUserManager {
     @Override
     public boolean createNewUser(Student student, IMongoDBStudentMethods sum) {
         String username = student.UsernameGetter();
-        Long password = student.PasswordGetter(username);
+        String password = student.PasswordGetter(username);
         int cs = student.CreditScoreGetter();
         if (!checkStudent(username, sum)) {
             ArrayList<String> borrowRecord = new ArrayList<>(5);
-            String pw = Long.toString(password);
-            sum.addStudent(username, pw, cs, borrowRecord);
+
+            sum.addStudent(username, password, cs, borrowRecord);
             return true;
         } else {
             return false;
@@ -106,10 +106,9 @@ public class DBUserManager implements IDBUserManager {
      */
 
     @Override
-    public Long studentDBGetPassword(String username, IMongoDBStudentMethods sum) {
+    public String studentDBGetPassword(String username, IMongoDBStudentMethods sum) {
         if (checkStudent(username, sum)) {
-            String pwstring = sum.getPassword(username);
-            return Long.valueOf(pwstring);
+            return sum.getPassword(username);
 
         }
         return null;
@@ -123,10 +122,9 @@ public class DBUserManager implements IDBUserManager {
      */
 
     @Override
-    public Long staffDBGetPassword(String username, IMongoDBStaffMethods sm) {
+    public String staffDBGetPassword(String username, IMongoDBStaffMethods sm) {
         if (checkStaff(username, sm)) {
-            String pwstring = sm.getPassword(username);
-            return Long.valueOf(pwstring);
+            return sm.getPassword(username);
 
         }
         return null;
@@ -192,13 +190,11 @@ public class DBUserManager implements IDBUserManager {
      */
 
     @Override
-    public void studentDBModifyPassword(String username, long oldPassword, long newPassword, IMongoDBStudentMethods sum) {
-        String oldPw = Long.toString(oldPassword);
-        if (checkStudent(username, sum) && sum.getPassword(username).equals(oldPw)) {
+    public void studentDBModifyPassword(String username, String oldPassword, String newPassword, IMongoDBStudentMethods sum) {
+        if (checkStudent(username, sum) && sum.getPassword(username).equals(oldPassword)) {
             int cs = sum.getCreditScore(username);
             ArrayList<String> borrowRecord = sum.getBorrowingHistory(username);
-            String newPw = Long.toString(newPassword);
-            sum.update(username,  newPw, cs, borrowRecord);
+            sum.update(username, newPassword, cs, borrowRecord);
 
         }
     }
@@ -230,12 +226,10 @@ public class DBUserManager implements IDBUserManager {
      */
 
     @Override
-    public void staffDBModifyPassword(String username, long oldPassword, long newPassword, IMongoDBStaffMethods sm) {
-        String oldPw = Long.toString(oldPassword);
-        if (checkStaff(username, sm) && sm.getPassword(username).equals(oldPw)) {
+    public void staffDBModifyPassword(String username, String oldPassword, String newPassword, IMongoDBStaffMethods sm) {
+        if (checkStaff(username, sm) && sm.getPassword(username).equals(oldPassword)) {
 
-            String newPw = Long.toString(newPassword);
-            sm.update(username, newPw);
+            sm.update(username, newPassword);
 
         }
 

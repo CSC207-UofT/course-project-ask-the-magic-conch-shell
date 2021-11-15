@@ -5,6 +5,8 @@ package UseCase;
 import User.Staff;
 import User.Student;
 
+import java.util.Objects;
+
 
 /**
      * Manage the user that is currently login (Student/Staff). Responsible for storing the user's information,
@@ -49,8 +51,8 @@ public class UserLoginManager implements IUserLoginManager {
          */
 
     @Override
-    public void studentModifyPassword(String username, long oldPassword, long newPassword) {
-        if (currentStudent.PasswordGetter(username) == oldPassword) {
+    public void studentModifyPassword(String username, String oldPassword, String newPassword) {
+        if (Objects.equals(currentStudent.PasswordGetter(username), oldPassword)) {
             currentStudent.PasswordSetter(newPassword);
         }
     }
@@ -63,8 +65,8 @@ public class UserLoginManager implements IUserLoginManager {
          */
 
     @Override
-    public void staffModifyPassword(String username, long oldPassword, long newPassword) {
-        if (currentStaff.PasswordGetter(username) == oldPassword) {
+    public void staffModifyPassword(String username, String oldPassword, String newPassword) {
+        if (Objects.equals(currentStaff.PasswordGetter(username), oldPassword)) {
             currentStaff.PasswordSetter(newPassword);
         }
 
