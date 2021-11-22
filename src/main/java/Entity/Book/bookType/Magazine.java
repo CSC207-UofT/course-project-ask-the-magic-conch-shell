@@ -1,6 +1,6 @@
-package Book.subclasses;
+package Entity.Book.bookType;
 
-import Book.Book;
+import Entity.Book.Book;
 
 import java.time.LocalDate;
 

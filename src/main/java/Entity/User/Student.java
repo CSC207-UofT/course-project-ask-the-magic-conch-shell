@@ -1,5 +1,5 @@
-package User;
-import Book.Book;
+package Entity.User;
+import Entity.Book.Book;
 
 import java.util.ArrayList;
 

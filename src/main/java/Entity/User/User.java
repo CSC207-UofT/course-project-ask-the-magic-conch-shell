@@ -1,4 +1,4 @@
-package User;
+package Entity.User;
 
 /**
  * Represents a User in the system 

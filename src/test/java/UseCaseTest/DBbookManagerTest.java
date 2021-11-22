@@ -1,10 +1,10 @@
 package UseCaseTest;
 
-import Book.subclasses.Literature;
-import Book.subclasses.Textbook;
+
+import Entity.Book.bookType.*;
 import MongoDBGateway.MongoDBBookMethods;
 import UseCase.BookPositionStatus;
-import Book.Book;
+import Entity.Book.Book;
 import org.junit.*;
 import java.time.LocalDate;
 import MongoDBGateway.IMongoDBBookMethods;

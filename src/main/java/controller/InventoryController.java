@@ -1,6 +1,6 @@
 package controller;
 
-import Book.Book;
+import Entity.Book.Book;
 import MongoDBGateway.IMongoDBBookMethods;
 import MongoDBGateway.MongoDBBookMethods;
 import UseCase.DBbookManager;

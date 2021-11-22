@@ -2,8 +2,8 @@ package UseCase;
 
 
 
-import User.Staff;
-import User.Student;
+import Entity.User.Staff;
+import Entity.User.Student;
 
 import java.util.Objects;
 

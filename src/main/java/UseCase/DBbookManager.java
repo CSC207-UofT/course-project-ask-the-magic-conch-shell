@@ -1,8 +1,8 @@
 package UseCase;
 
-import Book.Book;
+import Entity.Book.Book;
 
-import Book.subclasses.*;
+import Entity.Book.bookType.*;
 import MongoDBGateway.IMongoDBBookMethods;
 
 import java.time.LocalDate;
@@ -244,7 +244,7 @@ public class DBbookManager implements IDBbookManager {
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             String publishDate = dtf.format(bm.getPublishDate(bookIDstring));
             String returnDate;
-            if (newStatus.equals(BookPositionStatus.LENDED.toString())) {
+            if (newStatus.equals("LENDED")) {
                 returnDate = dtf.format(LocalDate.now().plusDays(30));
             }else{
                 returnDate = "null";
