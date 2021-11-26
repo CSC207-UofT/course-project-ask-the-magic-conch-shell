@@ -25,52 +25,10 @@ public class MongoDBBookMethods implements IMongoDBBookMethods {
         db.getCollection("book").remove(dbObject);
     }
 
-
-    public void update(String bookID, String name, String ISBN, String publishDate, String author, String status, String returnDate, String dynamic) {
-        if (dataStored == null) {
-            MongoDB dataServer = new MongoDB();
-            dataServer.store("book", "id");
-            dataStored = dataServer.database;
-        }
-        DBObject delete = MongoDBBookMethods.dataStored.get(bookID);
-        DBObject newObject = new BasicDBObject();
-        newObject.put("id", bookID);
-        newObject.put("name", name);
-        newObject.put("ISBN/ISSN", ISBN);
-        newObject.put("Pdate", publishDate);
-        newObject.put("Author", author);
-        newObject.put("Status", status);
-        newObject.put("Rdate", returnDate);
-        ArrayList<String> subclass = new ArrayList<>(); // An arraylist that contains all the strings that represent types.
-        subclass.add("Dictionary");
-        subclass.add("Textbook");
-        subclass.add("Literature");
-        subclass.add("ResearchPaper");
-        subclass.add("Magazine");
-        if (subclass.contains(dynamic)) {    // The last parameter dynamic can be the name of type or attributes of some subclasses.
-            newObject.put("subclass", dynamic);
-        } else {                                         // The case that last parameter dynamic is the attributes of some subclasses.
-            // we use the former type because if someone wants to change the type, dynamic should be the name of types.
-            if (Objects.equals(dynamic, "Dictionary")) {
-                newObject.put("Language", dynamic);
-                newObject.put("subclass", "Dictionary");
-            } else if (Objects.equals(dynamic,"Textbook")){
-                newObject.put("Subject", dynamic);
-                newObject.put("subclass", "Textbook");
-            } else if (Objects.equals(dynamic,"Literature")) {
-                newObject.put("Period", dynamic);
-                newObject.put("subclass", "Literature");
-            }
-        }
-        dataStored.replace(bookID, dataStored.get(bookID), newObject);
-        deleteOriginal(delete);
-        addToOriginal(newObject);
-    }
-
-    /*
-         The overloaded update() method provides a way for people to update the book the same as that in the package subclasses in which one don't need to specify the type.
-         */
-    public void update(String bookID, String name, String ISBN, String publishDate, String author, String status, String returnDate, String seriesname, String category) {
+    /**
+     The overloaded update() method provides a way for people to update the Magazine
+     */
+    public void updateM(String bookID, String name, String ISBN, String publishDate, String author, String status, String returnDate, String seriesname, String category) {
         if (MongoDBBookMethods.dataStored == null) {
             MongoDB dataServer = new MongoDB();
             dataServer.store("book", "id");
@@ -93,7 +51,10 @@ public class MongoDBBookMethods implements IMongoDBBookMethods {
         addToOriginal(newObject);
     }
 
-    public void update(String bookID, String name, String ISBN, String publishDate, String author, String status, String returnDate, String language, String subject, String peerstatus) {
+    /**
+     The overloaded update() method provides a way for people to update the Research paper
+     */
+    public void updateR(String bookID, String name, String ISBN, String publishDate, String author, String status, String returnDate, String language, String subject, String peerstatus) {
         if (MongoDBBookMethods.dataStored == null) {
             MongoDB dataServer = new MongoDB();
             dataServer.store("book", "id");
@@ -112,6 +73,81 @@ public class MongoDBBookMethods implements IMongoDBBookMethods {
         newObject.put("Subject", subject);
         newObject.put("PeerStatus", peerstatus);
         newObject.put("subclass", "ResearchPaper");
+        MongoDBBookMethods.dataStored.replace(bookID, MongoDBBookMethods.dataStored.get(bookID), newObject);
+        MongoDBBookMethods.deleteOriginal(delete);
+        MongoDBBookMethods.addToOriginal(newObject);
+    }
+
+    /**
+     The overloaded update() method provides a way for people to update Dictionary
+     */
+    public void updateD(String bookID, String name, String ISBN, String publishDate, String author, String status, String returnDate, String language) {
+        if (MongoDBBookMethods.dataStored == null) {
+            MongoDB dataServer = new MongoDB();
+            dataServer.store("book", "id");
+            MongoDBBookMethods.dataStored = dataServer.database;
+        }
+        DBObject delete = MongoDBBookMethods.dataStored.get(bookID);
+        DBObject newObject = new BasicDBObject();
+        newObject.put("id", bookID);
+        newObject.put("name", name);
+        newObject.put("ISBN/ISSN", ISBN);
+        newObject.put("Pdate", publishDate);
+        newObject.put("Author", author);
+        newObject.put("Status", status);
+        newObject.put("Rdate", returnDate);
+        newObject.put("Language", language);
+        newObject.put("subclass", "Dictionary");
+        MongoDBBookMethods.dataStored.replace(bookID, MongoDBBookMethods.dataStored.get(bookID), newObject);
+        MongoDBBookMethods.deleteOriginal(delete);
+        MongoDBBookMethods.addToOriginal(newObject);
+    }
+
+    /**
+     The overloaded update() method provides a way for people to update Literature
+     */
+    public void updateL(String bookID, String name, String ISBN, String publishDate, String author, String status, String returnDate, String period) {
+        if (MongoDBBookMethods.dataStored == null) {
+            MongoDB dataServer = new MongoDB();
+            dataServer.store("book", "id");
+            MongoDBBookMethods.dataStored = dataServer.database;
+        }
+        DBObject delete = MongoDBBookMethods.dataStored.get(bookID);
+        DBObject newObject = new BasicDBObject();
+        newObject.put("id", bookID);
+        newObject.put("name", name);
+        newObject.put("ISBN/ISSN", ISBN);
+        newObject.put("Pdate", publishDate);
+        newObject.put("Author", author);
+        newObject.put("Status", status);
+        newObject.put("Rdate", returnDate);
+        newObject.put("Period", period);
+        newObject.put("subclass", "Literature");
+        MongoDBBookMethods.dataStored.replace(bookID, MongoDBBookMethods.dataStored.get(bookID), newObject);
+        MongoDBBookMethods.deleteOriginal(delete);
+        MongoDBBookMethods.addToOriginal(newObject);
+    }
+
+    /**
+     The overloaded update() method provides a way for people to update Textbook
+     */
+    public void updateT(String bookID, String name, String ISBN, String publishDate, String author, String status, String returnDate, String subject) {
+        if (MongoDBBookMethods.dataStored == null) {
+            MongoDB dataServer = new MongoDB();
+            dataServer.store("book", "id");
+            MongoDBBookMethods.dataStored = dataServer.database;
+        }
+        DBObject delete = MongoDBBookMethods.dataStored.get(bookID);
+        DBObject newObject = new BasicDBObject();
+        newObject.put("id", bookID);
+        newObject.put("name", name);
+        newObject.put("ISBN/ISSN", ISBN);
+        newObject.put("Pdate", publishDate);
+        newObject.put("Author", author);
+        newObject.put("Status", status);
+        newObject.put("Rdate", returnDate);
+        newObject.put("Subject", subject);
+        newObject.put("subclass", "Textbook");
         MongoDBBookMethods.dataStored.replace(bookID, MongoDBBookMethods.dataStored.get(bookID), newObject);
         MongoDBBookMethods.deleteOriginal(delete);
         MongoDBBookMethods.addToOriginal(newObject);

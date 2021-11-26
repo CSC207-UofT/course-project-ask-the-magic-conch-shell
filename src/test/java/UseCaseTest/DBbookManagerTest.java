@@ -2,6 +2,7 @@ package UseCaseTest;
 
 
 import Entity.Book.bookType.*;
+
 import MongoDBGateway.MongoDBBookMethods;
 import UseCase.BookPositionStatus;
 import Entity.Book.Book;
@@ -32,7 +33,7 @@ public class DBbookManagerTest {
 
         @Before
         public void setUp(){
-            book1 = new Textbook(26,"Iron Man", "9783034982374", publishDate1,"Stan","Engineering" ,"Textbook");
+            book1 = new Magazine(26,"Iron Man", "9783034982374", publishDate1,"Stan","fashion1", "recreation","Magazine");
             book2 = new Literature(27,"Captain American", "9783049823741",publishDate2,"Tiffany","Modern" ,"Literature");
             book3 = new Textbook(28,"Scarlet Witch", "9783049823621",publishDate3,"James", "Religion", "Textbook");
 //            book1 = new Book(1,"Iron Man", "9783034982374", publishDate1,"Stan" ,"Textbook");
@@ -58,7 +59,7 @@ public class DBbookManagerTest {
         /**
          * Test whether we can delete a book given its id and can't search it after deleting.
          */
-        @Test(timeout = 1000)
+        @Test(timeout = 2000)
         public void testDeleteBook() {
             assertTrue(dbm.deleteBook(27, bm));
             assertNull(dbm.searchBookByID(2, bm));
@@ -72,6 +73,19 @@ public class DBbookManagerTest {
             ArrayList<Integer> ar = new ArrayList<>();
             ar.add(book3.getBookID());
             assertEquals(ar, dbm.searchBookByAuthor("James", bm)); }
+
+     /**
+      * Test whether we can get a list of books given its type.
+      */
+      @Test(timeout = 100)
+     public void testSearchBookByType(){
+         ArrayList<Integer> ar = new ArrayList<>();
+         ar.add(5);
+         ar.add(6);
+         ar.add(19);
+         ar.add(20);
+         ar.add(book1.getBookID());
+         assertEquals(ar, dbm.searchBookByType("Magazine", bm)); }
 
 
         /**
@@ -90,4 +104,15 @@ public class DBbookManagerTest {
             assertEquals(date, dbm.checkReturnDate(book2.getBookID(), bm));
         }
 
+    /**
+     * Test whether we can change a book's status and whether the return date is set correspondingly.
+     */
+    @Test(timeout = 100)
+    public void testChangeBookStatus(){
+        dbm.changBookStatus(book1.getBookID(), BookPositionStatus.LENDED, bm);
+        assertEquals(BookPositionStatus.LENDED, book1.getStatus());
+//            assertEquals(LocalDate.now().plusDays(30), dbm.checkReturnDate(book1.getBookID(), bm));
     }
+}
+
+

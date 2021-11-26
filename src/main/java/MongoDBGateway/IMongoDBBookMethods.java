@@ -8,15 +8,15 @@ import java.util.ArrayList;
 
 
 public interface IMongoDBBookMethods {
-    void update(String bookID, String name, String ISBN, String publishDate, String author, String status, String returnDate, String dynamic);
+    void updateM(String bookID, String name, String ISBN, String publishDate, String author, String status, String returnDate, String seriesname, String category);
 
+    void updateR(String bookID, String name, String ISBN, String publishDate, String author, String status, String returnDate, String language, String subject, String peerstatus);
 
-    /**
-     **The overloaded update() method provides a way for people to update the book the same as that in the package subclasses in which one don't need to specify the type.
-     **/
-    void update(String bookID, String name, String ISBN, String publishDate, String author, String status, String returnDate, String seriesname, String category);
+    void updateD(String bookID, String name, String ISBN, String publishDate, String author, String status, String returnDate, String language);
 
-    void update(String bookID, String name, String ISBN, String publishDate, String author, String status, String returnDate, String language, String subject, String peerstatus);
+    void updateL(String bookID, String name, String ISBN, String publishDate, String author, String status, String returnDate, String period);
+
+    void updateT(String bookID, String name, String ISBN, String publishDate, String author, String status, String returnDate, String subject);
 
     String getName(String bookID);
 
