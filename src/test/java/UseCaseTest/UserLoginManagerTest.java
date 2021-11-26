@@ -2,8 +2,8 @@ package UseCaseTest;
 
 import UseCase.IUserLoginManager;
 import UseCase.UserLoginManager;
-import User.Student;
-import User.Staff;
+import Entity.User.Student;
+import Entity.User.Staff;
 import org.junit.*;
 import static org.junit.Assert.*;
 

@@ -1,8 +1,8 @@
 package userTest;
 
-import Book.Book;
+import Entity.Book.Book;
 
-import User.Student;
+import Entity.User.Student;
 import org.junit.*;
 
 import java.time.LocalDate;

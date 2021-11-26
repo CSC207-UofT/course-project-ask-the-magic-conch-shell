@@ -1,4 +1,4 @@
-package Book;
+package Entity.Book;
 
 import UseCase.BookPositionStatus;
 

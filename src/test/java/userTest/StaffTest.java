@@ -1,6 +1,6 @@
 package userTest;
 
-import User.Staff;
+import Entity.User.Staff;
 import org.junit.*;
 
 import static org.junit.Assert.*;

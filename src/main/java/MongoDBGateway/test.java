@@ -1,15 +1,6 @@
 package MongoDBGateway;
 
 
-import Book.subclasses.Magazine;
-import UseCase.DBUserManager;
-import UseCase.DBbookManager;
-import UseCase.IDBUserManager;
-import User.Student;
-
-import java.time.LocalDate;
-import java.util.ArrayList;
-
 public class test {
     public static void main(String[] args) {
 //        Student s = new Student("aa");

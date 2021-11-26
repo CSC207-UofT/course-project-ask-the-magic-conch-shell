@@ -1,4 +1,4 @@
-package User;
+package Entity.User;
 
 /**
  * A subclass of User

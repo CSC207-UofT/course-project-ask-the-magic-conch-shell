@@ -1,10 +1,10 @@
 package UseCaseTest;
 
-import Book.Book;
+import Entity.Book.Book;
 import MongoDBGateway.MongoDBStaffMethods;
 import MongoDBGateway.MongoDBStudentMethods;
-import User.Staff;
-import User.Student;
+import Entity.User.Staff;
+import Entity.User.Student;
 import org.junit.Before;
 import org.junit.Test;
 import UseCase.DBUserManager;

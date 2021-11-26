@@ -2,10 +2,8 @@ package UseCase;
 
 
 
-import User.Staff;
-import User.Student;
-
-import java.util.Objects;
+import Entity.User.Staff;
+import Entity.User.Student;
 
 
 /**
@@ -52,7 +50,7 @@ public class UserLoginManager implements IUserLoginManager {
 
     @Override
     public void studentModifyPassword(String username, String oldPassword, String newPassword) {
-        if (Objects.equals(currentStudent.PasswordGetter(username), oldPassword)) {
+        if (currentStudent.PasswordGetter(username).equals(oldPassword)) {
             currentStudent.PasswordSetter(newPassword);
         }
     }
@@ -66,7 +64,7 @@ public class UserLoginManager implements IUserLoginManager {
 
     @Override
     public void staffModifyPassword(String username, String oldPassword, String newPassword) {
-        if (Objects.equals(currentStaff.PasswordGetter(username), oldPassword)) {
+        if (currentStaff.PasswordGetter(username).equals(oldPassword)) {
             currentStaff.PasswordSetter(newPassword);
         }
 

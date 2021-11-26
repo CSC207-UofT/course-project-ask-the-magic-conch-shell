@@ -1,8 +1,8 @@
 package UseCase;
 
-import Book.Book;
+import Entity.Book.Book;
 
-import Book.subclasses.*;
+import Entity.Book.bookType.*;
 import MongoDBGateway.IMongoDBBookMethods;
 
 import java.time.LocalDate;
