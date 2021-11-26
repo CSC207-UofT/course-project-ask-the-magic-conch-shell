@@ -34,7 +34,7 @@ public class DBbookManager implements IDBbookManager {
         String name = book.getBookName();
         String ISBN = book.getISBN();
         String author = book.getAuthor();
-        String status = "UNLENDED";
+        String status = book.getStatus().toString();
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         String publishDate = dtf.format(book.getPublishDate());
         String returnDate;
@@ -48,25 +48,26 @@ public class DBbookManager implements IDBbookManager {
         if (Objects.equals(type, "Magazine")){
             String cat = ((Magazine) book).getCategory();
             String ser = ((Magazine) book).getSeriesName();
-            bm.update(bookID,name,ISBN,publishDate,author,status,returnDate,ser,cat);
+            bm.updateM(bookID,name,ISBN,publishDate,author,status,returnDate,ser,cat);
         }
         if (Objects.equals(type, "Dictionary")){
             String lan = ((Dictionary) book).getLanguage();
-                bm.update(bookID,name,ISBN,publishDate,author,status,returnDate,lan);
+                bm.updateD(bookID,name,ISBN,publishDate,author,status,returnDate,lan);
             }
         if (Objects.equals(type, "Literature")){
             String per = ((Literature) book).getPeriod();
-                bm.update(bookID,name,ISBN,publishDate,author,status,returnDate,per);
+                bm.updateL(bookID,name,ISBN,publishDate,author,status,returnDate,per);
             }
         if (Objects.equals(type, "Textbook")){
             String sub = ((Textbook) book).getSubject();
-                bm.update(bookID,name,ISBN,publishDate,author,status,returnDate,sub);
+                bm.updateT(bookID,name,ISBN,publishDate,author,status,returnDate,sub);
             }
         if (Objects.equals(type, "ResearchPaper")){
                 String lan = ((ResearchPaper) book).getLanguage();
                 boolean sta = ((ResearchPaper) book).getPeerReviewStatus();
                 String stastring = Boolean.toString(sta);
-                bm.update(bookID,name,ISBN,publishDate,author,status,returnDate,lan,stastring);
+                String sub = ((ResearchPaper) book).getSubject();
+                bm.updateR(bookID,name,ISBN,publishDate,author,status,returnDate,lan,sub, stastring);
             }
         return true;
     }else{
@@ -155,7 +156,7 @@ public class DBbookManager implements IDBbookManager {
     @Override
     public ArrayList<Integer> searchBookByType(String type, IMongoDBBookMethods bm) {
 
-        return bm.searchByAuthor(type);
+        return bm.searchByType(type);
     }
 
     /**
@@ -193,29 +194,29 @@ public class DBbookManager implements IDBbookManager {
             String publishDate = dtf.format(bm.getPublishDate(bookIDstring));
             String returnDate = dtf.format(desireDate);
             String type = bm.getType(bookIDstring);
-            bm.update(bookIDstring,name,ISBN,publishDate,author,status,returnDate,type);
             if (Objects.equals(type, "Magazine")){
                 String ser = bm.getSeriesName(bookIDstring);
                 String cat = bm.getCategory(bookIDstring);
-                bm.update(bookIDstring,name,ISBN,publishDate,author,status,returnDate,ser,cat);
+                bm.updateM(bookIDstring,name,ISBN,publishDate,author,status,returnDate,ser,cat);
             }
             if (Objects.equals(type, "Dictionary")){
                 String lan = bm.getLanguage(bookIDstring);
-                bm.update(bookIDstring,name,ISBN,publishDate,author,status,returnDate,lan);
+                bm.updateD(bookIDstring,name,ISBN,publishDate,author,status,returnDate,lan);
             }
             if (Objects.equals(type, "Literature")){
                 String per = bm.getPeriod(bookIDstring);
-                bm.update(bookIDstring,name,ISBN,publishDate,author,status,returnDate,per);
+                bm.updateL(bookIDstring,name,ISBN,publishDate,author,status,returnDate,per);
             }
             if (Objects.equals(type, "Textbook")){
                 String sub = bm.getSubject(bookIDstring);
-                bm.update(bookIDstring,name,ISBN,publishDate,author,status,returnDate,sub);
+                bm.updateT(bookIDstring,name,ISBN,publishDate,author,status,returnDate,sub);
             }
             if (Objects.equals(type, "ResearchPaper")){
                 String lan = bm.getLanguage(bookIDstring);
                 boolean sta = (boolean) bm.getPeerstatus(bookIDstring);
                 String stastring = Boolean.toString(sta);
-                bm.update(bookIDstring,name,ISBN,publishDate,author,status,returnDate,lan,stastring);
+                String sub = bm.getSubject(bookIDstring);
+                bm.updateR(bookIDstring,name,ISBN,publishDate,author,status,returnDate,lan,sub,stastring);
             }
             return true;
 
@@ -244,7 +245,7 @@ public class DBbookManager implements IDBbookManager {
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             String publishDate = dtf.format(bm.getPublishDate(bookIDstring));
             String returnDate;
-            if (newStatus.equals(BookPositionStatus.LENDED.toString())) {
+            if (newStatus.equals("LENDED")) {
                 returnDate = dtf.format(LocalDate.now().plusDays(30));
             }else{
                 returnDate = "null";
@@ -253,25 +254,26 @@ public class DBbookManager implements IDBbookManager {
             if (Objects.equals(type, "Magazine")){
                 String ser = bm.getSeriesName(bookIDstring);
                 String cat = bm.getCategory(bookIDstring);
-                bm.update(bookIDstring,name,ISBN,publishDate,author,newStatus,returnDate,ser,cat);
+                bm.updateM(bookIDstring,name,ISBN,publishDate,author,newStatus,returnDate,ser,cat);
             }
             if (Objects.equals(type, "Dictionary")){
                 String lan = bm.getLanguage(bookIDstring);
-                bm.update(bookIDstring,name,ISBN,publishDate,author,newStatus,returnDate,lan);
+                bm.updateD(bookIDstring,name,ISBN,publishDate,author,newStatus,returnDate,lan);
             }
             if (Objects.equals(type, "Literature")){
                 String per = bm.getPeriod(bookIDstring);
-                bm.update(bookIDstring,name,ISBN,publishDate,author,newStatus,returnDate,per);
+                bm.updateL(bookIDstring,name,ISBN,publishDate,author,newStatus,returnDate,per);
             }
             if (Objects.equals(type, "Textbook")){
                 String sub = bm.getSubject(bookIDstring);
-                bm.update(bookIDstring,name,ISBN,publishDate,author,newStatus,returnDate,sub);
+                bm.updateT(bookIDstring,name,ISBN,publishDate,author,newStatus,returnDate,sub);
             }
             if (Objects.equals(type, "ResearchPaper")){
                 String lan = bm.getLanguage(bookIDstring);
                 boolean sta = (boolean) bm.getPeerstatus(bookIDstring);
                 String stastring = Boolean.toString(sta);
-                bm.update(bookIDstring,name,ISBN,publishDate,author,newStatus,returnDate,lan,stastring);
+                String sub = bm.getSubject(bookIDstring);
+                bm.updateR(bookIDstring,name,ISBN,publishDate,author,newStatus,returnDate,lan,sub,stastring);
             }
             return true;
     }
