@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
+import java.lang.String;
 
 public class MongoDBBookMethods implements IMongoDBBookMethods {
     public static HashMap<String, DBObject> dataStored;
@@ -251,9 +252,9 @@ public class MongoDBBookMethods implements IMongoDBBookMethods {
             dataServer.store("book", "id");
             MongoDBBookMethods.dataStored = dataServer.database;
         }
-        if (dataStored.get(bookID).get("Status") != "unlended") {
+        if (dataStored.get(bookID).get("Status") == "unlended") {
             return BookPositionStatus.UNLENDED;
-        }else if (dataStored.get(bookID).get("Status") != "lended"){
+        }else if (dataStored.get(bookID).get("Status") == "lended"){
             return BookPositionStatus.LENDED;
         }
         return null;

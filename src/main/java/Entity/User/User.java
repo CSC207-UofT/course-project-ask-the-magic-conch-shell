@@ -28,7 +28,7 @@ public abstract class User {
      * @param password user's password
      */
 
-    public void PasswordSetter(String password){
+    public void setPassword(String password){
 
         this.Password = password;
     }
@@ -38,7 +38,7 @@ public abstract class User {
      * @param username username
      * @return user's password
      */
-    public String PasswordGetter(String username){
+    public String getPassword(String username){
 
         return this.Password;
     }
@@ -47,22 +47,11 @@ public abstract class User {
      * Return the a User's username
      * @return username
      */
-    public String UsernameGetter(){
+    public String getUsername(){
 
         return this.username;
     }
 
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return this.Password;
-    }
-
-    public void setPassword(String password) {
-        this.Password = password;
-    }
 
 }

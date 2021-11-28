@@ -31,7 +31,9 @@ public interface IDBbookManager {
 
     boolean changeReturnDate(int bookID, LocalDate desireDate, IMongoDBBookMethods bm);
 
-    boolean changBookStatus(int bookID, BookPositionStatus status, IMongoDBBookMethods bm);
+    boolean changeBookStatus(int bookID, BookPositionStatus status, IMongoDBBookMethods bm);
+
+    BookPositionStatus checkBookStatus(int bookID, IMongoDBBookMethods bm);
 }
 
 

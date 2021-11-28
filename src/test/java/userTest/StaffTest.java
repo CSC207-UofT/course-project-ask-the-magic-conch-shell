@@ -12,17 +12,17 @@ public class StaffTest {
     @Before
     public void setUp() throws Exception {
         h = new Staff("Jason");
-        h.PasswordSetter("123");
+        h.setPassword("123");
     }
 
     @Test(timeout = 50)
     public void TestStaffName(){
-        assertEquals("Jason", h.UsernameGetter());
+        assertEquals("Jason", h.getUsername());
     }
 
     @Test(timeout = 50)
     public void TestStaffGetPassword(){
-        assertEquals("123", h.PasswordGetter("Jason"));
+        assertEquals("123", h.getPassword("Jason"));
     }
 
 }

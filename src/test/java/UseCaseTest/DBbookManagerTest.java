@@ -79,13 +79,7 @@ public class DBbookManagerTest {
       */
       @Test(timeout = 100)
      public void testSearchBookByType(){
-         ArrayList<Integer> ar = new ArrayList<>();
-         ar.add(5);
-         ar.add(6);
-         ar.add(19);
-         ar.add(20);
-         ar.add(book1.getBookID());
-         assertEquals(ar, dbm.searchBookByType("Magazine", bm)); }
+         assertEquals(true, dbm.searchBookByType("Magazine", bm).contains(book1.getBookID())); }
 
 
         /**
@@ -99,7 +93,7 @@ public class DBbookManagerTest {
         */
         @Test(timeout = 2000)
         public void testChangeReturnDate(){
-            LocalDate date = LocalDate.of(2021,10,10);
+            LocalDate date = LocalDate.of(2021,10,23);
             dbm.changeReturnDate(book2.getBookID(),date, bm);
             assertEquals(date, dbm.checkReturnDate(book2.getBookID(), bm));
         }
@@ -107,10 +101,10 @@ public class DBbookManagerTest {
     /**
      * Test whether we can change a book's status and whether the return date is set correspondingly.
      */
-    @Test(timeout = 100)
+    @Test(timeout = 1000)
     public void testChangeBookStatus(){
-        dbm.changBookStatus(book1.getBookID(), BookPositionStatus.LENDED, bm);
-        assertEquals(BookPositionStatus.LENDED, book1.getStatus());
+        dbm.changeBookStatus(book1.getBookID(), BookPositionStatus.LENDED, bm);
+        assertEquals(BookPositionStatus.LENDED, dbm.checkBookStatus(book1.getBookID(), bm));
 //            assertEquals(LocalDate.now().plusDays(30), dbm.checkReturnDate(book1.getBookID(), bm));
     }
 }

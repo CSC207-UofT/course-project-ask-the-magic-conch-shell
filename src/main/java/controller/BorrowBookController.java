@@ -75,7 +75,7 @@ public class BorrowBookController {
         IMongoDBStudentMethods sm = new MongoDBStudentMethods();
         var b1 = curr_user.BorrowedBookAmount() <= 5;
         if (b1){
-            return b.changBookStatus(book_id, BookPositionStatus.LENDED, bm);
+            return b.changeBookStatus(book_id, BookPositionStatus.LENDED, bm);
         }
         else {return false;}
 

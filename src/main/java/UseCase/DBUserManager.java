@@ -48,8 +48,8 @@ public class DBUserManager implements IDBUserManager {
      */
     @Override
     public boolean createNewUser(Staff staff, IMongoDBStaffMethods sm) {
-        String username = staff.UsernameGetter();
-        String password = staff.PasswordGetter(username);
+        String username = staff.getUsername();
+        String password = staff.getPassword(username);
         if (!checkStaff(username, sm)) {
 
             sm.addStaff(username,password);
@@ -67,8 +67,8 @@ public class DBUserManager implements IDBUserManager {
      */
     @Override
     public boolean createNewUser(Student student, IMongoDBStudentMethods sum) {
-        String username = student.UsernameGetter();
-        String password = student.PasswordGetter(username);
+        String username = student.getUsername();
+        String password = student.getPassword(username);
         int cs = student.CreditScoreGetter();
         if (!checkStudent(username, sum)) {
             ArrayList<String> borrowRecord = new ArrayList<>(5);
