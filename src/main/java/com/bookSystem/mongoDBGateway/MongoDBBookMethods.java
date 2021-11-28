@@ -8,9 +8,7 @@ import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Objects;
+import java.util.*;
 
 public class MongoDBBookMethods implements IMongoDBBookMethods {
     public static HashMap<String, DBObject> dataStored;
@@ -18,14 +16,14 @@ public class MongoDBBookMethods implements IMongoDBBookMethods {
     public static void addToOriginal(DBObject dbObject) {
         MongoClientURI uri = new MongoClientURI("mongodb+srv://Hewitt:C*gh8%40f8R*9Hw%40U@cluster0.hmi0f.mongodb.net/User?retryWrites=true&w=majority");
         MongoClient mongoclient = new MongoClient(uri);
-        DB db = mongoclient.getDB("Entity");
+        DB db = mongoclient.getDB("Book");
         db.getCollection("book").insert(dbObject);
     }
 
     public static void deleteOriginal(DBObject dbObject) {
         MongoClientURI uri = new MongoClientURI("mongodb+srv://Hewitt:C*gh8%40f8R*9Hw%40U@cluster0.hmi0f.mongodb.net/User?retryWrites=true&w=majority");
         MongoClient mongoclient = new MongoClient(uri);
-        DB db = mongoclient.getDB("Entity");
+        DB db = mongoclient.getDB("Book");
         db.getCollection("book").remove(dbObject);
     }
 
@@ -192,6 +190,7 @@ public class MongoDBBookMethods implements IMongoDBBookMethods {
                 ar.add(bid);
             }
         }
+        Collections.sort(ar);
         return ar;
     }
 
@@ -208,6 +207,7 @@ public class MongoDBBookMethods implements IMongoDBBookMethods {
                 arr.add(bid);
             }
         }
+        Collections.sort(arr);
         return arr;
     }
 
@@ -224,6 +224,7 @@ public class MongoDBBookMethods implements IMongoDBBookMethods {
                 arra.add(bid);
             }
         }
+        Collections.sort(arra);
         return arra;
     }
 
@@ -257,7 +258,7 @@ public class MongoDBBookMethods implements IMongoDBBookMethods {
         }
         if (dataStored.get(bookID).get("Status") == "unlended") {
             return BookPositionStatus.UNLENDED;
-        }else if (dataStored.get(bookID).get("Status") == "lended"){
+        }else if (dataStored.get(bookID).get("Status") == "lended") {
             return BookPositionStatus.LENDED;
         }
         return null;

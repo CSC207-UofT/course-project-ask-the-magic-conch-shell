@@ -36,9 +36,9 @@ public class DBbookManagerTest {
             book1 = new Magazine(26,"Iron Man", "9783034982374", publishDate1,"Stan","fashion1", "recreation","Magazine");
             book2 = new Literature(27,"Captain American", "9783049823741",publishDate2,"Tiffany","Modern" ,"Literature");
             book3 = new Textbook(28,"Scarlet Witch", "9783049823621",publishDate3,"James", "Religion", "Textbook");
-//            book1 = new Book(1,"Iron Man", "9783034982374", publishDate1,"Stan" ,"Textbook");
-//            book2 = new Book(2,"Captain American", "9783049823741",publishDate2,"Tiffany" ,"Literature");
-//            book3 = new Book(3,"Scarlet Witch", "9783049823621",publishDate3,"James", "Literature");
+//            book1 = new Book(26,"Iron Man", "9783034982374", publishDate1,"Stan" ,"Magazine");
+//            book2 = new Book(27,"Captain American", "9783049823741",publishDate2,"Tiffany" ,"Literature");
+//            book3 = new Book(28,"Scarlet Witch", "9783049823621",publishDate3,"James", "Textbook");
 
             book1.setStatus(BookPositionStatus.UNLENDED);
             book2.setStatus(BookPositionStatus.LENDED);
@@ -62,7 +62,7 @@ public class DBbookManagerTest {
         @Test(timeout = 2000)
         public void testDeleteBook() {
             assertTrue(dbm.deleteBook(27, bm));
-            assertNull(dbm.searchBookByID(2, bm));
+            assertNull(dbm.searchBookByID(27, bm));
         }
 
         /**
@@ -79,8 +79,12 @@ public class DBbookManagerTest {
       */
       @Test(timeout = 100)
      public void testSearchBookByType(){
-         assertEquals(true, dbm.searchBookByType("Magazine", bm).contains(book1.getBookID())); }
-
+          ArrayList<Integer> arr = new ArrayList<>();
+          arr.add(5);
+          arr.add(6);
+          arr.add(19);
+          arr.add(26);
+          assertEquals(arr, dbm.searchBookByType("Magazine", bm)); }
 
         /**
          * Test whether we can check a book's return date.

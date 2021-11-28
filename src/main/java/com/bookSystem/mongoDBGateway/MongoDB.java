@@ -20,7 +20,7 @@ public class MongoDB {
             MongoClient mongoclient = new MongoClient(uri);
             DB db;
             if (Objects.equals(collectionName, "book")) {
-                db = mongoclient.getDB("Entity");
+                db = mongoclient.getDB("Book");
             } else {
                 db = mongoclient.getDB("User");
             }

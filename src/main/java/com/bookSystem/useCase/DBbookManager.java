@@ -205,7 +205,12 @@ public class DBbookManager implements IDBbookManager {
             String name = bm.getName(bookIDstring);
             String ISBN = bm.getISBN(bookIDstring);
             String author = bm.getAuthor(bookIDstring);
-            String status = BookPositionStatus.toString(bm.getStatus(bookIDstring));
+            String status;
+            if (bm.getStatus(bookIDstring) != null){
+                status = BookPositionStatus.toString(bm.getStatus(bookIDstring));
+            }else{
+                status = "null";
+            }
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             String publishDate = dtf.format(bm.getPublishDate(bookIDstring));
             String newReturnDate = dtf.format(desireDate);
