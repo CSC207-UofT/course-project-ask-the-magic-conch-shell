@@ -4,6 +4,7 @@ package com.bookSystem.useCase;
 import com.bookSystem.entity.User.Staff;
 import com.bookSystem.entity.User.Student;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 
@@ -18,13 +19,18 @@ public class UserLoginManager implements IUserLoginManager {
     public Staff currentStaff;
 
 
-    public UserLoginManager(Student currentStudent) {
-        this.currentStudent = currentStudent;
+    public UserLoginManager(String username, String password, int creditScore, ArrayList<String> br) {
+        this.currentStudent = new Student(username);
+        this.currentStudent.setPassword(password);
+        this.currentStudent.CreditScoreSetter(creditScore);
+        this.currentStudent.borrowingRecordsSetter(br);
+
 
     }
 
-    public UserLoginManager(Staff currentStaff) {
-        this.currentStaff = currentStaff;
+    public UserLoginManager(String username, String password) {
+        this.currentStaff = new Staff(username);
+        this.currentStaff.setPassword(password);
 
     }
 
