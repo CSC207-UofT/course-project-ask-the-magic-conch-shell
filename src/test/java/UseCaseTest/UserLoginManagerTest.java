@@ -27,16 +27,16 @@ public class UserLoginManagerTest {
 
     @Test
     public void testStudentModifyPassword() {
-        a.PasswordSetter("martin666");
+        a.setPassword("martin666");
         ulm1.studentModifyPassword("Martin", "martin666", "martin789");
-        assertEquals("martin789", a.PasswordGetter("Martin"));
+        assertEquals("martin789", a.getPassword("Martin"));
     }
 
     @Test
     public void testStaffModifyPassword() {
-        c.PasswordSetter("a123456");
+        c.setPassword("a123456");
         ulm2.staffModifyPassword("Jason", "a123456", "a654321");
-        assertEquals("a654321", c.PasswordGetter("Jason"));
+        assertEquals("a654321", c.getPassword("Jason"));
 
     }
 

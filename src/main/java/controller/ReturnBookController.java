@@ -18,7 +18,7 @@ public class ReturnBookController {
         IDBbookManager b = new DBbookManager();
         IMongoDBBookMethods bm = new MongoDBBookMethods();
         if (BookCondition == Book.BookCondition.GOOD){
-            b.changBookStatus(bookID, BookPositionStatus.UNLENDED, bm);
+            b.changeBookStatus(bookID, BookPositionStatus.UNLENDED, bm);
 
         }
         else if (BookCondition == Book.BookCondition.DAMAGE){

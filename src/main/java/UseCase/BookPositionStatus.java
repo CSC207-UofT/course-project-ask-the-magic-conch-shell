@@ -5,8 +5,8 @@ public enum BookPositionStatus {
 
     public static String toString(BookPositionStatus status) {
         if (status.equals(UNLENDED)){
-        return "UNLENDED";}
-        else { return "LENDED";
+        return "unlended";}
+        else { return "lended";
     }
     }
 }

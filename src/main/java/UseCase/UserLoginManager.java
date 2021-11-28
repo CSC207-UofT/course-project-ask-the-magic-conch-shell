@@ -52,8 +52,8 @@ public class UserLoginManager implements IUserLoginManager {
 
     @Override
     public void studentModifyPassword(String username, String oldPassword, String newPassword) {
-        if (Objects.equals(currentStudent.PasswordGetter(username), oldPassword)) {
-            currentStudent.PasswordSetter(newPassword);
+        if (Objects.equals(currentStudent.getPassword(username), oldPassword)) {
+            currentStudent.setPassword(newPassword);
         }
     }
 
@@ -66,8 +66,8 @@ public class UserLoginManager implements IUserLoginManager {
 
     @Override
     public void staffModifyPassword(String username, String oldPassword, String newPassword) {
-        if (Objects.equals(currentStaff.PasswordGetter(username), oldPassword)) {
-            currentStaff.PasswordSetter(newPassword);
+        if (Objects.equals(currentStaff.getPassword(username), oldPassword)) {
+            currentStaff.setPassword(newPassword);
         }
 
         }

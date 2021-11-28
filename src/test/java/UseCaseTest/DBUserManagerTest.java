@@ -39,7 +39,7 @@ public class DBUserManagerTest {
         h = new Student("Harry");
         j = new Student("Jason");
         s = new Staff("Staff1");
-        s.PasswordSetter("123");
+        s.setPassword("123");
         password = "123";
         j.CreditScoreSetter(30);
         empty_record = new ArrayList<>();
@@ -162,9 +162,9 @@ public class DBUserManagerTest {
         ArrayList<String> test = new ArrayList<>();
         test.add("00006");
         test.add("00007");
-        test.add("0008");
-        UserManager.studentDBModifyBorrowRecord("Eric342",test,StudentMethods);
-        ArrayList<String> result = UserManager.DBGetBorrowingRecord("Eric342",StudentMethods);
+        test.add("00008");
+        UserManager.studentDBModifyBorrowRecord("Harry",test,StudentMethods);
+        ArrayList<String> result = UserManager.DBGetBorrowingRecord("Harry",StudentMethods);
         assertEquals(test, result);
     }
 }

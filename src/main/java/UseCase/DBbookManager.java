@@ -34,7 +34,7 @@ public class DBbookManager implements IDBbookManager {
         String name = book.getBookName();
         String ISBN = book.getISBN();
         String author = book.getAuthor();
-        String status = book.getStatus().toString();
+        String status = BookPositionStatus.toString(book.getStatus());
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         String publishDate = dtf.format(book.getPublishDate());
         String returnDate;
@@ -160,6 +160,22 @@ public class DBbookManager implements IDBbookManager {
     }
 
     /**
+     * To check status of book in the database with id bookID
+     * @param bookID book ID
+     * @param bm inject a mongodb book method interface and get methods from it
+     * @return status of a book with ID bookID, null if the book is not in the database
+     */
+
+    @Override
+    public BookPositionStatus checkBookStatus(int bookID, IMongoDBBookMethods bm) {
+        String bookIDstring = Integer.toString(bookID);
+        if (bm.checkBook(bookIDstring)){
+            return bm.getStatus(bookIDstring);}
+        else {return null;}
+    }
+
+
+    /**
      * To check return date of book in the database with id bookID
      * @param bookID book ID
      * @param bm inject a mongodb book method interface and get methods from it
@@ -192,31 +208,32 @@ public class DBbookManager implements IDBbookManager {
             String status = BookPositionStatus.toString(bm.getStatus(bookIDstring));
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             String publishDate = dtf.format(bm.getPublishDate(bookIDstring));
-            String returnDate = dtf.format(desireDate);
+            String newReturnDate = dtf.format(desireDate);
+
             String type = bm.getType(bookIDstring);
             if (Objects.equals(type, "Magazine")){
                 String ser = bm.getSeriesName(bookIDstring);
                 String cat = bm.getCategory(bookIDstring);
-                bm.updateM(bookIDstring,name,ISBN,publishDate,author,status,returnDate,ser,cat);
+                bm.updateM(bookIDstring,name,ISBN,publishDate,author,status,newReturnDate,ser,cat);
             }
             if (Objects.equals(type, "Dictionary")){
                 String lan = bm.getLanguage(bookIDstring);
-                bm.updateD(bookIDstring,name,ISBN,publishDate,author,status,returnDate,lan);
+                bm.updateD(bookIDstring,name,ISBN,publishDate,author,status,newReturnDate,lan);
             }
             if (Objects.equals(type, "Literature")){
                 String per = bm.getPeriod(bookIDstring);
-                bm.updateL(bookIDstring,name,ISBN,publishDate,author,status,returnDate,per);
+                bm.updateL(bookIDstring,name,ISBN,publishDate,author,status,newReturnDate,per);
             }
             if (Objects.equals(type, "Textbook")){
                 String sub = bm.getSubject(bookIDstring);
-                bm.updateT(bookIDstring,name,ISBN,publishDate,author,status,returnDate,sub);
+                bm.updateT(bookIDstring,name,ISBN,publishDate,author,status,newReturnDate,sub);
             }
             if (Objects.equals(type, "ResearchPaper")){
                 String lan = bm.getLanguage(bookIDstring);
                 boolean sta = (boolean) bm.getPeerstatus(bookIDstring);
                 String stastring = Boolean.toString(sta);
                 String sub = bm.getSubject(bookIDstring);
-                bm.updateR(bookIDstring,name,ISBN,publishDate,author,status,returnDate,lan,sub,stastring);
+                bm.updateR(bookIDstring,name,ISBN,publishDate,author,status,newReturnDate,lan,sub,stastring);
             }
             return true;
 
@@ -235,17 +252,18 @@ public class DBbookManager implements IDBbookManager {
      */
 
     @Override
-    public boolean changBookStatus(int bookID, BookPositionStatus status, IMongoDBBookMethods bm){
+    public boolean changeBookStatus(int bookID, BookPositionStatus status, IMongoDBBookMethods bm){
         String bookIDstring = Integer.toString(bookID);
         if (bm.checkBook(bookIDstring)){
-            String name = bm.getName(bookIDstring);
+            String name = bm.getName
+                    (bookIDstring);
             String ISBN = bm.getISBN(bookIDstring);
             String author = bm.getAuthor(bookIDstring);
             String newStatus = BookPositionStatus.toString(status);
             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             String publishDate = dtf.format(bm.getPublishDate(bookIDstring));
             String returnDate;
-            if (newStatus.equals("LENDED")) {
+            if (newStatus.equals("lended")) {
                 returnDate = dtf.format(LocalDate.now().plusDays(30));
             }else{
                 returnDate = "null";
