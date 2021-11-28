@@ -26,7 +26,7 @@ implemented InventoryController and has drawn out the skeleton of BorrowBook, Re
 LoginWindow controllers. 
 
 
-- For the main, we made a demo (see **UI_demo package**) with command executor that shows
+- For the main, we made a demo (see **com.bookSystem.uiDemo package**) with command executor that shows
 how our program is intended to run giving input and produce output by using command lines.
 
 
@@ -60,24 +60,24 @@ Nicole (nzhou27): Organizing and planning method skeleton, Implement UI and main
 
 Vannie (van1): Implementing UserManager, BorrowBook, ReturnBook
 
-Stark (StarkSQ): Implementing Book Entity, BookManager, LoginWindow controller
+Stark (StarkSQ): Implementing Book com.bookSystem.entity, BookManager, LoginWindow com.bookSystem.controller
 
-Kris (lanmanc): Implement User Entity (student/staff)
+Kris (lanmanc): Implement User com.bookSystem.entity (student/staff)
 
 Hewitt (Hewitt6): writing subclasses of Book
 
 
 **- What we are planning on doing:**
 
-Connect controller to UI including make UI more user-friendly.
+Connect com.bookSystem.controller to UI including make UI more user-friendly.
 
-Miley (Mileyz023): Connect LoginWindow (controller) to UI
+Miley (Mileyz023): Connect LoginWindow (com.bookSystem.controller) to UI
 
-Nicole (nzhou27): Connect BorrowBook(controller) to UI
+Nicole (nzhou27): Connect BorrowBook(com.bookSystem.controller) to UI
 
-Vannie (van1): Connect ReturnBook(controller) to UI
+Vannie (van1): Connect ReturnBook(com.bookSystem.controller) to UI
 
-Stark (StarkSQ): Connect Inventory(controller) to UI
+Stark (StarkSQ): Connect Inventory(com.bookSystem.controller) to UI
 
 Kris (lanmanc): Complete testing for UserManager and BookManager(come up with more than one unit test for each method)
 
@@ -115,7 +115,7 @@ implemented InventoryController and has drawn out the skeleton of BorrowBook, Re
 LoginWindow controllers. 
 
 
-- For the main, we made a demo (see **UI_demo package**) with command executor that shows
+- For the main, we made a demo (see **com.bookSystem.uiDemo package**) with command executor that shows
 how our program is intended to run giving input and produce output by using command lines.
 
 
@@ -149,24 +149,24 @@ Nicole: Organizing and planning method skeleton, Implement UI and main
 
 Vannie: Implementing UserManager, BorrowBook, ReturnBook
 
-Stark: Implementing Book Entity, BookManager, LoginWindow controller
+Stark: Implementing Book com.bookSystem.entity, BookManager, LoginWindow com.bookSystem.controller
 
-Kris: Implement User Entity (student/staff)
+Kris: Implement User com.bookSystem.entity (student/staff)
 
 Hewitt: writing subclasses of Book
 
 
 **- What we are planning on doing:**
 
-Connect controller to UI including make UI more user-friendly.
+Connect com.bookSystem.controller to UI including make UI more user-friendly.
 
-Miley: Connect LoginWindow (controller) to UI
+Miley: Connect LoginWindow (com.bookSystem.controller) to UI
 
-Nicole: Connect BorrowBook(controller) to UI
+Nicole: Connect BorrowBook(com.bookSystem.controller) to UI
 
-Vannie: Connect ReturnBook(controller) to UI
+Vannie: Connect ReturnBook(com.bookSystem.controller) to UI
 
-Stark: Connect Inventory(controller) to UI
+Stark: Connect Inventory(com.bookSystem.controller) to UI
 
 Kris: Complete testing for UserManager and BookManager(come up with more than one unit test for each method)
 

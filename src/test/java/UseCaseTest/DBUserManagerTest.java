@@ -1,21 +1,22 @@
 package UseCaseTest;
 
-import Entity.Book.Book;
-import MongoDBGateway.MongoDBStaffMethods;
-import MongoDBGateway.MongoDBStudentMethods;
-import Entity.User.Staff;
-import Entity.User.Student;
+import com.bookSystem.entity.Book.Book;
+import com.bookSystem.entity.User.Staff;
+import com.bookSystem.entity.User.Student;
+import com.bookSystem.mongoDBGateway.IMongoDBStaffMethods;
+import com.bookSystem.mongoDBGateway.IMongoDBStudentMethods;
+import com.bookSystem.mongoDBGateway.MongoDBStaffMethods;
+import com.bookSystem.mongoDBGateway.MongoDBStudentMethods;
+import com.bookSystem.useCase.DBUserManager;
 import org.junit.Before;
 import org.junit.Test;
-import UseCase.DBUserManager;
-import MongoDBGateway.IMongoDBStudentMethods;
-import MongoDBGateway.IMongoDBStaffMethods;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 
 public class DBUserManagerTest {

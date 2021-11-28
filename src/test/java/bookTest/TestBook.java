@@ -1,7 +1,7 @@
 package bookTest;
 
-import UseCase.BookPositionStatus;
-import Entity.Book.Book;
+import com.bookSystem.useCase.BookPositionStatus;
+import com.bookSystem.entity.Book.Book;
 import org.junit.*;
 import java.time.LocalDate;
 

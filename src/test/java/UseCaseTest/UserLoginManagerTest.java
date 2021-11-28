@@ -1,9 +1,10 @@
 package UseCaseTest;
 
-import UseCase.IUserLoginManager;
-import UseCase.UserLoginManager;
-import Entity.User.Student;
-import Entity.User.Staff;
+
+import com.bookSystem.entity.User.Staff;
+import com.bookSystem.entity.User.Student;
+import com.bookSystem.useCase.IUserLoginManager;
+import com.bookSystem.useCase.UserLoginManager;
 import org.junit.*;
 import static org.junit.Assert.*;
 
@@ -29,14 +30,14 @@ public class UserLoginManagerTest {
     public void testStudentModifyPassword() {
         a.setPassword("martin666");
         ulm1.studentModifyPassword("Martin", "martin666", "martin789");
-        assertEquals("martin789", a.getPassword("Martin"));
+        assertEquals("martin789", a.getPassword());
     }
 
     @Test
     public void testStaffModifyPassword() {
         c.setPassword("a123456");
         ulm2.staffModifyPassword("Jason", "a123456", "a654321");
-        assertEquals("a654321", c.getPassword("Jason"));
+        assertEquals("a654321", c.getPassword());
 
     }
 

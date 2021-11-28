@@ -1,6 +1,6 @@
 package userTest;
 
-import Entity.User.Staff;
+import com.bookSystem.entity.User.Staff;
 import org.junit.*;
 
 import static org.junit.Assert.*;
@@ -22,7 +22,7 @@ public class StaffTest {
 
     @Test(timeout = 50)
     public void TestStaffGetPassword(){
-        assertEquals("123", h.getPassword("Jason"));
+        assertEquals("123", h.getPassword());
     }
 
 }

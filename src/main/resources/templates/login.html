@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <style>
+    body {background-color: #444441;
+      font-family: Verdana, sans-serif;
+      color: #eeeded;}
+    p {margin: 10px 50px 50px 10px;}
+    form {margin: 10px 50px 50px 10px;
+      text-align: center;
+      line-height:30px;}
+
+  </style>
+  <meta charset="UTF-8">
+  <title>welcome page</title>
+</head>
+<body>
+<h1 style="text-align:center">Welcome to "ask the magic conch shell" Library Management system</h1>
+<p style="text-align:center">Please select the type of user</p>
+<form th:action="@{/login}" th:method="POST">
+  <input  type="radio" id="user_type_student" value="student" name="user_type">
+  <label for="user_type_student"> Student</label><br>
+  <input type="radio" id="user_type_staff" name="user_type" value="staff">
+  <label for="user_type_staff"> Staff</label><br>
+  <label for="username">Username:</label><br>
+  <input  type="text" id="username" name="username"><br>
+  <label for="pwd">Password:</label><br>
+  <input type="password" id="pwd" name="password"><br><br>
+
+  <button id="login_button" type="submit">Login</button>
+</form>
+
+
+<p style="align-content: center" th:text="*{message}"></p>
+</body>
+</html>

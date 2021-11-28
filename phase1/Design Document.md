@@ -16,7 +16,7 @@ of our entities.
 `2. Major design decisions`
 
 - As we mentioned before, we implemented **MongoDB** to store our data persistently. Therefore, we add a gateway package named
-MongoDBGateway to store all the gateway class and methods that we can use to store, read and update information. 
+com.bookSystem.mongoDBGateway to store all the gateway class and methods that we can use to store, read and update information. 
 MongoDB class enables us to connect to MongoDB. MongoDBStudentMethods contains methods like _checkStudent_, which gets a
 username input and check whether the student is in the Student database. If the student is not in the database, we can 
 add the username, password, Credit score and Borrowing Record to the database through _addStudent_. Student's information
@@ -32,8 +32,8 @@ are using the "location.href" to let the website switch between different pages 
 Since we have already converted this Book Management System into **a Spring Boot framework**, all of our existing files should
 be in their designated packages. The frontend files are in the **"resources"** package, with html files in the **"template"** 
 folder and the other icons planned for phase 2 will be put into the **"static"** folder. The backend java files can be found 
-in main/java, including the controller files. Please note that the controller might look slightly different when we enter 
-phase2 since the controller is not yet connected to the frontend, meaning the Spring Boot annotation is not yet implemented.
+in main/java, including the com.bookSystem.controller files. Please note that the com.bookSystem.controller might look slightly different when we enter 
+phase2 since the com.bookSystem.controller is not yet connected to the frontend, meaning the Spring Boot annotation is not yet implemented.
 
 
 
@@ -41,7 +41,7 @@ phase2 since the controller is not yet connected to the frontend, meaning the Sp
 `3. Design Patterns`
 
 
-1. **Dependency-Injection:** With the implementation of MongoDBGateway, we refactored the code from phase0 using the 
+1. **Dependency-Injection:** With the implementation of com.bookSystem.mongoDBGateway, we refactored the code from phase0 using the 
 dependency-injection design pattern. We first created three interfaces for three gateway class, then we 'injected' these
 interfaces into our use cases, so that our use cases are able to **call methods from gateway without the violation of 
 clean architecture principles.** More specifically, we split our original UserManger into two new use cases: DBUserManager 
@@ -51,11 +51,11 @@ parameter. Similarly, DBbookManager use methods from IMongoDBBookMethods in its 
 no.7 and was updated in later pull requests.)
 
 - **A scenario walk-through for this design pattern:** When a student wants to login, checkStudent() methods from the 
-IDBUserManager would be called from the LoginWindow controller. Then, this method in the use case would call the gateway
+IDBUserManager would be called from the LoginWindow com.bookSystem.controller. Then, this method in the use case would call the gateway
 interface IMongoDBStudentMethods to check whether the username he inputted is in the student database, if yes, we then call
 other methods in the gateway interface for our use case to get all information of this student like credit score and borrowing
 record. After getting these information, we construct a new student entity with them and store it inside the UserLoginManager, 
-return to the controller to let him log in.
+return to the com.bookSystem.controller to let him log in.
 
 
 2. **Command:** In phase2, we are planning to add a new **"shopping cart"** feature to further expand our functionality.
@@ -82,7 +82,7 @@ of the controllers. (For examples of this, please see **the UML diagram** in par
 We also reorganized our codes from phase0 and used **the clean architecture layer packaging strategy** because
 we have more use cases and a new section of gateway methods right now, this strategy is more suitable for us to organize
 our codes, and it can also act as a reminder for us to not violate the clean architecture principles. Right now we have
-two packages to store entity "Book" and "User", one "UseCase" package, one "controller" package and one "MongoDBGateway" 
+two packages to store entity "Book" and "User", one "com.bookSystem.useCase" package, one "com.bookSystem.controller" package and one "com.bookSystem.mongoDBGateway" 
 package for our codes.
 
 
