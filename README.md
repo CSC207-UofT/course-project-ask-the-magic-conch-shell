@@ -8,7 +8,7 @@ This is a README.md file for Team Magic Conch Shell's Library Management Project
 - In order to see our phase 1 Design document and updated specification, please visit [phase1](phase1).
 
 
-- In order to use the methods in the MongoDBGateway Package in [src](src), please add all .jar file in it as Library.
+- In order to use the methods in the com.application.MongoDBGateway Package in [src](src), please add all .jar file in it as Library.
 
 
 - note: src/main/java/com is the auto-generated spring boot main that we plan to implement in the next phase.
@@ -20,7 +20,7 @@ This is a README.md file for Team Magic Conch Shell's Library Management Project
 - For Progress Report, specification, CRC model and Scenario Walk-through, please check [phase0](phase0) directory.
 
 
-- For Skeleton Program and unittests, please visit [src](src) directory. To see our program's UI demonstration, please visit UI_demo 
+- For Skeleton Program and unittests, please visit [src](src) directory. To see our program's UI demonstration, please visit com.application.UI_demo 
 package in java directory.
 
 

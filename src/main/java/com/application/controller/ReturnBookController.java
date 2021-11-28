@@ -1,0 +1,28 @@
+package com.application.controller;
+
+import com.application.Entity.Book.BookCondition;
+import com.application.MongoDBGateway.IMongoDBBookMethods;
+import com.application.MongoDBGateway.MongoDBBookMethods;
+
+import com.application.UseCase.*;
+
+public class ReturnBookController {
+
+
+    /**
+     * change the book status to unlended if the book condition is GOOD, delete the book if it is determined as DAMAGED
+     * @param bookID id of the book wish to be returned
+     * @param BookCondition the physical condition of the book when it is returned
+     */
+    public void returnBook(int bookID, BookCondition BookCondition){
+        IDBbookManager b = new DBbookManager();
+        IMongoDBBookMethods bm = new MongoDBBookMethods();
+        if (BookCondition == com.application.Entity.Book.BookCondition.GOOD){
+            b.changBookStatus(bookID, BookPositionStatus.UNLENDED, bm);
+
+        }
+        else if (BookCondition == com.application.Entity.Book.BookCondition.DAMAGE){
+            b.deleteBook(bookID, bm);
+        }
+
+    }}

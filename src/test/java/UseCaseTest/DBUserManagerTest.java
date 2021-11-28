@@ -1,15 +1,15 @@
 package UseCaseTest;
 
-import Entity.Book.Book;
-import MongoDBGateway.MongoDBStaffMethods;
-import MongoDBGateway.MongoDBStudentMethods;
-import Entity.User.Staff;
-import Entity.User.Student;
+import com.application.Entity.Book.Book;
+import com.application.MongoDBGateway.MongoDBStaffMethods;
+import com.application.MongoDBGateway.MongoDBStudentMethods;
+import com.application.Entity.User.Staff;
+import com.application.Entity.User.Student;
 import org.junit.Before;
 import org.junit.Test;
-import UseCase.DBUserManager;
-import MongoDBGateway.IMongoDBStudentMethods;
-import MongoDBGateway.IMongoDBStaffMethods;
+import com.application.UseCase.DBUserManager;
+import com.application.MongoDBGateway.IMongoDBStudentMethods;
+import com.application.MongoDBGateway.IMongoDBStaffMethods;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -164,7 +164,7 @@ public class DBUserManagerTest {
         test.add("00007");
         test.add("0008");
         UserManager.studentDBModifyBorrowRecord("Eric342",test,StudentMethods);
-        ArrayList<String> result = UserManager.DBGetBorrowingRecord("Eric342",StudentMethods);
+        ArrayList<String> result = UserManager.DBGetBorrowingRecord("Eric342", StudentMethods);
         assertEquals(test, result);
     }
 }

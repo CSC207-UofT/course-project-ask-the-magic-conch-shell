@@ -7,7 +7,7 @@
 In order to borrow a book in the library, a student needs to:
 
 1. Go to the library, provide personal information to the staff. After in-person verification from the staff, the staff 
-is able to use the **LoginWindow**, then call **UserManager** to create a new account for the student **(Student Entity)**. The 
+is able to use the **LoginWindow**, then call **UserManager** to create a new account for the student **(Student com.application.Entity)**. The 
 student would get a new username and a temporary password. Once registered, the **Student** would have a default credit 
 score of 100 and an empty current-borrowing history.
 
@@ -22,7 +22,7 @@ password from the user.
 **UserManager**, find the **Student** account and then change it into a new password using the setter in **Student.**
 
 
-4. To borrow a book, students need to use the **BorrowBook** controller. **BorrowBook** is able to call **BookManager** and 
+4. To borrow a book, students need to use the **BorrowBook** com.application.controller. **BorrowBook** is able to call **BookManager** and 
 **UserManager** to search the Book, check the inventory and the status of the **Book** to see whether it can be borrowed, and 
 the credit score and current-borrowing record of the **Student** will be checked to see if the student is qualified to 
 borrow the book. After the book is successfully borrowed, **BookManager** can be used to change the book status to LENDED, 

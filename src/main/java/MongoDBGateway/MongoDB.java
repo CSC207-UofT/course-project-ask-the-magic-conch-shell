@@ -22,7 +22,7 @@ public class MongoDB {
             if (Objects.equals(collectionName, "book")) {
                 db = mongoclient.getDB("Entity");
             } else {
-                db = mongoclient.getDB("Entity/User");
+                db = mongoclient.getDB("User");
             }
             System.out.println("MongoDB Connected");
             coll = db.getCollection(collectionName);
