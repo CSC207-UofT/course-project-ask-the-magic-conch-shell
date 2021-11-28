@@ -7,12 +7,14 @@ import MongoDBGateway.IMongoDBStudentMethods;
 import MongoDBGateway.MongoDBBookMethods;
 import MongoDBGateway.MongoDBStudentMethods;
 import UseCase.*;
-
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-
+@Controller
+@RequestMapping("studentBorrowBook")
 public class BorrowBookController {
 
     /**
