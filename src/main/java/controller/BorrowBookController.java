@@ -1,7 +1,7 @@
 package controller;
 
 
-import Book.Book;
+import Entity.Book.Book;
 import MongoDBGateway.IMongoDBBookMethods;
 import MongoDBGateway.IMongoDBStudentMethods;
 import MongoDBGateway.MongoDBBookMethods;

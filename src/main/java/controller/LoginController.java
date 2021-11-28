@@ -4,8 +4,8 @@ import MongoDBGateway.IMongoDBStudentMethods;
 import MongoDBGateway.MongoDBStaffMethods;
 import MongoDBGateway.MongoDBStudentMethods;
 import UseCase.*;
-import User.Staff;
-import User.Student;
+import Entity.User.Staff;
+import Entity.User.Student;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 

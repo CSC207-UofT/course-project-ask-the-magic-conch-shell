@@ -1,6 +1,6 @@
 package UseCase;
 
-import Book.Book;
+import Entity.Book.Book;
 import MongoDBGateway.IMongoDBBookMethods;
 
 import java.time.LocalDate;

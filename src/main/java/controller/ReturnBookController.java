@@ -1,6 +1,6 @@
 package controller;
 
-import Book.BookCondition;
+import Entity.Book.BookCondition;
 import MongoDBGateway.IMongoDBBookMethods;
 import MongoDBGateway.MongoDBBookMethods;
 
@@ -17,11 +17,11 @@ public class ReturnBookController {
     public void returnBook(int bookID, BookCondition BookCondition){
         IDBbookManager b = new DBbookManager();
         IMongoDBBookMethods bm = new MongoDBBookMethods();
-        if (BookCondition == Book.BookCondition.GOOD){
-            b.changeBookStatus(bookID, BookPositionStatus.UNLENDED, bm);
+        if (BookCondition == Entity.Book.BookCondition.GOOD){
+            b.changBookStatus(bookID, BookPositionStatus.UNLENDED, bm);
 
         }
-        else if (BookCondition == Book.BookCondition.DAMAGE){
+        else if (BookCondition == Entity.Book.BookCondition.DAMAGE){
             b.deleteBook(bookID, bm);
         }
 
