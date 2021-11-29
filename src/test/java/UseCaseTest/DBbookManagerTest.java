@@ -62,7 +62,7 @@ public class DBbookManagerTest {
         @Test(timeout = 2000)
         public void testDeleteBook() {
             assertTrue(dbm.deleteBook(27, bm));
-            assertNull(dbm.searchBookByID(2, bm));
+            assertNull(dbm.searchBookByID(27, bm));
         }
 
         /**
@@ -86,7 +86,8 @@ public class DBbookManagerTest {
          * Test whether we can check a book's return date.
          */
         @Test(timeout = 100)
-        public void testCheckReturnDate(){assertEquals(returnDate, dbm.checkReturnDate(book2.getBookID(), bm));}
+        public void testCheckReturnDate(){
+            assertEquals(returnDate, dbm.checkReturnDate(23, bm));}
 
        /**
         * Test whether we can change a book's return date.

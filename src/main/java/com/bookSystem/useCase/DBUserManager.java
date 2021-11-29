@@ -155,12 +155,17 @@ public class DBUserManager implements IDBUserManager {
      */
 
     @Override
-    public ArrayList<String> DBGetBorrowingRecord(String username, IMongoDBStudentMethods sum) {
+    public ArrayList<Integer> DBGetBorrowingRecord(String username, IMongoDBStudentMethods sum) {
+        ArrayList<Integer> newBr = new ArrayList<>();
         if (checkStudent(username, sum)) {
-            return sum.getBorrowingHistory(username);
+            ArrayList<String> br = sum.getBorrowingHistory(username);
+            for (String s: br){
+                newBr.add(Integer.valueOf(s));
+            }
+
 
         }
-        return null;
+        return newBr;
     }
 
     /**
@@ -208,11 +213,15 @@ public class DBUserManager implements IDBUserManager {
      */
 
     @Override
-    public void studentDBModifyBorrowRecord(String username, ArrayList<String> newBR, IMongoDBStudentMethods sum) {
+    public void studentDBModifyBorrowRecord(String username, ArrayList<Integer> newBR, IMongoDBStudentMethods sum) {
         if (checkStudent(username, sum)) {
+            ArrayList<String> arr = new ArrayList<>();
+            for (Integer i: newBR){
+                arr.add(i.toString());
+            }
             String pw = sum.getPassword(username);
             int cs = sum.getCreditScore(username);
-            sum.update(username, pw, cs, newBR);
+            sum.update(username, pw, cs, arr);
 
         }
     }

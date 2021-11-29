@@ -131,10 +131,10 @@ public class DBUserManagerTest {
      */
     @Test
     public void TestStudentGetBorrowingHistory() {
-        ArrayList<String> result = UserManager.DBGetBorrowingRecord("Mike",StudentMethods);
-        ArrayList<String> test = new ArrayList<>();
-        test.add("00006");
-        test.add("00007");
+        ArrayList<Integer> result = UserManager.DBGetBorrowingRecord("Mike",StudentMethods);
+        ArrayList<Integer> test = new ArrayList<>();
+        test.add(6);
+        test.add(7);
         assertEquals(test, result);
     }
     /**
@@ -160,12 +160,12 @@ public class DBUserManagerTest {
     @Test
     public void TestStudentModifyBorrowingHistory() {
 
-        ArrayList<String> test = new ArrayList<>();
-        test.add("00006");
-        test.add("00007");
-        test.add("00008");
+        ArrayList<Integer> test = new ArrayList<>();
+        test.add(6);
+        test.add(7);
+        test.add(8);
         UserManager.studentDBModifyBorrowRecord("Harry",test,StudentMethods);
-        ArrayList<String> result = UserManager.DBGetBorrowingRecord("Harry",StudentMethods);
+        ArrayList<Integer> result = UserManager.DBGetBorrowingRecord("Harry",StudentMethods);
         assertEquals(test, result);
     }
 }

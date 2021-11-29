@@ -14,7 +14,7 @@ public class Student extends User {
     /**
      * An arraylist of a Student's current borrowing records
      */
-    private ArrayList<Book> CurrentBorrowingRecords;
+    private ArrayList<Integer> CurrentBorrowingRecords;
 
 
     /**
@@ -52,7 +52,7 @@ public class Student extends User {
         if (CurrentBorrowingRecords.size() >= 5){
             return false;
         }
-        CurrentBorrowingRecords.add(book);
+        CurrentBorrowingRecords.add(book.getBookID());
         return true;
 
     }
@@ -61,10 +61,11 @@ public class Student extends User {
      * Return a list of books a Student currently owned
      * @return an arraylist of Books a student is borrowing
      */
-    public ArrayList<Book> CurrentBorrowingRecordsGetter(){return this.CurrentBorrowingRecords;
+    public ArrayList<Integer> CurrentBorrowingRecordsGetter(){return this.CurrentBorrowingRecords;
     }
 
-    public void borrowingRecordsSetter(ArrayList<String> a){
+    public void borrowingRecordsSetter(ArrayList<Integer> br){
+        this.CurrentBorrowingRecords = br;
 
     }
 
