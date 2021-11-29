@@ -19,7 +19,7 @@ public class UserLoginManager implements IUserLoginManager {
     public Staff currentStaff;
 
 
-    public UserLoginManager(String username, String password, int creditScore, ArrayList<String> br) {
+    public UserLoginManager(String username, String password, int creditScore, ArrayList<Integer> br) {
         this.currentStudent = new Student(username);
         this.currentStudent.setPassword(password);
         this.currentStudent.CreditScoreSetter(creditScore);

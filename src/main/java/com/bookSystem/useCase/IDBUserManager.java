@@ -25,13 +25,13 @@ public interface IDBUserManager {
 
     Integer DBGetCreditScore(String username, IMongoDBStudentMethods sum);
 
-    ArrayList<String> DBGetBorrowingRecord(String username, IMongoDBStudentMethods sum);
+    ArrayList<Integer> DBGetBorrowingRecord(String username, IMongoDBStudentMethods sum);
 
     void modifyDBCreditScore(String username, int changeBy, IMongoDBStudentMethods sum);
 
     void studentDBModifyPassword(String username, String oldPassword, String newPassword, IMongoDBStudentMethods sum);
 
-    void studentDBModifyBorrowRecord(String username, ArrayList<String> newBR, IMongoDBStudentMethods sum);
+    void studentDBModifyBorrowRecord(String username, ArrayList<Integer> newBR, IMongoDBStudentMethods sum);
 
     void staffDBModifyPassword(String username, String oldPassword, String newPassword, IMongoDBStaffMethods sm);
 }

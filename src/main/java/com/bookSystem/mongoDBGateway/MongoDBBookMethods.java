@@ -18,14 +18,14 @@ public class MongoDBBookMethods implements IMongoDBBookMethods {
     public static void addToOriginal(DBObject dbObject) {
         MongoClientURI uri = new MongoClientURI("mongodb+srv://Hewitt:C*gh8%40f8R*9Hw%40U@cluster0.hmi0f.mongodb.net/User?retryWrites=true&w=majority");
         MongoClient mongoclient = new MongoClient(uri);
-        DB db = mongoclient.getDB("Entity");
+        DB db = mongoclient.getDB("Book");
         db.getCollection("book").insert(dbObject);
     }
 
     public static void deleteOriginal(DBObject dbObject) {
         MongoClientURI uri = new MongoClientURI("mongodb+srv://Hewitt:C*gh8%40f8R*9Hw%40U@cluster0.hmi0f.mongodb.net/User?retryWrites=true&w=majority");
         MongoClient mongoclient = new MongoClient(uri);
-        DB db = mongoclient.getDB("Entity");
+        DB db = mongoclient.getDB("Book");
         db.getCollection("book").remove(dbObject);
     }
 
@@ -255,9 +255,9 @@ public class MongoDBBookMethods implements IMongoDBBookMethods {
             dataServer.store("book", "id");
             MongoDBBookMethods.dataStored = dataServer.database;
         }
-        if (dataStored.get(bookID).get("Status") == "unlended") {
+        if ((dataStored.get(bookID).get("Status")).equals("unlended")) {
             return BookPositionStatus.UNLENDED;
-        }else if (dataStored.get(bookID).get("Status") == "lended"){
+        }else if ((dataStored.get(bookID).get("Status")).equals("lended")){
             return BookPositionStatus.LENDED;
         }
         return null;

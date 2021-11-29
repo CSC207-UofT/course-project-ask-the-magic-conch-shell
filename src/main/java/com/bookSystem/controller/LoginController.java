@@ -87,11 +87,9 @@ public class LoginController {
             if (Objects.equals(user_type, "student")) {
                 if (sm.checkStudent(username)
                         && Objects.equals(password, um.studentDBGetPassword(username, sm))) {
-                    Student s = new Student(username);
-                    s.setPassword(um.studentDBGetPassword(username, sm));
-                    s.CreditScoreSetter(um.DBGetCreditScore(username, sm));
-                    s.borrowingRecordsSetter(um.DBGetBorrowingRecord(username, sm));
-                    UserLoginManager currStudent = new UserLoginManager(s);
+
+                    UserLoginManager currStudent = new UserLoginManager(username, um.studentDBGetPassword(username, sm),
+                            um.DBGetCreditScore(username, sm), um.DBGetBorrowingRecord(username, sm) );
                     return "studentMenu";
 
                 } else {
@@ -102,9 +100,7 @@ public class LoginController {
             else if (Objects.equals(user_type, "staff")) {
                 if (sam.checkStaff(username)
                         && Objects.equals(password, um.staffDBGetPassword(username, sam))) {
-                    Staff s = new Staff(username);
-                    s.setPassword(um.studentDBGetPassword(username, sm));
-                    UserLoginManager currStaff = new UserLoginManager(s);
+                    UserLoginManager currStaff = new UserLoginManager(username, um.studentDBGetPassword(username, sm));
                     return "staffMenu";
                 } else {
                     model.addAttribute("message", "Your username and password does not match, please try again");
