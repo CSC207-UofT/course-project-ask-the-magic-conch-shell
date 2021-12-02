@@ -10,25 +10,23 @@ public class MongoDBStaffMethods implements IMongoDBStaffMethods {
     public static HashMap<String, DBObject> dataStored;
 
     public static void addToOriginal(DBObject dbObject){
-        MongoClientURI uri = new MongoClientURI("mongodb+srv://Hewitt:C*gh8%40f8R*9Hw%40U@cluster0.hmi0f.mongodb.net/User?retryWrites=true&w=majority");
-        MongoClient mongoclient = new MongoClient(uri);
-        DB db = mongoclient.getDB("User");
+        DB db = getDb();
         db.getCollection("Staff").insert(dbObject);
     }
 
-    public static void deleteOriginal(DBObject dbObject){
+    private static DB getDb() {
         MongoClientURI uri = new MongoClientURI("mongodb+srv://Hewitt:C*gh8%40f8R*9Hw%40U@cluster0.hmi0f.mongodb.net/User?retryWrites=true&w=majority");
         MongoClient mongoclient = new MongoClient(uri);
-        DB db = mongoclient.getDB("User");
+        return mongoclient.getDB("User");
+    }
+
+    public static void deleteOriginal(DBObject dbObject){
+        DB db = getDb();
         db.getCollection("Staff").remove(dbObject);
     }
 
     public void update(String userName, String passWord) {
-        if (dataStored == null) {
-            MongoDB dataServer = new MongoDB();
-            dataServer.store("Staff", "username");
-            dataStored = dataServer.database;
-        }
+        checkNone();
         DBObject delete = MongoDBStaffMethods.dataStored.get(userName);
         DBObject newObject = new BasicDBObject();
         newObject.put("username", userName);
@@ -39,22 +37,21 @@ public class MongoDBStaffMethods implements IMongoDBStaffMethods {
 
     }
 
-    public String getPassword(String UserName) {
-        if (MongoDBStaffMethods.dataStored == null) {
+    private void checkNone() {
+        if (dataStored == null) {
             MongoDB dataServer = new MongoDB();
             dataServer.store("Staff", "username");
             dataStored = dataServer.database;
         }
+    }
 
+    public String getPassword(String UserName) {
+        checkNone();
         return (String) dataStored.get(UserName).get("password");
     }
 
     public void addStaff(String userName, String passWord) {
-        if (MongoDBStaffMethods.dataStored == null) {
-            MongoDB dataServer = new MongoDB();
-            dataServer.store("Staff", "username");
-            MongoDBStaffMethods.dataStored = dataServer.database;
-        }
+        checkNone();
         DBObject newObject = new BasicDBObject();
         newObject.put("username", userName);
         newObject.put("password", passWord);
@@ -63,11 +60,7 @@ public class MongoDBStaffMethods implements IMongoDBStaffMethods {
     }
 
     public boolean checkStaff(String userName) {
-        if (MongoDBStaffMethods.dataStored == null) {
-            MongoDB dataServer = new MongoDB();
-            dataServer.store("Staff", "username");
-            dataStored = dataServer.database;
-        }
+        checkNone();
         return dataStored.containsKey(userName);
     }
 

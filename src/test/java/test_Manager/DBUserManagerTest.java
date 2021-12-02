@@ -159,8 +159,8 @@ public class DBUserManagerTest {
         test.add("00006");
         test.add("00007");
         test.add("0008");
-        UserManager.studentDBModifyBorrowRecord("Eric342",test,StudentMethods);
-        ArrayList<String> result = UserManager.DBGetBorrowingRecord("Eric342",StudentMethods);
+        UserManager.studentDBModifyBorrowRecord("snowman",test,StudentMethods);
+        ArrayList<String> result = UserManager.DBGetBorrowingRecord("snowman",StudentMethods);
         assertEquals(test, result);
     }
 }
