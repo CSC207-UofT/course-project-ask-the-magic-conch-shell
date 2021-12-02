@@ -8,15 +8,15 @@ import java.util.ArrayList;
 
 
 public interface IMongoDBBookMethods {
-    void updateM(String bookID, String name, String ISBN, String publishDate, String author, String status, String returnDate, String seriesname, String category);
+    void updateMagazine(String bookID, String name, String ISBN, String publishDate, String author, String status, String returnDate, String seriesname, String category);
 
-    void updateR(String bookID, String name, String ISBN, String publishDate, String author, String status, String returnDate, String language, String subject, String peerstatus);
+    void updateRearchPaper(String bookID, String name, String ISBN, String publishDate, String author, String status, String returnDate, String language, String subject, String peerstatus);
 
-    void updateD(String bookID, String name, String ISBN, String publishDate, String author, String status, String returnDate, String language);
+    void updateDictionary(String bookID, String name, String ISBN, String publishDate, String author, String status, String returnDate, String language);
 
-    void updateL(String bookID, String name, String ISBN, String publishDate, String author, String status, String returnDate, String period);
+    void updateLiterature(String bookID, String name, String ISBN, String publishDate, String author, String status, String returnDate, String period);
 
-    void updateT(String bookID, String name, String ISBN, String publishDate, String author, String status, String returnDate, String subject);
+    void updateTextbook(String bookID, String name, String ISBN, String publishDate, String author, String status, String returnDate, String subject);
 
     String getName(String bookID);
 
