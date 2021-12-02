@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Borrow Book</title>
+    <title>create new user</title>
     <style>
         .container {
             display: grid;
@@ -88,6 +87,7 @@
         form.step2 {
             border:white;
             margin:3rem;
+            color: white;
         }
 
         .pass_box{
@@ -119,7 +119,7 @@
 <body onload="closeNav()">
 <div class="container">
     <div id="header" class="topOfThePage">
-        <h2 style="text-align:left; margin:2%; color:white">Change password</h2>
+        <h2 style="text-align:left; margin:2%; color:white">Create New User</h2>
         <button class="accountButton" onclick="openNav()">&#9776; Account</button>
     </div>
     <div id="account" class="accountInfo">
@@ -132,17 +132,24 @@
     </div>
 
     <div class="menu">
-        <form class="step2" th:action="@{/extend}">
-            <label style="color:white;" for="bookidToExtend">Please input the book ID of the book that you wish to extend the return date for
-            </label><br><br>
-            <input class="pass_box" type="text" id="bookidToExtend" name="bookidToExtend">
+        <form class="step2" th:action="@{/create}">
+            <p>Please select the type of account you wish to create</p>
+            <input  type="radio" id="user_type_student" value="student" name="user_type">
+            <label for="user_type_student"> Student</label><br>
+            <input type="radio" id="user_type_staff" name="user_type" value="staff">
+            <label for="user_type_staff"> Staff</label><br>
+            <label style="color:white;" for="createuser">Please input your desired username
+            </label>
+            <input class="pass_box" type="text" id="createuser" name="createNewUser">
             <input style="text-align: right" id="extendButton" name="extend" type="submit" value="request to extend">
+
         </form>
 
 
     </div>
 
     <div class="messages" id="message">
+        <p th:text="*{message}"></p>
         <button id="returnToMenu" class="returnToMenu" onclick="goToMenu()">Go Back To Menu</button>
     </div>
 
@@ -169,7 +176,7 @@
     }
 
     function goToMenu() {
-        location.href = "studentMenu.html"
+        location.href = "staffMenu.html"
     }
 
 

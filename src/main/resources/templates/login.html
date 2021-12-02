@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <style>
     body {background-color: #444441;
@@ -10,6 +9,11 @@
     form {margin: 10px 50px 50px 10px;
       text-align: center;
       line-height:30px;}
+
+    .b {
+      text-align: center;
+      line-height:30px;
+    }
 
   </style>
   <meta charset="UTF-8">
@@ -27,11 +31,22 @@
   <input  type="text" id="username" name="username"><br>
   <label for="pwd">Password:</label><br>
   <input type="password" id="pwd" name="password"><br><br>
-
   <button id="login_button" type="submit">Login</button>
+
+
+
 </form>
+<div class="b">
+  <button id="forgot" onclick="forgettable()">Forgot Password?</button>
+</div>
 
 
-<p style="align-content: center" th:text="*{message}"></p>
+<p class="b" th:text="*{message}" id="sen"></p>
 </body>
+<script>
+  function forgettable() {
+    document.getElementById("sen").innerHTML = "if you are a student, please reach out to a staff " +
+            "member at the front desk, they will help out with the password reset process." + "\n" +
+            "if you are a staff member, please reach out to admin at IT"}
+</script>
 </html>

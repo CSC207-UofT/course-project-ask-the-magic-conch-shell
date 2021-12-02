@@ -1,13 +1,8 @@
 package com.bookSystem.controller;
-
-import com.bookSystem.entity.User.Staff;
-import com.bookSystem.entity.User.Student;
 import com.bookSystem.mongoDBGateway.IMongoDBStaffMethods;
 import com.bookSystem.mongoDBGateway.IMongoDBStudentMethods;
-import com.bookSystem.mongoDBGateway.MongoDBStaffMethods;
-import com.bookSystem.mongoDBGateway.MongoDBStudentMethods;
-import com.bookSystem.useCase.DBUserManager;
 import com.bookSystem.useCase.IDBUserManager;
+import com.bookSystem.useCase.IUserLoginManager;
 import com.bookSystem.useCase.UserLoginManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,21 +29,20 @@ public class LoginController {
     private IMongoDBStaffMethods sam;
 
     @GetMapping
-    public String loadLogin(Model model){
-
-        model.addAttribute("user_type", "");
-        model.addAttribute("username", "");
-        model.addAttribute("password", "");
+    public String loadLogin() {
 
 
         return "login";
     }
 
-    /**
-     * create a new account and add into our database
-     * @param user_type the user type of this to be created account
-     * @param username the username of the account
+    /*
      */
+/**
+ * create a new account and add into our database
+ * @param user_type the user type of this to be created account
+ * @param username the username of the account
+ *//*
+
     public void creatNewUser(String user_type, String username){
         if (Objects.equals(user_type, "Student")){
             String pass = randomPasswordGenerator();
@@ -68,36 +62,37 @@ public class LoginController {
             um.createNewUser(s, sm);
 
         }}
+*/
 
 
     /**
      * login method will return true if the username exist in the database and the input password matches the record
      * in the database, else return false, as the login is unsuccessful.
+     *
      * @param user_type type of the account that is requesting to log in.
-     * @param username username
-     * @param password password
+     * @param username  username
+     * @param password  password
      * @return return true is the username exist in our database and the password match with the username, return
      * false otherwise
      */
     @PostMapping("")
-    public String login(@RequestParam(defaultValue = "null", name="user_type") String user_type, @RequestParam("username") String username,
-                        @RequestParam("password")String password, Model model){
+    public String login(@RequestParam(defaultValue = "null", name = "user_type") String user_type, @RequestParam("username") String username,
+                        @RequestParam("password") String password, Model model) {
 
-        if(!Objects.equals(user_type, "null")){
+        if (!Objects.equals(user_type, "null")) {
             if (Objects.equals(user_type, "student")) {
                 if (sm.checkStudent(username)
                         && Objects.equals(password, um.studentDBGetPassword(username, sm))) {
 
                     UserLoginManager currStudent = new UserLoginManager(username, um.studentDBGetPassword(username, sm),
-                            um.DBGetCreditScore(username, sm), um.DBGetBorrowingRecord(username, sm) );
+                            um.DBGetCreditScore(username, sm), um.DBGetBorrowingRecord(username, sm));
                     return "studentMenu";
 
                 } else {
                     model.addAttribute("message", "Your username and password does not match, please try again");
                     return "login";
                 }
-            }
-            else if (Objects.equals(user_type, "staff")) {
+            } else if (Objects.equals(user_type, "staff")) {
                 if (sam.checkStaff(username)
                         && Objects.equals(password, um.staffDBGetPassword(username, sam))) {
                     UserLoginManager currStaff = new UserLoginManager(username, um.studentDBGetPassword(username, sm));
@@ -107,23 +102,36 @@ public class LoginController {
                     return "login";
                 }
             }
-        }
-        else{
+        } else {
             model.addAttribute("message", "Please select a user type");
 
-            return "login";}
+            return "login";
+        }
         return "login";
 
     }
 
+/*
+    @PutMapping()
+    public String forgetPassword(Model model) {
+        model.addAttribute("message", "if you are a student, please reach out to a staff " +
+                "member at the front desk, they will help out with the password reset process \n" +
+                "if you are a staff member, please reach out to admin at IT");
+        return "login";
+    }
+*/
 
 
 
-    /**
-     *
-     * @param curr_user the logged-in user
-     * @param new_password the new password that replace the old one
+    /*
+
      */
+/**
+ *
+ * @param curr_user the logged-in user
+ * @param new_password the new password that replace the old one
+ *//*
+
     public void changePassword(UserLoginManager curr_user, String new_password){
         if (curr_user.currentStudent != null){
             curr_user.studentModifyPassword(curr_user.currentStudent.getUsername(),
@@ -137,18 +145,22 @@ public class LoginController {
 
     }
 
-    /**
-     *
-     * @return return a random length 5, all capital letter temporary password.
-     */
+    */
+/**
+ *
+ * @return return a random length 5, all capital letter temporary password.
+ *//*
+
     private String randomPasswordGenerator() {
         return getString();
 
     }
 
-    /**
-     * @return return the desired long temporary password for the randomPasswordGenerator
-     */
+    */
+/**
+ * @return return the desired long temporary password for the randomPasswordGenerator
+ *//*
+
     private String getString() {
         String ran_pick_lst = "QWERTYUIOPASDFGHJKLZXCVBNM";
         Random ran = new Random();
@@ -161,4 +173,5 @@ public class LoginController {
 
         return pass;
     }
+*/
 }
