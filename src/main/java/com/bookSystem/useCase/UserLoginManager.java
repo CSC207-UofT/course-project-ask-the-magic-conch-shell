@@ -17,6 +17,7 @@ public class UserLoginManager implements IUserLoginManager {
 
     public Student currentStudent;
     public Staff currentStaff;
+    private final ArrayList<IUserLoginManager> cart = new ArrayList<>();
 
 
     public UserLoginManager(String username, String password, int creditScore, ArrayList<Integer> br) {
@@ -25,7 +26,6 @@ public class UserLoginManager implements IUserLoginManager {
         this.currentStudent.CreditScoreSetter(creditScore);
         this.currentStudent.borrowingRecordsSetter(br);
 
-
     }
 
     public UserLoginManager(String username, String password) {
@@ -33,6 +33,7 @@ public class UserLoginManager implements IUserLoginManager {
         this.currentStaff.setPassword(password);
 
     }
+
 
 
         /**
@@ -91,6 +92,20 @@ public class UserLoginManager implements IUserLoginManager {
     public void execute() {
 
     }
+
+    public void addToCart(IUserLoginManager order){
+        cart.add(order);
+        }
+
+
+    public void placeOrders(){
+        for (IUserLoginManager order : cart) {
+            order.execute();
+        }
+        cart.clear();
+    }
+
+
 }
 
 

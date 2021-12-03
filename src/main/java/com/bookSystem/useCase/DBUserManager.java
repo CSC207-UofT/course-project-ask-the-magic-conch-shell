@@ -245,6 +245,16 @@ public class DBUserManager implements IDBUserManager {
 
     }
 
+    public void addOrder(){}
+    /*parameter is a type Book,and a student. Add the book to the student's borrowRecord.
+
+     */
+
+    public void deleteOrder(){}}
+/*parameter is a type Book,and a student. Remove the book to the student's borrowRecord.
+
+ */
 
 
-}
+
+

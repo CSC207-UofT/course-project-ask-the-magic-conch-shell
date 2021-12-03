@@ -252,9 +252,9 @@ public class DBbookManager implements IDBbookManager {
      */
 
     @Override
-    public boolean changeBookStatus(int bookID, BookPositionStatus status, IMongoDBBookMethods bm){
+    public boolean changeBookStatus(int bookID, BookPositionStatus status, IMongoDBBookMethods bm) {
         String bookIDstring = Integer.toString(bookID);
-        if (bm.checkBook(bookIDstring)){
+        if (bm.checkBook(bookIDstring)) {
             String name = bm.getName
                     (bookIDstring);
             String ISBN = bm.getISBN(bookIDstring);
@@ -265,45 +265,51 @@ public class DBbookManager implements IDBbookManager {
             String returnDate;
             if (newStatus.equals("lended")) {
                 returnDate = dtf.format(LocalDate.now().plusDays(30));
-            }else{
+            } else {
                 returnDate = "null";
             }
             String type = bm.getType(bookIDstring);
-            if (Objects.equals(type, "Magazine")){
+            if (Objects.equals(type, "Magazine")) {
                 String ser = bm.getSeriesName(bookIDstring);
                 String cat = bm.getCategory(bookIDstring);
-                bm.updateM(bookIDstring,name,ISBN,publishDate,author,newStatus,returnDate,ser,cat);
+                bm.updateM(bookIDstring, name, ISBN, publishDate, author, newStatus, returnDate, ser, cat);
             }
-            if (Objects.equals(type, "Dictionary")){
+            if (Objects.equals(type, "Dictionary")) {
                 String lan = bm.getLanguage(bookIDstring);
-                bm.updateD(bookIDstring,name,ISBN,publishDate,author,newStatus,returnDate,lan);
+                bm.updateD(bookIDstring, name, ISBN, publishDate, author, newStatus, returnDate, lan);
             }
-            if (Objects.equals(type, "Literature")){
+            if (Objects.equals(type, "Literature")) {
                 String per = bm.getPeriod(bookIDstring);
-                bm.updateL(bookIDstring,name,ISBN,publishDate,author,newStatus,returnDate,per);
+                bm.updateL(bookIDstring, name, ISBN, publishDate, author, newStatus, returnDate, per);
             }
-            if (Objects.equals(type, "Textbook")){
+            if (Objects.equals(type, "Textbook")) {
                 String sub = bm.getSubject(bookIDstring);
-                bm.updateT(bookIDstring,name,ISBN,publishDate,author,newStatus,returnDate,sub);
+                bm.updateT(bookIDstring, name, ISBN, publishDate, author, newStatus, returnDate, sub);
             }
-            if (Objects.equals(type, "ResearchPaper")){
+            if (Objects.equals(type, "ResearchPaper")) {
                 String lan = bm.getLanguage(bookIDstring);
                 boolean sta = (boolean) bm.getPeerstatus(bookIDstring);
                 String stastring = Boolean.toString(sta);
                 String sub = bm.getSubject(bookIDstring);
-                bm.updateR(bookIDstring,name,ISBN,publishDate,author,newStatus,returnDate,lan,sub,stastring);
+                bm.updateR(bookIDstring, name, ISBN, publishDate, author, newStatus, returnDate, lan, sub, stastring);
             }
             return true;
-    }
+        }
         return false;
     }
 
+
     public void addOrder(){}
-    public void deleteOrder(){}
+    /*parameter is a type Book, set the book status to lended
+
+     */
+
+    public void deleteOrder(){}}
+    /*parameter is a type Book, set the book status to unlended
+
+     */
 
 
 
 
 
-
-}

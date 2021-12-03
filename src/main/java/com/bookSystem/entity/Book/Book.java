@@ -1,6 +1,7 @@
 package com.bookSystem.entity.Book;
 
 import com.bookSystem.useCase.BookPositionStatus;
+import com.bookSystem.useCase.DBbookManager;
 
 import java.time.LocalDate;
 
@@ -41,6 +42,7 @@ public class Book {
      * book category
      */
     public String type;
+    public com.bookSystem.useCase.DBbookManager DBbookManager;
 
     /**
      *

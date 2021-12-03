@@ -1,10 +1,13 @@
 package com.bookSystem.entity.User;
 
+import com.bookSystem.useCase.DBUserManager;
+
 /**
  * Represents a User in the system 
  */
 public abstract class User {
 
+    public DBUserManager DBUserManager;
     /**
      * The username of a User
      */
@@ -19,8 +22,7 @@ public abstract class User {
      * @param username username
      */
 
-    public User(String username) {
-        this.username = username;
+    public User(String username) {this.username = username;
     }
 
     /**
