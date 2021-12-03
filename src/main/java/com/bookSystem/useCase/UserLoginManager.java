@@ -86,6 +86,13 @@ public class UserLoginManager implements IUserLoginManager {
     public int BorrowedBookAmount() {
         return currentStudent.CurrentBorrowingRecordsGetter().size();
     }
+
+    @Override
+    public void execute() {
+
     }
+}
+
+
 
 
