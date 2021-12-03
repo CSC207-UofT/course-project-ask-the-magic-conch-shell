@@ -298,6 +298,9 @@ public class DBbookManager implements IDBbookManager {
         return false;
     }
 
+    public void addOrder(){}
+    public void deleteOrder(){}
+
 
 
 

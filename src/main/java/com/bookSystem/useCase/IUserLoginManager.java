@@ -12,4 +12,6 @@ public interface IUserLoginManager {
     void staffModifyPassword(String username, String oldPassword, String newPassword);
 
     int BorrowedBookAmount();
+
+    void execute();
 }
