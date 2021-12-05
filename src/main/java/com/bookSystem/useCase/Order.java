@@ -54,7 +54,7 @@ public abstract class Order implements IUserLoginManager{
         }
 
     public String toString(){
-        return Integer.toString(this.book.getBookID()) + this.book.getBookName();
+        return this.book.getBookID() + ":" +this.book.getBookName();
 
     }
 }
