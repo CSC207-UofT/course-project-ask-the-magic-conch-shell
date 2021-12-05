@@ -20,7 +20,11 @@
 
         .menu { grid-area: menu; background-color: #444441}
 
-        .messages { grid-area: messages; background-color: #444441}
+        .messages { grid-area: messages;
+            background-color: #444441;
+            color: white;
+            font-size: 20px;
+        }
 
         html, body , .container {
             height: 100%;
@@ -112,6 +116,10 @@
             margin: 2rem 2rem;
             cursor: pointer;
         }
+        #me {
+            font-size: 16px;
+            text-align: center;
+        }
 
 
     </style>
@@ -132,7 +140,7 @@
     </div>
 
     <div class="menu">
-        <form class="step2" th:action="@{/create}">
+        <form class="step2" th:action="@{/create}" th:method="POST">
             <p>Please select the type of account you wish to create</p>
             <input  type="radio" id="user_type_student" value="student" name="user_type">
             <label for="user_type_student"> Student</label><br>
@@ -141,7 +149,7 @@
             <label style="color:white;" for="createuser">Please input your desired username
             </label>
             <input class="pass_box" type="text" id="createuser" name="createNewUser">
-            <input style="text-align: right" id="extendButton" name="extend" type="submit" value="request to extend">
+            <button id="create" type="submit">Create User</button>
 
         </form>
 
@@ -149,7 +157,7 @@
     </div>
 
     <div class="messages" id="message">
-        <p th:text="*{message}"></p>
+        <p id = "me" th:text="*{message}"></p>
         <button id="returnToMenu" class="returnToMenu" onclick="goToMenu()">Go Back To Menu</button>
     </div>
 

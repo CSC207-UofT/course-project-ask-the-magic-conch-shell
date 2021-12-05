@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Objects;
-import java.util.Random;
+
 
 @Controller
 @RequestMapping("login")
@@ -35,34 +35,6 @@ public class LoginController {
         return "login";
     }
 
-    /*
-     */
-/**
- * create a new account and add into our database
- * @param user_type the user type of this to be created account
- * @param username the username of the account
- *//*
-
-    public void creatNewUser(String user_type, String username){
-        if (Objects.equals(user_type, "Student")){
-            String pass = randomPasswordGenerator();
-            Student s = new Student(username);
-            s.setPassword(pass);
-            IMongoDBStudentMethods sm = new MongoDBStudentMethods();
-            IDBUserManager um = new DBUserManager();
-
-            um.createNewUser(s, sm);
-        }
-        else if (Objects.equals(user_type, "Staff")){
-            String pass = randomPasswordGenerator();
-            Staff s = new Staff(username);
-            s.setPassword(pass);
-            IMongoDBStaffMethods sm = new MongoDBStaffMethods();
-            IDBUserManager um = new DBUserManager();
-            um.createNewUser(s, sm);
-
-        }}
-*/
 
 
     /**
@@ -109,23 +81,8 @@ public class LoginController {
         }
         return "login";
 
-    }
+    }}
 
-/*
-    @PutMapping()
-    public String forgetPassword(Model model) {
-        model.addAttribute("message", "if you are a student, please reach out to a staff " +
-                "member at the front desk, they will help out with the password reset process \n" +
-                "if you are a staff member, please reach out to admin at IT");
-        return "login";
-    }
-*/
-
-
-
-    /*
-
-     */
 /**
  *
  * @param curr_user the logged-in user
@@ -145,33 +102,5 @@ public class LoginController {
 
     }
 
-    */
-/**
- *
- * @return return a random length 5, all capital letter temporary password.
- *//*
 
-    private String randomPasswordGenerator() {
-        return getString();
-
-    }
-
-    */
-/**
- * @return return the desired long temporary password for the randomPasswordGenerator
- *//*
-
-    private String getString() {
-        String ran_pick_lst = "QWERTYUIOPASDFGHJKLZXCVBNM";
-        Random ran = new Random();
-        String pass = "";
-        pass += ran_pick_lst.charAt(ran.nextInt(ran_pick_lst.length() - 1));
-        pass += ran_pick_lst.charAt(ran.nextInt(ran_pick_lst.length() - 1));
-        pass += ran_pick_lst.charAt(ran.nextInt(ran_pick_lst.length() - 1));
-        pass += ran_pick_lst.charAt(ran.nextInt(ran_pick_lst.length() - 1));
-        pass += ran_pick_lst.charAt(ran.nextInt(ran_pick_lst.length() - 1));
-
-        return pass;
-    }
-*/
-}
+}*/
