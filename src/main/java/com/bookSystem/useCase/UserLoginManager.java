@@ -34,6 +34,24 @@ public class UserLoginManager implements IUserLoginManager {
 
     }
 
+    /**
+     * To get current student stored in UserLoginManager.
+     */
+
+    @Override
+    public Student getCurrentStudent() {
+        return this.currentStudent;
+    }
+
+    /**
+     * To get current staff stored in UserLoginManager.
+     */
+
+    @Override
+    public Staff getCurrentStaff() {
+        return this.currentStaff;
+    }
+
 
         /**
          * To modify current student's credit score

@@ -1,9 +1,13 @@
 package com.bookSystem.useCase;
 
-import org.springframework.stereotype.Component;
+import com.bookSystem.entity.User.Staff;
+import com.bookSystem.entity.User.Student;
 
-@Component
 public interface IUserLoginManager {
+
+    Student getCurrentStudent();
+
+    Staff getCurrentStaff();
 
     void modifyCreditScore(int changeBy);
 
