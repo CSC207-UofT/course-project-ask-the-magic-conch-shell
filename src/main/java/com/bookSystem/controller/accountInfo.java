@@ -1,6 +1,8 @@
 package com.bookSystem.controller;
 
+import com.bookSystem.entity.User.Student;
 import com.bookSystem.useCase.IDBUserManager;
+import com.bookSystem.useCase.IUserLoginManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,13 +15,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class accountInfo {
 
     @Autowired
-    private IDBUserManager ulm;
+    private IUserLoginManager ulm;
 
     @GetMapping
     public String loadInfo(Model model) {
-        ulm.
-
-        model.addAttribute("message", "");
+        Student s = ulm.getCurrentStudent();
+        String username = s.getUsername();
+        String str = "Username:" + username
+        model.addAttribute("message", str);
 
 
         return "studentInfo";
