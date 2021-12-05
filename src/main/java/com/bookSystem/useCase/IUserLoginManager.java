@@ -3,6 +3,8 @@ package com.bookSystem.useCase;
 import com.bookSystem.entity.User.Staff;
 import com.bookSystem.entity.User.Student;
 
+import java.util.ArrayList;
+
 public interface IUserLoginManager {
 
     Student getCurrentStudent();
@@ -15,7 +17,13 @@ public interface IUserLoginManager {
 
     void staffModifyPassword(String username, String oldPassword, String newPassword);
 
-    int BorrowedBookAmount();
+    int borrowedBookAmount();
 
-    void execute();
+    void addToCart(Order order);
+
+    void deleteFromCart(Integer index);
+
+    ArrayList<Boolean> placeOrders();
+
+
 }

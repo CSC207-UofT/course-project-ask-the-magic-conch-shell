@@ -30,7 +30,7 @@ public class Student extends User {
      * To set up Student's credit score based on the input CreditScore
      * @param CreditScore the credit score
      */
-    public void CreditScoreSetter(int CreditScore){
+    public void setCreditScore(int CreditScore){
         this.CreditScore = CreditScore;
     }
 
@@ -38,7 +38,7 @@ public class Student extends User {
      * Return Student's credit score
      * @return student's credit score
      */
-    public int CreditScoreGetter(){
+    public int getCreditScore(){
         return this.CreditScore;
     }
 
@@ -48,12 +48,9 @@ public class Student extends User {
      * @param book a book
      * @return false if the Student has 5 or more books, otherwise true
      */
-    public boolean AddToCurrentBorrowingRecords(Book book){
-        if (CurrentBorrowingRecords.size() >= 5){
-            return false;
-        }
+    public void addToCurrentBorrowingRecords(Book book){
+
         CurrentBorrowingRecords.add(book.getBookID());
-        return true;
 
     }
 
@@ -61,12 +58,16 @@ public class Student extends User {
      * Return a list of books a Student currently owned
      * @return an arraylist of Books a student is borrowing
      */
-    public ArrayList<Integer> CurrentBorrowingRecordsGetter(){return this.CurrentBorrowingRecords;
+    public ArrayList<Integer> getCurrentBorrowingRecords(){return this.CurrentBorrowingRecords;
     }
 
-    public void borrowingRecordsSetter(ArrayList<Integer> br){
+    public void setBorrowingRecords(ArrayList<Integer> br){
         this.CurrentBorrowingRecords = br;
 
+    }
+
+    public int getBorrowedBookAmount() {
+        return this.CurrentBorrowingRecords.size();
     }
 
 }

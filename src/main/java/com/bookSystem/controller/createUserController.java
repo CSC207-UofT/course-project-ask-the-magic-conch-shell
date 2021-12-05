@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("create")
 public class createUserController {
 
-    @Autowired
-    public IUserLoginManager lm;
-
-    public String createNewUser(@RequestParam("createNewUser") String desired_username,
-                                @RequestParam("user_type") String user_type, Model model){
-        lm.currentstudent
-
-    }
+//    @Autowired
+//    public IUserLoginManager lm;
+//
+//    public String createNewUser(@RequestParam("createNewUser") String desired_username,
+//                                @RequestParam("user_type") String user_type, Model model){
+//
+//
+//    }
 }
