@@ -42,10 +42,10 @@ public class DBUserManagerTest {
         s = new Staff("Staff1");
         s.setPassword("123");
         password = "123";
-        j.CreditScoreSetter(30);
+        j.setCreditScore(30);
         empty_record = new ArrayList<>();
         book1 = new Book(1, "Fade", "ds134", date, "Jacob", "Textbook");
-        j.AddToCurrentBorrowingRecords(book1);
+        j.addToCurrentBorrowingRecords(book1);
         UserManager = new DBUserManager();
         StudentMethods = new MongoDBStudentMethods();
         StaffMethods = new MongoDBStaffMethods();

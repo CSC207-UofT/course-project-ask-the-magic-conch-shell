@@ -34,6 +34,8 @@ public interface IDBbookManager {
     boolean changeBookStatus(int bookID, BookPositionStatus status, IMongoDBBookMethods bm);
 
     BookPositionStatus checkBookStatus(int bookID, IMongoDBBookMethods bm);
+
+
 }
 
 

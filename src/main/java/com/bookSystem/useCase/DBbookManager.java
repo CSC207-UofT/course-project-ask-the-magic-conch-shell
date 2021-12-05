@@ -297,11 +297,26 @@ public class DBbookManager implements IDBbookManager {
         return false;
     }
 
-    public void addOrder(){}
-    public void deleteOrder(){}
 
-
-
+//    @Override
+//    public void addOrder(Book book, IMongoDBBookMethods bm){
+//        String bookIDString = Integer.toString(book.getBookID());
+//        if (bm.checkBook(bookIDString)){
+//            if (checkBookStatus(book.getBookID(), bm).equals(BookPositionStatus.UNLENDED)) {
+//                changeBookStatus(book.getBookID(), BookPositionStatus.LENDED, bm);
+//            }
+//        }
+//    }
+//
+//    @Override
+//    public void deleteOrder(Book book, IMongoDBBookMethods bm){
+//        String bookIDString = Integer.toString(book.getBookID());
+//        if (bm.checkBook(bookIDString)){
+//            if (checkBookStatus(book.getBookID(), bm).equals(BookPositionStatus.LENDED)) {
+//                changeBookStatus(book.getBookID(), BookPositionStatus.UNLENDED, bm);
+//            }
+//        }
+//    }
 
 
 

@@ -21,34 +21,34 @@ public class StudentTest {
     public void setUp() throws Exception {
         h = new Student("Harry");
         j = new Student("Jason");
-        j.CreditScoreSetter(30);
+        j.setCreditScore(30);
         empty_record= new ArrayList<>();
         book1 = new Book(1,"Fade","ds134", date, "Jacob", "Textbook");
-        j.AddToCurrentBorrowingRecords(book1);
+        j.addToCurrentBorrowingRecords(book1);
     }
 
     @Test(timeout = 50)
     public void TestStudentCredit(){
 
-        assertEquals(30, j.CreditScoreGetter());
+        assertEquals(30, j.getCreditScore());
     }
 
     @Test(timeout = 50)
     public void TestStudentCredit2(){
 
-        assertEquals(100, h.CreditScoreGetter());
+        assertEquals(100, h.getCreditScore());
     }
 
     @Test(timeout = 50)
     public void TestStudentBorrowingRecord(){
 
-        assertEquals(empty_record, h.CurrentBorrowingRecordsGetter());
+        assertEquals(empty_record, h.getCurrentBorrowingRecords());
     }
 
     @Test(timeout = 50)
     public void TestStudentBorrowingRecord1(){
 
-        assertEquals(book1, j.CurrentBorrowingRecordsGetter().get(0));
+        assertEquals(book1, j.getCurrentBorrowingRecords().get(0));
     }
 
 }

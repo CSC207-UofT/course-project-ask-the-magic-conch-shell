@@ -1,5 +1,6 @@
 package com.bookSystem.useCase;
 
+import com.bookSystem.entity.Book.Book;
 import com.bookSystem.mongoDBGateway.IMongoDBStaffMethods;
 import com.bookSystem.mongoDBGateway.IMongoDBStudentMethods;
 import com.bookSystem.entity.User.Staff;
@@ -34,4 +35,7 @@ public interface IDBUserManager {
     void studentDBModifyBorrowRecord(String username, ArrayList<Integer> newBR, IMongoDBStudentMethods sum);
 
     void staffDBModifyPassword(String username, String oldPassword, String newPassword, IMongoDBStaffMethods sm);
+
+
+
 }
