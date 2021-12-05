@@ -17,13 +17,14 @@ public class UserLoginManager implements IUserLoginManager {
 
     public Student currentStudent;
     public Staff currentStaff;
+    private final ArrayList<Order> cart = new ArrayList<>();
 
 
     public UserLoginManager(String username, String password, int creditScore, ArrayList<Integer> br) {
         this.currentStudent = new Student(username);
         this.currentStudent.setPassword(password);
-        this.currentStudent.CreditScoreSetter(creditScore);
-        this.currentStudent.borrowingRecordsSetter(br);
+        this.currentStudent.setCreditScore(creditScore);
+        this.currentStudent.setBorrowingRecords(br);
 
 
     }
@@ -34,6 +35,24 @@ public class UserLoginManager implements IUserLoginManager {
 
     }
 
+    /**
+     * To get current student stored in UserLoginManager.
+     */
+
+    @Override
+    public Student getCurrentStudent() {
+        return this.currentStudent;
+    }
+
+    /**
+     * To get current staff stored in UserLoginManager.
+     */
+
+    @Override
+    public Staff getCurrentStaff() {
+        return this.currentStaff;
+    }
+
 
         /**
          * To modify current student's credit score
@@ -42,8 +61,8 @@ public class UserLoginManager implements IUserLoginManager {
 
     @Override
     public void modifyCreditScore(int changeBy) {
-        int old = currentStudent.CreditScoreGetter();
-        currentStudent.CreditScoreSetter(old + changeBy);
+        int old = currentStudent.getCreditScore();
+        currentStudent.setCreditScore(old + changeBy);
         }
 
 
@@ -83,13 +102,28 @@ public class UserLoginManager implements IUserLoginManager {
          */
 
     @Override
-    public int BorrowedBookAmount() {
-        return currentStudent.CurrentBorrowingRecordsGetter().size();
+    public int borrowedBookAmount() {
+        return currentStudent.getCurrentBorrowingRecords().size();
     }
 
-    @Override
-    public void execute() {
 
+    public void addToCart(Order order){
+        this.cart.add(order);
+    }
+
+    public void deleteFromCart(Integer index){
+        this.cart.remove(index);
+    }
+
+
+    public ArrayList<Boolean> placeOrders(){
+        ArrayList<Boolean> result = new ArrayList<>();
+        for (Order order : this.cart) {
+            result.add(order.execute());
+        }
+        this.cart.clear();
+
+        return result;
     }
 }
 

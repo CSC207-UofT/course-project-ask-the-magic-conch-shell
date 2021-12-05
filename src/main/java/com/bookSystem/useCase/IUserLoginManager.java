@@ -1,9 +1,15 @@
 package com.bookSystem.useCase;
 
-import org.springframework.stereotype.Component;
+import com.bookSystem.entity.User.Staff;
+import com.bookSystem.entity.User.Student;
 
-@Component
+import java.util.ArrayList;
+
 public interface IUserLoginManager {
+
+    Student getCurrentStudent();
+
+    Staff getCurrentStaff();
 
     void modifyCreditScore(int changeBy);
 
@@ -11,7 +17,13 @@ public interface IUserLoginManager {
 
     void staffModifyPassword(String username, String oldPassword, String newPassword);
 
-    int BorrowedBookAmount();
+    int borrowedBookAmount();
 
-    void execute();
+    void addToCart(Order order);
+
+    void deleteFromCart(Integer index);
+
+    ArrayList<Boolean> placeOrders();
+
+
 }

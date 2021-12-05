@@ -1,5 +1,6 @@
 package com.bookSystem.useCase;
 
+import com.bookSystem.entity.Book.Book;
 import com.bookSystem.mongoDBGateway.IMongoDBStudentMethods;
 import com.bookSystem.mongoDBGateway.IMongoDBStaffMethods;
 import com.bookSystem.entity.User.Staff;
@@ -70,7 +71,7 @@ public class DBUserManager implements IDBUserManager {
     public boolean createNewUser(Student student, IMongoDBStudentMethods sum) {
         String username = student.getUsername();
         String password = student.getPassword();
-        int cs = student.CreditScoreGetter();
+        int cs = student.getCreditScore();
         if (!checkStudent(username, sum)) {
             ArrayList<String> borrowRecord = new ArrayList<>(5);
 
@@ -245,6 +246,33 @@ public class DBUserManager implements IDBUserManager {
 
     }
 
+//    /**
+//     * parameter is a type Book,and a student. Add the book to the student's borrowRecord.
+//     */
+//
+//    @Override
+//    public void addOrder(Book book, Student student, IMongoDBStudentMethods sum){
+//        if (checkStudent(student.getUsername(), sum)) {
+//            if (student.addToCurrentBorrowingRecords(book)){
+//                studentDBModifyBorrowRecord(student.getUsername(), student.getCurrentBorrowingRecords(), sum);
+//            }
+//        }
+//
+//    }
+//
+//
+//    /**
+//     * parameter is a type Book,and a student. Remove the book to the student's borrowRecord.
+//     */
+//    @Override
+//    public void deleteOrder(Book book, Student student, IMongoDBStudentMethods sum){
+//        if (checkStudent(student.getUsername(), sum)) {
+//            if (student.getCurrentBorrowingRecords().contains(book.getBookID())){
+//                student.getCurrentBorrowingRecords().remove(book.getBookID());
+//                studentDBModifyBorrowRecord(student.getUsername(), student.getCurrentBorrowingRecords(), sum);
+//            }
+//        }
+    }
 
 
-}
+
