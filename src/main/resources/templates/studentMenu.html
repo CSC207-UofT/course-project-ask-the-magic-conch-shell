@@ -48,22 +48,27 @@
         }
 
 
-        .crossButton a {
+        #crossButton {
             padding: 8px 8px 8px 32px;
             text-decoration: none;
             font-size: 30px;
             color: #818181;
             display: block;
             transition: 0.3s;
+            cursor: pointer;
         }
 
-        .logout a{
-            padding: 8px 8px 8px 32px;
+        #logout{
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: right;
             text-decoration: none;
-            font-size: 30px;
-            color: #818181;
-            display: block;
-            transition: 0.3s;
+            font-size: 16px;
+            margin: 2rem 2rem;
+            cursor: pointer;
+
         }
 
         .account a:hover {
@@ -99,17 +104,14 @@
         <h2 style="text-align:left; margin:2%; color:white">Home (Student)</h2>
         <button class="accountButton" onclick="openNav()">&#9776; Account</button>
     </div>
-    <div id="account" class="accountInfo">
+    <div id="account" class="accountInfo" >
         <a id="crossButton" class="closebtn" onclick="closeNav()">&times;</a>
-        <h5>Username:</h5> <p>admin</p>
-        <h5>User Type:</h5> <p>student</p>
-        <h5>Credit Score:</h5> <p>100</p>
-        <h5>Current Borrowed Book(s):</h5> <p>you are not currently borrowing book(s) right now</p>
+        <iframe th:src="@{/info}" width="230" height="400"></iframe>
         <a id="logout" onclick="logout()">Log out</a>
     </div>
     <div class="menu serviceOption">
         <a href="studentBorrowBook.html">Borrow Book</a>
-        <a href="studentReturnBook.html">Return Book</a>
+        <a th:href="@{~/studentReturn}">Return Book</a>
         <a href="extend_return_date.html">Extend Return Date</a>
         <a href="student_change_password.html">Change Password</a>
     </div>
