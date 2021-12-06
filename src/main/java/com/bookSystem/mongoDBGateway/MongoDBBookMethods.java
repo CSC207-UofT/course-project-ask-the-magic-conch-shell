@@ -16,7 +16,9 @@ public class MongoDBBookMethods implements IMongoDBBookMethods {
     public static HashMap<String, DBObject> dataStored;
 
     /**
-     Connect to the MongoDB cluster and return a DB.
+     * Connect to the MongoDB cluster and return a DB.
+     *
+     * @return  a DB type object that stores data in MongoDB Book database.
      */
     private static DB getDb() {
         MongoClientURI uri = new MongoClientURI("mongodb+srv://Hewitt:C*gh8%40f8R*9Hw%40U@cluster0.hmi0f.mongodb.net/User?retryWrites=true&w=majority");
@@ -25,7 +27,9 @@ public class MongoDBBookMethods implements IMongoDBBookMethods {
     }
 
     /**
-     Add an dbObject into the MongoDB cluster.
+     * Add an dbObject into book collection of the MongoDB cluster.
+     *
+     * @param dbObject key-value pairs that store data of books.
      */
     public static void addToOriginal(DBObject dbObject) {
         DB db = getDb();
@@ -33,7 +37,9 @@ public class MongoDBBookMethods implements IMongoDBBookMethods {
     }
 
     /**
-     Delete an dbObject from the MongoDB cluster.
+     * Delete an dbObject from book collection of the MongoDB cluster.
+     *
+     * @param dbObject key-value pairs that store data of books.
      */
     public static void deleteOriginal(DBObject dbObject) {
         DB db = getDb();
@@ -41,7 +47,7 @@ public class MongoDBBookMethods implements IMongoDBBookMethods {
     }
 
     /**
-     Refresh datastored from MongoDb if it has not being assigned.
+     * Refresh datastored from MongoDb if it has not being assigned.
      */
     private void checkdatastored() {
         if (MongoDBBookMethods.dataStored == null) {
@@ -53,7 +59,16 @@ public class MongoDBBookMethods implements IMongoDBBookMethods {
 
 
     /**
-     Put common attributes of all subclasses into a given DBObject.
+     * Put common attributes of all subclasses into a given DBObject.
+     *
+     * @param bookID the id of the book  we want to put into a given DBObject.
+     * @param name the name of the book  we want to put into a given DBObject.
+     * @param ISBN the ISBN of the book  we want to put into a given DBObject.
+     * @param publishDate the publish date of the book  we want to put into a given DBObject.
+     * @param author the author of the book  we want to put into a given DBObject.
+     * @param status the position status of the book  we want to put into a given DBObject.
+     * @param returnDate the return date of the book  we want to put into a given DBObject.
+     * @param newObject the DBObject to which we want to add data of books.
      */
     private void putObject(String bookID, String name, String ISBN, String publishDate, String author, String status, String returnDate, DBObject newObject) {
         newObject.put("id", bookID);
@@ -66,7 +81,17 @@ public class MongoDBBookMethods implements IMongoDBBookMethods {
     }
 
     /**
-     It provides a way for people to update the Magazine
+     * It provides a way for people to update the Magazine
+     *
+     * @param bookID the value of id of the book into which we want to change the original.
+     * @param name the value of name of the book into which we want to change the original.
+     * @param ISBN the value of ISBN of the book into which we want to change the original.
+     * @param publishDate the value of pulish date of the book into which we want to change the original.
+     * @param author the value of author of the book into which we want to change the original.
+     * @param status the value of status of the book into which we want to change the original.
+     * @param returnDate the value of return date of the book into which we want to change the original.
+     * @param seriesname the value of series name of the book into which we want to change the original.
+     * @param category the value of category of the book into which we want to change the original.
      */
     public void updateMagazine(String bookID, String name, String ISBN, String publishDate, String author, String status, String returnDate, String seriesname, String category) {
         checkdatastored();
@@ -83,7 +108,19 @@ public class MongoDBBookMethods implements IMongoDBBookMethods {
 
 
     /**
-     It provides a way for people to update the Research paper
+     * It provides a way for people to update the Research paper.
+     *
+     * @param bookID the value of id of the book into which we want to change the original.
+     * @param name the value of name of the book into which we want to change the original.
+     * @param ISBN the value of ISBN of the book into which we want to change the original.
+     * @param publishDate the value of pulish date of the book into which we want to change the original.
+     * @param author the value of author of the book into which we want to change the original.
+     * @param status the value of status of the book into which we want to change the original.
+     * @param returnDate the value of return date of the book into which we want to change the original.
+     * @param language the value of language of the book into which we want to change the original.
+     * @param subject the value of subject of the book into which we want to change the original.
+     * @param peerstatus the value of peer review status of the book into which we want to change the original.
+
      */
     public void updateRearchPaper(String bookID, String name, String ISBN, String publishDate, String author, String status, String returnDate, String language, String subject, String peerstatus) {
         checkdatastored();
@@ -101,7 +138,16 @@ public class MongoDBBookMethods implements IMongoDBBookMethods {
 
 
     /**
-     It provides a way for people to update Dictionary
+     * It provides a way for people to update Dictionary
+     *
+     * @param bookID the value of id of the book into which we want to change the original.
+     * @param name the value of name of the book into which we want to change the original.
+     * @param ISBN the value of ISBN of the book into which we want to change the original.
+     * @param publishDate the value of pulish date of the book into which we want to change the original.
+     * @param author the value of author of the book into which we want to change the original.
+     * @param status the value of status of the book into which we want to change the original.
+     * @param returnDate the value of return date of the book into which we want to change the original.
+     * @param language the value of language of the book into which we want to change the original.
      */
     public void updateDictionary(String bookID, String name, String ISBN, String publishDate, String author, String status, String returnDate, String language) {
         checkdatastored();
@@ -116,7 +162,17 @@ public class MongoDBBookMethods implements IMongoDBBookMethods {
     }
 
     /**
-     It provides a way for people to update Literature
+     * It provides a way for people to update Literature.
+     *
+     * @param bookID the value of id of the book into which we want to change the original.
+     * @param name the value of name of the book into which we want to change the original.
+     * @param ISBN the value of ISBN of the book into which we want to change the original.
+     * @param publishDate the value of pulish date of the book into which we want to change the original.
+     * @param author the value of author of the book into which we want to change the original.
+     * @param status the value of status of the book into which we want to change the original.
+     * @param returnDate the value of return date of the book into which we want to change the original.
+     * @param period the value of period of the book into which we want to change the original.
+
      */
     public void updateLiterature(String bookID, String name, String ISBN, String publishDate, String author, String status, String returnDate, String period) {
         checkdatastored();
@@ -131,7 +187,16 @@ public class MongoDBBookMethods implements IMongoDBBookMethods {
     }
 
     /**
-     It provides a way for people to update Textbook
+     * It provides a way for people to update Textbook.
+     *
+     * @param bookID the value of id of the book into which we want to change the original.
+     * @param name the value of name of the book into which we want to change the original.
+     * @param ISBN the value of ISBN of the book into which we want to change the original.
+     * @param publishDate the value of pulish date of the book into which we want to change the original.
+     * @param author the value of author of the book into which we want to change the original.
+     * @param status the value of status of the book into which we want to change the original.
+     * @param returnDate the value of return date of the book into which we want to change the original.
+     * @param subject the value of subject of the book into which we want to change the original.
      */
     public void updateTextbook(String bookID, String name, String ISBN, String publishDate, String author, String status, String returnDate, String subject) {
         checkdatastored();
@@ -145,21 +210,12 @@ public class MongoDBBookMethods implements IMongoDBBookMethods {
         MongoDBBookMethods.addToOriginal(newObject);
     }
 
-
-    public String getName(String bookID) {
-        checkdatastored();
-        String date = (String) MongoDBBookMethods.dataStored.get(bookID).get("Pdate");
-
-
-        return (String) MongoDBBookMethods.dataStored.get(bookID).get("name");
-    }
-
-    public String getISBN(String bookID) {
-        checkdatastored();
-
-        return (String) MongoDBBookMethods.dataStored.get(bookID).get("ISBN/ISSN");
-    }
-
+    /**
+     * Get a list of a book from the database that has the given ISBN.
+     *
+     * @param ISBN the ISBN that used as a search keyword.
+     * @return a list of a book from the database that has the given ISBN.
+     */
     public ArrayList<Integer> searchByISBN(String ISBN){
         checkdatastored();
         ArrayList<Integer> ar = new ArrayList<>();
@@ -172,6 +228,12 @@ public class MongoDBBookMethods implements IMongoDBBookMethods {
         return ar;
     }
 
+    /**
+     * Get a list of a book from the database that was written by the given author.
+     *
+     * @param author the author that used as a search keyword.
+     * @return a list of a book from the database that has the given author.
+     */
     public ArrayList<Integer> searchByAuthor(String author){
         checkdatastored();
         ArrayList<Integer> arr = new ArrayList<>();
@@ -184,6 +246,12 @@ public class MongoDBBookMethods implements IMongoDBBookMethods {
         return arr;
     }
 
+    /**
+     * Get a list of a book from the database that is of the given type.
+     *
+     * @param type the type that used as a search keyword.
+     * @return a list of a book from the database that has the given type.
+     */
     public ArrayList<Integer> searchByType(String type) {
         checkdatastored();
         ArrayList<Integer> arra = new ArrayList<>();
@@ -196,6 +264,34 @@ public class MongoDBBookMethods implements IMongoDBBookMethods {
         return arra;
     }
 
+    /**
+     * Get the name of a book from the database.
+     *
+     * @param bookID the book id that we want its corresponding name.
+     * @return the name of a book with given id.
+     */
+    public String getName(String bookID) {
+        checkdatastored();
+        return (String) MongoDBBookMethods.dataStored.get(bookID).get("name");
+    }
+
+    /**
+     * Get the ISBN of a book from the database.
+     *
+     * @param bookID the book id that we want its corresponding ISBN.
+     * @return the ISBN of a book with given id.
+     */
+    public String getISBN(String bookID) {
+        checkdatastored();
+        return (String) MongoDBBookMethods.dataStored.get(bookID).get("ISBN/ISSN");
+    }
+
+    /**
+     * Get the publish date of a book from the database.
+     *
+     * @param bookID the book id that we want its corresponding publish date.
+     * @return the publish date of a book with given id.
+     */
     public LocalDate getPublishDate(String bookID) {
         checkdatastored();
         String date = (String) MongoDBBookMethods.dataStored.get(bookID).get("Pdate");
@@ -204,12 +300,24 @@ public class MongoDBBookMethods implements IMongoDBBookMethods {
         return LocalDate.parse(date);
     }
 
+    /**
+     * Get the author of a book from the database.
+     *
+     * @param bookID the book id that we want its corresponding author.
+     * @return the author of a book with given id.
+     */
     public String getAuthor(String bookID) {
         checkdatastored();
 
         return (String) MongoDBBookMethods.dataStored.get(bookID).get("Author");
     }
 
+    /**
+     * Get the position status of a book from the database.
+     *
+     * @param bookID the book id that we want its corresponding position status.
+     * @return the position status of a book with given id.
+     */
     public BookPositionStatus getStatus(String bookID) {
         checkdatastored();
         if ((dataStored.get(bookID).get("Status")).equals("unlended")) {
@@ -220,6 +328,12 @@ public class MongoDBBookMethods implements IMongoDBBookMethods {
         return null;
     }
 
+    /**
+     * Get the return date of a book from the database.
+     *
+     * @param bookID the book id that we want its corresponding return date.
+     * @return the return date of a book with given id.
+     */
     public LocalDate getReturnDate(String bookID) {
         checkdatastored();
         String date = (String) MongoDBBookMethods.dataStored.get(bookID).get("Rdate");
@@ -230,12 +344,24 @@ public class MongoDBBookMethods implements IMongoDBBookMethods {
         return null;
     }
 
+    /**
+     * Get the type of a book from the database.
+     *
+     * @param bookID the book id that we want its corresponding type.
+     * @return the type of a book with given id.
+     */
     public String getType(String bookID) {
         checkdatastored();
 
         return (String) MongoDBBookMethods.dataStored.get(bookID).get("subclass");
     }
 
+    /**
+     * Get the language of a dictionary/research paper from the database.
+     *
+     * @param bookID the book id that we want its corresponding language.
+     * @return the language of a dicitionary/research paper with given id.
+     */
     public String getLanguage(String bookID) {
         checkdatastored();
         if (Objects.equals(getType(bookID), "Dictionary")) {
@@ -248,6 +374,12 @@ public class MongoDBBookMethods implements IMongoDBBookMethods {
         }
     }
 
+    /**
+     * Get the subject of a textbook/research paper from the database.
+     *
+     * @param bookID the book id that we want its corresponding subject.
+     * @return the subject of a textbook/research paper with given id.
+     */
     public String getSubject(String bookID) {
         checkdatastored();
         if (Objects.equals(getType(bookID), "Textbook")) {
@@ -260,6 +392,12 @@ public class MongoDBBookMethods implements IMongoDBBookMethods {
         }
     }
 
+    /**
+     * Get the series name of a magazine from the database.
+     *
+     * @param bookID the book id that we want its corresponding series name.
+     * @return the series name of a magazine with given id.
+     */
     public String getSeriesName(String bookID) {
         checkdatastored();
         if (Objects.equals(getType(bookID), "Magazine")) {
@@ -270,6 +408,12 @@ public class MongoDBBookMethods implements IMongoDBBookMethods {
         }
     }
 
+    /**
+     * Get the category of a magazine from the database.
+     *
+     * @param bookID the book id that we want its corresponding category.
+     * @return the category of a magazine with given id.
+     */
     public String getCategory(String bookID) {
         checkdatastored();
         if (Objects.equals(getType(bookID), "Magazine")) {
@@ -280,6 +424,12 @@ public class MongoDBBookMethods implements IMongoDBBookMethods {
         }
     }
 
+    /**
+     * Get the period of a literature from the database.
+     *
+     * @param bookID the book id that we want its corresponding period.
+     * @return the period of a literature with given id.
+     */
     public String getPeriod(String bookID) {
         checkdatastored();
         if (Objects.equals(getType(bookID), "Literature")) {
@@ -290,6 +440,12 @@ public class MongoDBBookMethods implements IMongoDBBookMethods {
         }
     }
 
+    /**
+     * Get the peer review status of a research paper from the database.
+     *
+     * @param bookID the book id that we want its corresponding peer review status.
+     * @return the peer review status of a research paper with given id.
+     */
     public Comparable<Boolean> getPeerstatus(String bookID) {
         checkdatastored();
         if (Objects.equals(getType(bookID), "ResearchPaper")) {
@@ -301,7 +457,17 @@ public class MongoDBBookMethods implements IMongoDBBookMethods {
     }
 
     /**
-     Add book to the MongoDB cluster base on its type and also add it to datastored.
+     * Add book to the MongoDB cluster base on its type and also add it to datastored.
+     *
+     * @param bookID the value of id of the book into which we want to add.
+     * @param name the value of name of the book into which we want to add.
+     * @param ISBN the value of ISBN of the book into which we want to add.
+     * @param publishDate the value of pulish date of the book into which we want to add.
+     * @param author the value of author of the book into which we want to add.
+     * @param status the value of status of the book into which we want to add.
+     * @param returnDate the value of return date of the book into which we want to add.
+     * @param type the value of type of the book which we want to add.
+
      */
     public void addBook(String bookID, String name, String ISBN, String publishDate, String author, String status, String returnDate, String type) {
         checkdatastored();
@@ -337,7 +503,9 @@ public class MongoDBBookMethods implements IMongoDBBookMethods {
     }
 
     /**
-     Delete certain book from the MongoDB cluster.
+     * Delete certain book from the MongoDB cluster.
+     *
+     * @param bookID the id of the book we want to delete from the MongoDB cluster.
      */
     public void deleteDBBook(String bookID) {
         if (checkBook(bookID)) {
@@ -347,7 +515,9 @@ public class MongoDBBookMethods implements IMongoDBBookMethods {
     }
 
     /**
-     Check if book is in datastored already.
+     * Check if book is in datastored already.
+     *
+     * @param bookID the id of the book we want to check whether it's in the variable datastored.
      */
     public boolean checkBook(String bookID) {
         checkdatastored();
