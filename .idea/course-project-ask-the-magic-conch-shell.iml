@@ -187,5 +187,10 @@
     <orderEntry type="library" name="Maven: org.mongodb:mongodb-driver-core:4.2.3" level="project" />
     <orderEntry type="library" name="Maven: org.mongodb:mongodb-driver-sync:4.2.3" level="project" />
     <orderEntry type="library" name="Maven: org.mongodb:bson:4.2.3" level="project" />
+    <orderEntry type="library" name="mongodb-driver-core-3.9.1" level="project" />
+    <orderEntry type="library" name="bson-3.9.1" level="project" />
+    <orderEntry type="library" name="mongo-java-driver-3.9.1-javadoc" level="project" />
+    <orderEntry type="library" name="mongo-java-driver-3.9.1-sources" level="project" />
+    <orderEntry type="library" name="mongodb-driver-3.9.1" level="project" />
   </component>
 </module>
