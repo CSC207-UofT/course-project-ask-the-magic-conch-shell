@@ -31,7 +31,7 @@ public interface IUserLoginManager {
 
     void setCurrentStaff(Staff currentStaff);
 
-    ArrayList<Order> getCart()
+    ArrayList<Order> getCart();
 
 
 }

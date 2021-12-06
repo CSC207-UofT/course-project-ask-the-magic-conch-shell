@@ -4,12 +4,15 @@ import com.bookSystem.entity.Book.Book;
 
 import com.bookSystem.entity.Book.bookType.*;
 import com.bookSystem.mongoDBGateway.IMongoDBBookMethods;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Objects;
 
+@Component
 public class DBbookManager implements IDBbookManager {
 
     /**
