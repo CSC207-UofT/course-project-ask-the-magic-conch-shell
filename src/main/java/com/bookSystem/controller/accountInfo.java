@@ -15,17 +15,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("info")
 public class accountInfo {
 
-/*
+
     @Autowired
     private IUserLoginManager ulm;
-*/
+
 
     @GetMapping
     public String loadInfo(Model model) {
-/*        Student s = ulm.getCurrentStudent();
+      Student s = ulm.getCurrentStudent();
         String username = s.getUsername();
-        String str = "Username:" + username;*/
-        model.addAttribute("message", "username");
+        String str = "Username:" + username;
+        model.addAttribute("message", str);
 
 
         return "studentInfo";

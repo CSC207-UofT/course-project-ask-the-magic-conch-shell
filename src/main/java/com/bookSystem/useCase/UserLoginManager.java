@@ -13,7 +13,7 @@ import java.util.Objects;
      * Manage the user that is currently login (Student/Staff). Responsible for storing the user's information,
      * checking and modifying Students' credit score and changing Users' passwords.
      */
-
+@Component
 public class UserLoginManager implements IUserLoginManager {
 
     public Student currentStudent;
@@ -21,19 +21,17 @@ public class UserLoginManager implements IUserLoginManager {
     private final ArrayList<Order> cart = new ArrayList<>();
 
 
-    public UserLoginManager(String username, String password, int creditScore, ArrayList<Integer> br) {
-        this.currentStudent = new Student(username);
-        this.currentStudent.setPassword(password);
-        this.currentStudent.setCreditScore(creditScore);
-        this.currentStudent.setBorrowingRecords(br);
 
-
+    public void setCurrentStudent(Student currentStudent) {
+        this.currentStudent = currentStudent;
     }
 
-    public UserLoginManager(String username, String password) {
-        this.currentStaff = new Staff(username);
-        this.currentStaff.setPassword(password);
+    public void setCurrentStaff(Staff currentStaff) {
+        this.currentStaff = currentStaff;
+    }
 
+    public ArrayList<Order> getCart() {
+        return cart;
     }
 
     /**
