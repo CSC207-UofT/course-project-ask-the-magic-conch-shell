@@ -145,21 +145,9 @@ public class MongoDBBookMethods implements IMongoDBBookMethods {
         MongoDBBookMethods.addToOriginal(newObject);
     }
 
-
-    public String getName(String bookID) {
-        checkdatastored();
-        String date = (String) MongoDBBookMethods.dataStored.get(bookID).get("Pdate");
-
-
-        return (String) MongoDBBookMethods.dataStored.get(bookID).get("name");
-    }
-
-    public String getISBN(String bookID) {
-        checkdatastored();
-
-        return (String) MongoDBBookMethods.dataStored.get(bookID).get("ISBN/ISSN");
-    }
-
+    /**
+     Get a list of a book from the database that has the given ISBN.
+     */
     public ArrayList<Integer> searchByISBN(String ISBN){
         checkdatastored();
         ArrayList<Integer> ar = new ArrayList<>();
@@ -172,6 +160,9 @@ public class MongoDBBookMethods implements IMongoDBBookMethods {
         return ar;
     }
 
+    /**
+     Get a list of a book from the database that was written by the given author.
+     */
     public ArrayList<Integer> searchByAuthor(String author){
         checkdatastored();
         ArrayList<Integer> arr = new ArrayList<>();
@@ -184,6 +175,9 @@ public class MongoDBBookMethods implements IMongoDBBookMethods {
         return arr;
     }
 
+    /**
+     Get a list of a book from the database that is of the given type.
+     */
     public ArrayList<Integer> searchByType(String type) {
         checkdatastored();
         ArrayList<Integer> arra = new ArrayList<>();
@@ -196,6 +190,25 @@ public class MongoDBBookMethods implements IMongoDBBookMethods {
         return arra;
     }
 
+    /**
+     Get the name of a book from the database.
+     */
+    public String getName(String bookID) {
+        checkdatastored();
+        return (String) MongoDBBookMethods.dataStored.get(bookID).get("name");
+    }
+
+    /**
+     Get the ISBN of a book from the database.
+     */
+    public String getISBN(String bookID) {
+        checkdatastored();
+        return (String) MongoDBBookMethods.dataStored.get(bookID).get("ISBN/ISSN");
+    }
+
+    /**
+     Get the publish date of a book from the database.
+     */
     public LocalDate getPublishDate(String bookID) {
         checkdatastored();
         String date = (String) MongoDBBookMethods.dataStored.get(bookID).get("Pdate");
@@ -204,12 +217,18 @@ public class MongoDBBookMethods implements IMongoDBBookMethods {
         return LocalDate.parse(date);
     }
 
+    /**
+     Get the author of a book from the database.
+     */
     public String getAuthor(String bookID) {
         checkdatastored();
 
         return (String) MongoDBBookMethods.dataStored.get(bookID).get("Author");
     }
 
+    /**
+     Get the position status of a book from the database.
+     */
     public BookPositionStatus getStatus(String bookID) {
         checkdatastored();
         if ((dataStored.get(bookID).get("Status")).equals("unlended")) {
@@ -220,6 +239,9 @@ public class MongoDBBookMethods implements IMongoDBBookMethods {
         return null;
     }
 
+    /**
+     Get the return date of a book from the database.
+     */
     public LocalDate getReturnDate(String bookID) {
         checkdatastored();
         String date = (String) MongoDBBookMethods.dataStored.get(bookID).get("Rdate");
@@ -230,12 +252,18 @@ public class MongoDBBookMethods implements IMongoDBBookMethods {
         return null;
     }
 
+    /**
+     Get the type of a book from the database.
+     */
     public String getType(String bookID) {
         checkdatastored();
 
         return (String) MongoDBBookMethods.dataStored.get(bookID).get("subclass");
     }
 
+    /**
+     Get the language of a dictionary/research paper from the database.
+     */
     public String getLanguage(String bookID) {
         checkdatastored();
         if (Objects.equals(getType(bookID), "Dictionary")) {
@@ -248,6 +276,9 @@ public class MongoDBBookMethods implements IMongoDBBookMethods {
         }
     }
 
+    /**
+     Get the subject of a textbook/research paper from the database.
+     */
     public String getSubject(String bookID) {
         checkdatastored();
         if (Objects.equals(getType(bookID), "Textbook")) {
@@ -260,6 +291,9 @@ public class MongoDBBookMethods implements IMongoDBBookMethods {
         }
     }
 
+    /**
+     Get the series name of a magazine from the database.
+     */
     public String getSeriesName(String bookID) {
         checkdatastored();
         if (Objects.equals(getType(bookID), "Magazine")) {
@@ -270,6 +304,9 @@ public class MongoDBBookMethods implements IMongoDBBookMethods {
         }
     }
 
+    /**
+     Get the category of a magazine from the database.
+     */
     public String getCategory(String bookID) {
         checkdatastored();
         if (Objects.equals(getType(bookID), "Magazine")) {
@@ -280,6 +317,9 @@ public class MongoDBBookMethods implements IMongoDBBookMethods {
         }
     }
 
+    /**
+     Get the period of a literature from the database.
+     */
     public String getPeriod(String bookID) {
         checkdatastored();
         if (Objects.equals(getType(bookID), "Literature")) {
@@ -290,6 +330,9 @@ public class MongoDBBookMethods implements IMongoDBBookMethods {
         }
     }
 
+    /**
+     Get the peer review status of a research paper from the database.
+     */
     public Comparable<Boolean> getPeerstatus(String bookID) {
         checkdatastored();
         if (Objects.equals(getType(bookID), "ResearchPaper")) {
