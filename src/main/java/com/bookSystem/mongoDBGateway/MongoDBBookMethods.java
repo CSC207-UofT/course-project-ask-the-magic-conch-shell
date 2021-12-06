@@ -6,12 +6,14 @@ import com.mongodb.DB;
 import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
 
+@Component
 public class MongoDBBookMethods implements IMongoDBBookMethods {
     public static HashMap<String, DBObject> dataStored;
 
