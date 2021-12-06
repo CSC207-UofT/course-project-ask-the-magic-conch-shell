@@ -61,9 +61,9 @@ public class createUserController {
                 Student s = new Student(desired_username);
                 String pass = randomPasswordGenerator();
                 s.setPassword(pass);
-                s.CreditScoreSetter(100);
+                s.setCreditScore(100);
                 ArrayList<Integer> br = new ArrayList<>();
-                s.borrowingRecordsSetter(br);
+                s.setBorrowingRecords(br);
                 um.createNewUser(s, sm);
                 model.addAttribute("message", "You have successfully created an student" +
                         " account with username:" + desired_username + " "+ "and your temporary password is:" + pass);
@@ -90,7 +90,7 @@ public class createUserController {
  * @return return a random length 5, all capital letter temporary password.
  */
 
-    private String randomPasswordGenerator() {
+    public static String randomPasswordGenerator() {
         return getString();
 
     }
@@ -99,7 +99,7 @@ public class createUserController {
  * @return return the desired 5 string long temporary password for the randomPasswordGenerator
  */
 
-    private String getString() {
+    private static String getString() {
         String ran_pick_lst = "QWERTYUIOPASDFGHJKLZXCVBNM";
         Random ran = new Random();
         String pass = "";

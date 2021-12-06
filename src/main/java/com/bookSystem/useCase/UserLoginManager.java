@@ -10,9 +10,9 @@ import java.util.Objects;
 
 
 /**
- * Manage the user that is currently login (Student/Staff). Responsible for storing the user's information,
- * checking and modifying Students' credit score and changing Users' passwords.
- */
+     * Manage the user that is currently login (Student/Staff). Responsible for storing the user's information,
+     * checking and modifying Students' credit score and changing Users' passwords.
+     */
 @Component
 public class UserLoginManager implements IUserLoginManager {
 
@@ -53,25 +53,25 @@ public class UserLoginManager implements IUserLoginManager {
     }
 
 
-    /**
-     * To modify current student's credit score
-     * @param changeBy change the credit score by "changeBy" amount of credit
-     */
+        /**
+         * To modify current student's credit score
+         * @param changeBy change the credit score by "changeBy" amount of credit
+         */
 
     @Override
     public void modifyCreditScore(int changeBy) {
         int old = currentStudent.getCreditScore();
         currentStudent.setCreditScore(old + changeBy);
-    }
+        }
 
 
 
-    /**
-     * To modify current student's password
-     * @param username student's username
-     * @param oldPassword student's old password
-     * @param newPassword student's new password
-     */
+        /**
+         * To modify current student's password
+         * @param username student's username
+         * @param oldPassword student's old password
+         * @param newPassword student's new password
+         */
 
     @Override
     public void studentModifyPassword(String username, String oldPassword, String newPassword) {
@@ -80,12 +80,12 @@ public class UserLoginManager implements IUserLoginManager {
         }
     }
 
-    /**
-     * To modify staff's password
-     * @param username staff's username
-     * @param oldPassword staff's old password
-     * @param newPassword staff's new password
-     */
+        /**
+         * To modify staff's password
+         * @param username staff's username
+         * @param oldPassword staff's old password
+         * @param newPassword staff's new password
+         */
 
     @Override
     public void staffModifyPassword(String username, String oldPassword, String newPassword) {
@@ -93,12 +93,12 @@ public class UserLoginManager implements IUserLoginManager {
             currentStaff.setPassword(newPassword);
         }
 
-    }
+        }
 
-    /**
-     * To check how many books the student is currently borrowing
-     * @return numbers of book a student is currently borrowing, return -1 if username cannot be found
-     */
+        /**
+         * To check how many books the student is currently borrowing
+         * @return numbers of book a student is currently borrowing, return -1 if username cannot be found
+         */
 
     @Override
     public int borrowedBookAmount() {

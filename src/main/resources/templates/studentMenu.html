@@ -106,14 +106,14 @@
     </div>
     <div id="account" class="accountInfo" >
         <a id="crossButton" class="closebtn" onclick="closeNav()">&times;</a>
-        <iframe th:src="@{/info}" width="230" height="400"></iframe>
-        <a id="logout" onclick="logout()">Log out</a>
+        <iframe th:src="@{/info}" width="230" height="400" style="border: none"></iframe>
+        <a id="logout" th:href="@{~/login}">Log out</a>
     </div>
     <div class="menu serviceOption">
         <a href="studentBorrowBook.html">Borrow Book</a>
         <a th:href="@{~/studentReturn}">Return Book</a>
-        <a href="extend_return_date.html">Extend Return Date</a>
-        <a th:href="@{~/changeStudentPassword}">Change Password</a>
+        <a th:href="@{~/extend}">Extend Return Date</a>
+        <a href="student_change_password.html">Change Password</a>
     </div>
     <div class="messages" id="message"></div>
 

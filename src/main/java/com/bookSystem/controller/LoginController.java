@@ -1,4 +1,6 @@
 package com.bookSystem.controller;
+import com.bookSystem.entity.User.Staff;
+import com.bookSystem.entity.User.Student;
 import com.bookSystem.mongoDBGateway.IMongoDBStaffMethods;
 import com.bookSystem.mongoDBGateway.IMongoDBStudentMethods;
 import com.bookSystem.useCase.IDBUserManager;
@@ -28,6 +30,9 @@ public class LoginController {
     @Autowired
     private IMongoDBStaffMethods sam;
 
+    @Autowired
+    private IUserLoginManager ulm;
+
     @GetMapping
     public String loadLogin() {
 
@@ -56,8 +61,12 @@ public class LoginController {
                 if (sm.checkStudent(username)
                         && Objects.equals(password, um.studentDBGetPassword(username, sm))) {
 
-                    UserLoginManager currStudent = new UserLoginManager(username, um.studentDBGetPassword(username, sm),
-                            um.DBGetCreditScore(username, sm), um.DBGetBorrowingRecord(username, sm));
+                    Student currStudent = new Student(username);
+                    currStudent.setPassword(um.studentDBGetPassword(username, sm));
+                    currStudent.setCreditScore(um.DBGetCreditScore(username, sm));
+                    currStudent.setBorrowingRecords(um.DBGetBorrowingRecord(username, sm));
+                    ulm.setCurrentStudent(currStudent);
+
                     return "studentMenu";
 
                 } else {
@@ -67,7 +76,9 @@ public class LoginController {
             } else if (Objects.equals(user_type, "staff")) {
                 if (sam.checkStaff(username)
                         && Objects.equals(password, um.staffDBGetPassword(username, sam))) {
-                    UserLoginManager currStaff = new UserLoginManager(username, um.studentDBGetPassword(username, sm));
+                    Staff currStaff = new Staff(username);
+                    currStaff.setPassword(um.studentDBGetPassword(username, sm));
+                    ulm.setCurrentStaff(currStaff);
                     return "staffMenu";
                 } else {
                     model.addAttribute("message", "Your username and password does not match, please try again");
@@ -81,26 +92,20 @@ public class LoginController {
         }
         return "login";
 
-    }}
+    }
 
-/**
- *
- * @param curr_user the logged-in user
- * @param new_password the new password that replace the old one
- *//*
+    @GetMapping("/studentMenu")
+    public String loadStudnetMenu(){
+        return "studentMenu";
+    }
 
-    public void changePassword(UserLoginManager curr_user, String new_password){
-        if (curr_user.currentStudent != null){
-            curr_user.studentModifyPassword(curr_user.currentStudent.getUsername(),
-                    curr_user.currentStudent.getPassword(), new_password);
-        }
-
-        else if (curr_user.currentStaff != null){
-            curr_user.staffModifyPassword(curr_user.currentStaff.getUsername(),
-                    curr_user.currentStaff.getPassword(), new_password);
-        }
-
+    @GetMapping("/staffMenu")
+    public String loadStaffMenu(){
+        return "staffMenu";
     }
 
 
-}*/
+
+
+
+}

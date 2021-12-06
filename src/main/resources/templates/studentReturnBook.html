@@ -102,7 +102,7 @@
         <h5>User Type:</h5> <p>student</p>
         <h5>Credit Score:</h5> <p>100</p>
         <h5>Current Borrowed Book(s):</h5> <p>you are not currently borrowing book(s) right now</p>
-        <a id="logout" onclick="logout()">Log out</a>
+        <a id="logout" th:href="@{~/login}">Log out</a>
     </div>
     <div class="menu">
         <h3 class="message">Please drop off the book that you wish to return to the Library, your borrow status should be updated in
