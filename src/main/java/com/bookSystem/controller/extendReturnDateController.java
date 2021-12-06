@@ -15,7 +15,7 @@ public class extendReturnDateController {
     public String loadExtend() {
 
 
-        return "createNewUser";
+        return "extendReturnDate";
     }
 
 
@@ -24,7 +24,7 @@ public class extendReturnDateController {
     @PostMapping
     public String extendDate(@RequestParam("bookidToExtend") int book_id){
         /* to be implemented*/
-        return "extend_return_date";
+        return "extendReturnDate";
 
 
 
