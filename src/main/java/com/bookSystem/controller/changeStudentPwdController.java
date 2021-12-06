@@ -32,7 +32,6 @@ public class changeStudentPwdController {
 
         return "changeStudentPassword";
     }
-/*
     @PostMapping
     public String changeStudentPwd(@RequestParam("userName") String username, Model model){
         if (!sm.checkStudent(username)){
@@ -44,10 +43,12 @@ public class changeStudentPwdController {
             String newPwd = createUserController.randomPasswordGenerator();
             String oldPwd = um.studentDBGetPassword(username, sm);
             um.studentDBModifyPassword(username, oldPwd, newPwd, sm);
+            model.addAttribute("message", "Your password has been successfully changed, " +
+                    "the temporary password is:" + newPwd);
 
-        }*/
-
-    }
+        }
+    return "changeStudentPassword";
+    }}
 
 
 
