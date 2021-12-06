@@ -15,7 +15,7 @@ public class TestBooksubclasses {
     Magazine book2;
     Textbook book3;
     ResearchPaper book4;
-    Dictionary book5;
+    dictionary book5;
     LocalDate publishDate1 = LocalDate.of(2001,7,15);
     LocalDate publishDate2 = LocalDate.of(2000,8,11);
     LocalDate publishDate3 = LocalDate.of(2011,12,1);
@@ -30,7 +30,7 @@ public class TestBooksubclasses {
         book2 = new Magazine(2, "Marvel Super Hero", "654321", publishDate2, "Tiffany", "Captain American", "cartoon", "Magazine");
         book3 = new Textbook(3, "Rocket", "482212341", publishDate3, "Elon","Aerospace" ,"Textbook");
         book4 = new ResearchPaper(4, "Complex Analysis", "3551351432", publishDate4, "Cauchy","Math" ,"English",true,"ResearchPaper");
-        book5 = new Dictionary(5, "Easy French", "482212341", publishDate5, "Oxford Press","French" ,"Dictionary");
+        book5 = new dictionary(5, "Easy French", "482212341", publishDate5, "Oxford Press","French" ,"Dictionary");
 
         book1.setStatus(BookPositionStatus.UNLENDED);
         book2.setStatus(BookPositionStatus.LENDED);

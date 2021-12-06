@@ -4,12 +4,14 @@ import com.bookSystem.entity.Book.Book;
 
 import com.bookSystem.entity.Book.bookType.*;
 import com.bookSystem.mongoDBGateway.IMongoDBBookMethods;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Objects;
 
+@Component
 public class DBbookManager implements IDBbookManager {
 
     /**
@@ -51,7 +53,7 @@ public class DBbookManager implements IDBbookManager {
             bm.updateMagazine(bookID,name,ISBN,publishDate,author,status,returnDate,ser,cat);
         }
         if (Objects.equals(type, "Dictionary")){
-            String lan = ((Dictionary) book).getLanguage();
+            String lan = ((dictionary) book).getLanguage();
                 bm.updateDictionary(bookID,name,ISBN,publishDate,author,status,returnDate,lan);
             }
         if (Objects.equals(type, "Literature")){

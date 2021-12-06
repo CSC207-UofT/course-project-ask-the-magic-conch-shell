@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 
-@Component
+
 public interface IUserLoginManager {
 
     Student getCurrentStudent();
@@ -26,6 +26,12 @@ public interface IUserLoginManager {
     void deleteFromCart(Integer index);
 
     ArrayList<Boolean> placeOrders();
+
+    void setCurrentStudent(Student currentStudent);
+
+    void setCurrentStaff(Staff currentStaff);
+
+    ArrayList<Order> getCart();
 
 
 }
