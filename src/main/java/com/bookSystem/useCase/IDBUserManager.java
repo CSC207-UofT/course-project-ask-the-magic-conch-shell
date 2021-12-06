@@ -10,6 +10,10 @@ import java.util.ArrayList;
 
 public interface IDBUserManager {
 
+    /**
+     * Public interface of DBUserManager.
+     */
+
     boolean checkStudent(String username, IMongoDBStudentMethods sum);
 
     boolean checkStaff(String username, IMongoDBStaffMethods sm);

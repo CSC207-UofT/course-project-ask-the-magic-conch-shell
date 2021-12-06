@@ -8,11 +8,7 @@ import java.util.ArrayList;
 
 public interface IDBbookManager {
     /**
-     * Delete a book from the overall database of books.
-     *
-     * @param bookID id of the book
-     * @param bm     inject a mongodb book method interface and get methods from it
-     * @return whether the user has been successfully deleted, false otherwise
+     * Public interface of DBbookManager.
      */
 
     boolean deleteBook(int bookID, IMongoDBBookMethods bm);
