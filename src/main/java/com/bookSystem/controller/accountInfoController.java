@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 @Controller
 @RequestMapping("info")
-public class accountInfo {
+public class accountInfoController {
 
 
     @Autowired
