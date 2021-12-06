@@ -92,26 +92,20 @@ public class LoginController {
         }
         return "login";
 
-    }}
+    }
 
-/**
- *
- * @param curr_user the logged-in user
- * @param new_password the new password that replace the old one
- *//*
+    @GetMapping("/studentMenu")
+    public String loadStudnetMenu(){
+        return "studentMenu";
+    }
 
-    public void changePassword(UserLoginManager curr_user, String new_password){
-        if (curr_user.currentStudent != null){
-            curr_user.studentModifyPassword(curr_user.currentStudent.getUsername(),
-                    curr_user.currentStudent.getPassword(), new_password);
-        }
-
-        else if (curr_user.currentStaff != null){
-            curr_user.staffModifyPassword(curr_user.currentStaff.getUsername(),
-                    curr_user.currentStaff.getPassword(), new_password);
-        }
-
+    @GetMapping("/staffMenu")
+    public String loadStaffMenu(){
+        return "staffMenu";
     }
 
 
-}*/
+
+
+
+}
