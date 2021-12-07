@@ -4,7 +4,7 @@ import com.bookSystem.entity.Book.Book;
 
 import java.time.LocalDate;
 
-public class Literature extends Book {
+public class literature extends Book {
 
     /*
      * The period (historical background) in which a given literature was written provides great
@@ -12,7 +12,7 @@ public class Literature extends Book {
      */
     final private String period;
 
-    public Literature(int bookID, String bookName, String ISBN, LocalDate publishDate, String author, String period, String type) {
+    public literature(int bookID, String bookName, String ISBN, LocalDate publishDate, String author, String period, String type) {
         super(bookID, bookName, ISBN, publishDate, author, type);
         this.period = period;
     }

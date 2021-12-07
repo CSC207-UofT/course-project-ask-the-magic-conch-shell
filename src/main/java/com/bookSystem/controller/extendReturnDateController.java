@@ -48,8 +48,6 @@ public class extendReturnDateController {
             model.addAttribute("message", "Sorry, your credit score is not high enough to" +
                     "extend return date");
 
-
-
         }
 
         return "extendReturnDate";

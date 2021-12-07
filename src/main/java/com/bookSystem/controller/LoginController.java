@@ -42,6 +42,7 @@ public class LoginController {
 
 
 
+
     /**
      * login method will return true if the username exist in the database and the input password matches the record
      * in the database, else return false, as the login is unsuccessful.
@@ -53,7 +54,8 @@ public class LoginController {
      * false otherwise
      */
     @PostMapping("")
-    public String login(@RequestParam(defaultValue = "null", name = "user_type") String user_type, @RequestParam("username") String username,
+    public String login(@RequestParam(defaultValue = "null", name = "user_type") String user_type,
+                        @RequestParam("username") String username,
                         @RequestParam("password") String password, Model model) {
 
         if (!Objects.equals(user_type, "null")) {

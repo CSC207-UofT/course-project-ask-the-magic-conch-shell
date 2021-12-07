@@ -13,11 +13,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Objects;
 
-public class changeStudentPassword {
+@Controller
+@RequestMapping("studentChange")
 
-    @Controller
-    @RequestMapping("changeStudentPassword")
-    public class changeStudentPasswordController {
+public class StudentChangePasswordController {
 
         @Autowired
         private IDBUserManager um;
@@ -34,7 +33,7 @@ public class changeStudentPassword {
             return "studentChangePassword";
         }
 
-        @PostMapping("")
+        @PostMapping()
         public String changeStudentPassword(@RequestParam("oldPassword") String Opassword,
                                             @RequestParam("new_password") String Npassword1,
                                             @RequestParam("new_password2") String Npassword2, Model model) {
@@ -56,4 +55,3 @@ public class changeStudentPassword {
 
         }
         }
-    }

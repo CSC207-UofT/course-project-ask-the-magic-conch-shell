@@ -33,9 +33,9 @@ public class DBbookManagerTest {
 
         @Before
         public void setUp(){
-            book1 = new Magazine(26,"Iron Man", "9783034982374", publishDate1,"Stan","fashion1", "recreation","Magazine");
-            book2 = new Literature(27,"Captain American", "9783049823741",publishDate2,"Tiffany","Modern" ,"Literature");
-            book3 = new Textbook(28,"Scarlet Witch", "9783049823621",publishDate3,"James", "Religion", "Textbook");
+            book1 = new magazine(26,"Iron Man", "9783034982374", publishDate1,"Stan","fashion1", "recreation","Magazine");
+            book2 = new literature(27,"Captain American", "9783049823741",publishDate2,"Tiffany","Modern" ,"Literature");
+            book3 = new textbook(28,"Scarlet Witch", "9783049823621",publishDate3,"James", "Religion", "Textbook");
             book1.setStatus(BookPositionStatus.UNLENDED);
             book2.setStatus(BookPositionStatus.LENDED);
             book3.setStatus(BookPositionStatus.UNLENDED);

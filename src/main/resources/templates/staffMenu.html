@@ -105,10 +105,10 @@
         <button id="logout" onclick="logout()">Log out</button>
     </div>
     <div class="menu serviceOption">
-        <a href="staffReturnBook.html">Return Book</a>
+        <a th:href="@{~/staffReturnBook}">Return Book</a>
         <a href="addBook.html">Add new Book</a>
         <a th:href="@{~/changeOtherPwd}">Change student password</a>
-        <a href="staffChangePassword.html">Change my password</a>
+        <a th:href="@{~/staffChange}">Change my password</a>
         <a th:href="@{~/create}">Create New User</a>
     </div>
     <div class="messages" id="message"></div>

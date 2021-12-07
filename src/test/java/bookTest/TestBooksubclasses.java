@@ -1,6 +1,5 @@
 package bookTest;
 
-import com.bookSystem.entity.Book.Book;
 import com.bookSystem.entity.Book.bookType.*;
 import com.bookSystem.useCase.BookPositionStatus;
 import org.junit.Before;
@@ -11,10 +10,10 @@ import java.time.LocalDate;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TestBooksubclasses {
-    Literature book1;
-    Magazine book2;
-    Textbook book3;
-    ResearchPaper book4;
+    literature book1;
+    magazine book2;
+    textbook book3;
+    researchPaper book4;
     dictionary book5;
     LocalDate publishDate1 = LocalDate.of(2001,7,15);
     LocalDate publishDate2 = LocalDate.of(2000,8,11);
@@ -26,10 +25,10 @@ public class TestBooksubclasses {
 
     @Before
     public void setUp() {
-        book1 = new Literature(1, "Iron Man", "123456", publishDate1, "Stan", "Modern", "Literature");
-        book2 = new Magazine(2, "Marvel Super Hero", "654321", publishDate2, "Tiffany", "Captain American", "cartoon", "Magazine");
-        book3 = new Textbook(3, "Rocket", "482212341", publishDate3, "Elon","Aerospace" ,"Textbook");
-        book4 = new ResearchPaper(4, "Complex Analysis", "3551351432", publishDate4, "Cauchy","Math" ,"English",true,"ResearchPaper");
+        book1 = new literature(1, "Iron Man", "123456", publishDate1, "Stan", "Modern", "Literature");
+        book2 = new magazine(2, "Marvel Super Hero", "654321", publishDate2, "Tiffany", "Captain American", "cartoon", "Magazine");
+        book3 = new textbook(3, "Rocket", "482212341", publishDate3, "Elon","Aerospace" ,"Textbook");
+        book4 = new researchPaper(4, "Complex Analysis", "3551351432", publishDate4, "Cauchy","Math" ,"English",true,"ResearchPaper");
         book5 = new dictionary(5, "Easy French", "482212341", publishDate5, "Oxford Press","French" ,"Dictionary");
 
         book1.setStatus(BookPositionStatus.UNLENDED);

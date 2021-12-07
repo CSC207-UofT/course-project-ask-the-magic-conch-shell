@@ -48,8 +48,8 @@ public class DBbookManager implements IDBbookManager {
         String type = book.getType();
         bm.addBook(bookID, name, ISBN, publishDate, author, status, returnDate, type);
         if (Objects.equals(type, "Magazine")){
-            String cat = ((Magazine) book).getCategory();
-            String ser = ((Magazine) book).getSeriesName();
+            String cat = ((magazine) book).getCategory();
+            String ser = ((magazine) book).getSeriesName();
             bm.updateMagazine(bookID,name,ISBN,publishDate,author,status,returnDate,ser,cat);
         }
         if (Objects.equals(type, "Dictionary")){
@@ -57,18 +57,18 @@ public class DBbookManager implements IDBbookManager {
                 bm.updateDictionary(bookID,name,ISBN,publishDate,author,status,returnDate,lan);
             }
         if (Objects.equals(type, "Literature")){
-            String per = ((Literature) book).getPeriod();
+            String per = ((literature) book).getPeriod();
                 bm.updateLiterature(bookID,name,ISBN,publishDate,author,status,returnDate,per);
             }
         if (Objects.equals(type, "Textbook")){
-            String sub = ((Textbook) book).getSubject();
+            String sub = ((textbook) book).getSubject();
                 bm.updateTextbook(bookID,name,ISBN,publishDate,author,status,returnDate,sub);
             }
         if (Objects.equals(type, "ResearchPaper")){
-                String lan = ((ResearchPaper) book).getLanguage();
-                boolean sta = ((ResearchPaper) book).getPeerReviewStatus();
+                String lan = ((researchPaper) book).getLanguage();
+                boolean sta = ((researchPaper) book).getPeerReviewStatus();
                 String stastring = Boolean.toString(sta);
-                String sub = ((ResearchPaper) book).getSubject();
+                String sub = ((researchPaper) book).getSubject();
                 bm.updateRearchPaper(bookID,name,ISBN,publishDate,author,status,returnDate,lan,sub, stastring);
             }
         return true;

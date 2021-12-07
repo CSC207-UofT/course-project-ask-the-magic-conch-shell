@@ -13,11 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Objects;
 
-public class changeStaffPassword {
-
-    @Controller
-    @RequestMapping("staffChangePassword")
-    public class changeStaffPasswordController {
+@Controller
+@RequestMapping("staffChange")
+public class changeStaffPasswordController {
 
         @Autowired
         private IDBUserManager um;
@@ -35,7 +33,7 @@ public class changeStaffPassword {
         }
 
         @PostMapping("")
-        public String changeStaffPassword(@RequestParam("oldPassword") String Opassword,
+        public String changeStaffPassword(@RequestParam("old_password") String Opassword,
                                           @RequestParam("new_password") String Npassword1,
                                           @RequestParam("new_password2") String Npassword2, Model model) {
             if (Objects.equals(Opassword, um.staffDBGetPassword((ulm.getCurrentStaff().getUsername()), sam))
@@ -54,4 +52,4 @@ public class changeStaffPassword {
             }
             return "staffChangePassword";
         }
-    }}
+    }
