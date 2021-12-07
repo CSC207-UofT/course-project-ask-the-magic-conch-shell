@@ -9,6 +9,10 @@ import java.util.ArrayList;
 
 public interface IUserLoginManager {
 
+    /**
+     * Public interface of UserLoginManager.
+     */
+
     Student getCurrentStudent();
 
     Staff getCurrentStaff();
