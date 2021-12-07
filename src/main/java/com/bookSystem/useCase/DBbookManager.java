@@ -52,10 +52,10 @@ public class DBbookManager implements IDBbookManager {
             String ser = ((Magazine) book).getSeriesName();
             bm.updateMagazine(bookID,name,ISBN,publishDate,author,status,returnDate,ser,cat);
         }
-        if (Objects.equals(type, "Dictionary")){
+/*        if (Objects.equals(type, "Dictionary")){
             String lan = ((dictionary) book).getLanguage();
                 bm.updateDictionary(bookID,name,ISBN,publishDate,author,status,returnDate,lan);
-            }
+            }*/
         if (Objects.equals(type, "Literature")){
             String per = ((Literature) book).getPeriod();
                 bm.updateLiterature(bookID,name,ISBN,publishDate,author,status,returnDate,per);
