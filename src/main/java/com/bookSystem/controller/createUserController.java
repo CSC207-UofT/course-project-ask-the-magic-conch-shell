@@ -90,7 +90,7 @@ public class createUserController {
  * @return return a random length 5, all capital letter temporary password.
  */
 
-    private String randomPasswordGenerator() {
+    public static String randomPasswordGenerator() {
         return getString();
 
     }
@@ -99,7 +99,7 @@ public class createUserController {
  * @return return the desired 5 string long temporary password for the randomPasswordGenerator
  */
 
-    private String getString() {
+    private static String getString() {
         String ran_pick_lst = "QWERTYUIOPASDFGHJKLZXCVBNM";
         Random ran = new Random();
         String pass = "";

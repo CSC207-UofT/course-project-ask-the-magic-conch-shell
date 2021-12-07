@@ -2,6 +2,12 @@
 
 This is a README.md file for Team Magic Conch Shell's Library Management Project.
 
+**Phase 2**
+
+- In order to see our phase 2 Design document (including updated specifications and progress report) and accessibility 
+report, please visit [phase2](phase2).
+
+
 
 **Phase 1**
 
