@@ -2,18 +2,15 @@ package com.bookSystem.controller;
 
 
 import com.bookSystem.entity.Book.Book;
-import com.bookSystem.mongoDBGateway.IMongoDBBookMethods;
-import com.bookSystem.mongoDBGateway.IMongoDBStudentMethods;
-import com.bookSystem.mongoDBGateway.MongoDBBookMethods;
-import com.bookSystem.mongoDBGateway.MongoDBStudentMethods;
-import com.bookSystem.useCase.BookPositionStatus;
-import com.bookSystem.useCase.DBUserManager;
-import com.bookSystem.useCase.DBbookManager;
-import com.bookSystem.useCase.IDBUserManager;
-import com.bookSystem.useCase.IDBbookManager;
-import com.bookSystem.useCase.UserLoginManager;
+import com.bookSystem.mongoDBGateway.*;
+import com.bookSystem.useCase.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -21,6 +18,76 @@ import java.util.ArrayList;
 @Controller
 @RequestMapping("studentBorrowBook")
 public class BorrowBookController {
+
+    @Autowired
+    private IDBUserManager um;
+
+    @Autowired
+    private IDBbookManager bookManager;
+
+    @Autowired
+    private IMongoDBBookMethods bookMethods;
+
+    @Autowired
+    private IMongoDBStudentMethods sm;
+
+    @Autowired
+    private IMongoDBStaffMethods sam;
+
+    @Autowired
+    private IUserLoginManager ulm;
+
+    @GetMapping
+    public String loadBorrow() {
+
+
+        return "studentBorrowBook";
+    }
+
+    @PostMapping("")
+    public String addBooktoCart(@RequestParam("bookId") String bookid, Model model){
+
+        if (bookMethods.checkBook(bookid)){
+            Book book = bookManager.searchBookByID(Integer.parseInt(bookid), bookMethods);
+            Order order = new Order(book, ulm.getCurrentStudent());
+            ulm.addToCart(order);
+            ulm.addToBookList(book);
+            ArrayList<Book> bookList = ulm.getBookList();
+            model.addAttribute("cart", bookList);
+            model.addAttribute("message", "The book has been added to your cart!");
+        }else{
+            model.addAttribute("message", "The book does not exist!");
+
+        }
+
+        return "studentBorrowBook";
+    }
+
+
+    @PostMapping("/borrowAll")
+    public String borrowAll(Model model){
+        ArrayList<Book> books = ulm.getBookList();
+        ArrayList<Boolean> status = ulm.placeOrders();
+        ArrayList<String> strlst = new ArrayList<>();
+        int i = 0;
+        for (Boolean bool : status){
+            String str;
+            if (bool){
+                str = "The book" + books.get(i).getBookID() + "has been successfully borrowed!";
+            }else{
+                str = "The book" + books.get(i).getBookID() + "can not be borrowed.";
+            }
+            strlst.add(str);
+            i += 1;
+        }
+
+    model.addAttribute("message", strlst);
+    return "studentBorrowBook";}
+
+
+
+
+
 
     /**
      *

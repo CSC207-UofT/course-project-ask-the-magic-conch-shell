@@ -1,5 +1,6 @@
 package com.bookSystem.useCase;
 
+import com.bookSystem.entity.Book.Book;
 import com.bookSystem.entity.User.Staff;
 import com.bookSystem.entity.User.Student;
 import org.springframework.stereotype.Component;
@@ -24,6 +25,10 @@ public interface IUserLoginManager {
     void staffModifyPassword(String username, String oldPassword, String newPassword);
 
     int borrowedBookAmount();
+
+    void addToBookList(Book book);
+
+    ArrayList<Book> getBookList();
 
     void addToCart(Order order);
 
