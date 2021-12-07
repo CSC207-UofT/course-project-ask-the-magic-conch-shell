@@ -61,9 +61,9 @@ public class createUserController {
                 Student s = new Student(desired_username);
                 String pass = randomPasswordGenerator();
                 s.setPassword(pass);
-                s.CreditScoreSetter(100);
+                s.setCreditScore(100);
                 ArrayList<Integer> br = new ArrayList<>();
-                s.borrowingRecordsSetter(br);
+                s.setBorrowingRecords(br);
                 um.createNewUser(s, sm);
                 model.addAttribute("message", "You have successfully created an student" +
                         " account with username:" + desired_username + " "+ "and your temporary password is:" + pass);

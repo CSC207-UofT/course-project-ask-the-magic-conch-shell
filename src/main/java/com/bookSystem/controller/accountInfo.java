@@ -21,7 +21,7 @@ public class accountInfo {
     public String loadInfo(Model model) {
         Student s = ulm.getCurrentStudent();
         String username = s.getUsername();
-        String str = "Username:" + username
+        String str = "Username:" + username;
         model.addAttribute("message", str);
 
 
