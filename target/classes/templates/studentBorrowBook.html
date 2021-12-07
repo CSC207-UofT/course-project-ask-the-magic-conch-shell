@@ -147,7 +147,7 @@
 
     <div class="menu serviceOption">
         <p style="color: white"><span class="step">Step 1</span>Search A Book</p>
-        <iframe src="searchBook.html" height="200" width="300" title="searchBook" ></iframe>
+        <iframe th:src="@{/searchBook}" width="230" height="400"></iframe>
         <p style="color: white"><span class="step">Step 2</span>Input Book ID of the book that you want to borrow</p>
         <form class="step2" th:action="@{/studentBorrowBook}" th:method="POST">
             <label style="color: white" for="bookid">Book ID:</label>
