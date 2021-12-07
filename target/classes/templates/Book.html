@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    label{
+        width: 100px;
+        text-align: right;
+        display: inline-block;
+    }
+</style>
+<body>
+<form action="">
+    <h2 style="color: white">Please Input Information</h2>
+    <label style="color: white" for="bookName">Book name:</label>
+    <input name="bookName" id="bookName" type="text" value="">
+    <br><br>
+    <label style="color: white" for="ISBN">ISBN:</label>
+    <input name="ISBN" id="ISBN" type="text" value="">
+    <br><br>
+    <label style="color: white" for="Author">Author:</label>
+    <input name="Author" id="Author" type="text" value="">
+    <br><br>
+    <label style="color: white" for="PublishDate">Publish Date:</label>
+    <input name="PublishDate" id="PublishDate" type="date" value="">
+    <br><br>
+    <button style="float: right" id="Submit" class="Submit" onclick="addToDB()">Add</button>
+    <input type="reset">
+</form>
+</body>
+</html>

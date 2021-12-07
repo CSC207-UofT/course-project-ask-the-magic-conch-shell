@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+</head>
+<body>
+<p>Username:</p><p th:text="${username}"></p>
+<p>User Type:</p><p>Student</p>
+<p>Credit Score:</p><p th:text="${credit}"></p>
+
+
+<div th:if="${ not#lists.isEmpty(record)}">
+    <table>
+        <tr>
+            <th>Book ID</th>
+            <th>Book Name</th>
+            <th>Return Date</th>
+        </tr>
+        <tr th:each="book : ${record}">
+            <td th:text="${book.getBookID()}"></td>
+            <td th:text="${book.getBookName()}"></td>
+            <td th:text="${book.getReturnDate()}"></td>
+        </tr>
+        </table>
+</div>
+</body>
+</html>
