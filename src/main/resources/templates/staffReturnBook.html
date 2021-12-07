@@ -109,20 +109,24 @@
         <a id="logout" th:href="@{~/login}">Log out</a>
     </div>
     <div class="menu">
-        <form>
+        <form th:action="@{/staffReturnBook}" th:method="POST">
             <label for="input">Please Input the Book ID:</label>
             <input type="text" id="input" name="input"><br><br>
             <label for="username">Please Input the Username:</label>
             <input type="text" id="username" name="username"><br><br>
+            <input  type="radio" id="book_condition_good" value="good" name="book_condition">
+            <label for="book_condition_good"> Good</label><br>
+            <input type="radio" id="book_condition_damaged" name="book_condition" value="damaged">
+            <label for="book_condition_damaged"> Damaged</label><br>
             <p> Please check the status of the book, if damaged, please dispose the book. </p>
-            <input type="submit" style="margin-left: 30px;" value="Return">
-            <input type="submit" style="margin-left: 300px;" value="Dispose">
+            <button id= "returnBook" type="submit" style="margin-left: 30px;">Submit</button>
         </form>
 
 
 
     </div>
     <div class="messages" id="message">
+        <p class="b" th:text="*{message}" id="sen"></p>
         <button id="returnToMenu" class="returnToMenu" onclick="goToMenu()">Go Back To Menu</button>
     </div>
 

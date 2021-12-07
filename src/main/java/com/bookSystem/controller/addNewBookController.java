@@ -114,7 +114,7 @@ public class addNewBookController {
         int randomNum = (int)(Math.random()*100000);
         while (!mbm.checkBook(String.valueOf(randomNum))){
             if (Objects.equals(type, "Magazine")){
-                Book book = new Magazine(randomNum, name, ISBN, publishDate, author, seriesName, category, type);
+                Book book = new magazine(randomNum, name, ISBN, publishDate, author, seriesName, category, type);
                 bm.addBook(book, mbm);
             }
         }
@@ -140,7 +140,7 @@ public class addNewBookController {
         int randomNum = (int)(Math.random()*100000);
         while (!mbm.checkBook(String.valueOf(randomNum))){
             if (Objects.equals(type, "Literature")){
-                Book book = new Literature(randomNum, name, ISBN, publishDate, author, period, type);
+                Book book = new literature(randomNum, name, ISBN, publishDate, author, period, type);
                 bm.addBook(book, mbm);
             }
         }
@@ -169,7 +169,7 @@ public class addNewBookController {
         int randomNum = (int)(Math.random()*100000);
         while (!mbm.checkBook(String.valueOf(randomNum))){
             if (Objects.equals(type, "ResearchPaper")){
-                Book book = new ResearchPaper(randomNum, name, ISBN, publishDate, author, subject, language, peer_review_status, type);
+                Book book = new researchPaper(randomNum, name, ISBN, publishDate, author, subject, language, peer_review_status, type);
                 bm.addBook(book, mbm);
             }
         }
@@ -195,7 +195,7 @@ public class addNewBookController {
         int randomNum = (int)(Math.random()*100000);
         while (!mbm.checkBook(String.valueOf(randomNum))){
             if (Objects.equals(type, "Textbook")){
-                Book book = new Textbook(randomNum, name, ISBN, publishDate, author, subject, type);
+                Book book = new textbook(randomNum, name, ISBN, publishDate, author, subject, type);
                 bm.addBook(book, mbm);
             }
         }
