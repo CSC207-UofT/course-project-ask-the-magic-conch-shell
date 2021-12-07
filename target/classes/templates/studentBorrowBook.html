@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -149,16 +149,56 @@
         <p style="color: white"><span class="step">Step 1</span>Search A Book</p>
         <iframe src="searchBook.html" height="200" width="300" title="searchBook" ></iframe>
         <p style="color: white"><span class="step">Step 2</span>Input Book ID of the book that you want to borrow</p>
-        <form class="step2">
+        <form class="step2" th:action="@{/studentBorrowBook}" th:method="POST">
             <label style="color: white" for="bookid">Book ID:</label>
-            <input type="text" id="bookid" name="bookid">
-            <input id="Borrow" name="borrow" type="button" value="borrow">
+            <input type="text" id="bookid" name="bookId">
+            <button id="Borrow" type="submit">Add</button>
         </form>
+
+        <h4>Shopping Cart</h4>
+        <div th:if="${ not#lists.isEmpty(cart)}">
+            <table>
+                <tr>
+                    <th>Book ID</th>
+                    <th>Book Name</th>
+                    <th>Book Type</th>
+                </tr>
+                <tr th:each="book : ${cart}">
+                    <td th:text="${book.getBookID()}"></td>
+                    <td th:text="${book.getBookName()}"></td>
+                    <td th:text="${book.getType()}"></td>
+                </tr>
+            </table>
+
+            <form class="step2" th:action="@{/studentBorrowBook/borrowAll}" th:method="POST">
+                <button type="submit">Borrow All</button>
+            </form>
+
+        </div>
+
+
+
 
 
     </div>
 
     <div class="messages" id="message">
+        <p class="b" th:text="*{message}" id="sen"></p>
+        <div th:if="${ not#lists.isEmpty(messageList)}">
+            <table>
+                <tr>
+                    <th>Borrow Result</th>
+                </tr>
+                <tr th:each="s : ${messageList}">
+                    <td th:text="${s}"></td>
+                </tr>
+            </table>
+
+        </div>
+
+
+        </tr>
+
         <button id="returnToMenu" class="returnToMenu" onclick="goToMenu()">Go Back To Menu</button>
     </div>
 

@@ -170,7 +170,10 @@
                 </tr>
             </table>
 
-            <button th:action="@{/studentBorrowBook/borrowAll}" th:method="POST" type="submit">Borrow All</button>
+            <form class="step2" th:action="@{/studentBorrowBook/borrowAll}" th:method="POST">
+                <button type="submit">Borrow All</button>
+            </form>
+
         </div>
 
 
@@ -181,6 +184,21 @@
 
     <div class="messages" id="message">
         <p class="b" th:text="*{message}" id="sen"></p>
+        <div th:if="${ not#lists.isEmpty(messageList)}">
+            <table>
+                <tr>
+                    <th>Borrow Result</th>
+                </tr>
+                <tr th:each="s : ${messageList}">
+                    <td th:text="${s}"></td>
+                </tr>
+            </table>
+
+        </div>
+
+
+        </tr>
+
         <button id="returnToMenu" class="returnToMenu" onclick="goToMenu()">Go Back To Menu</button>
     </div>
 

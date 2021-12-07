@@ -1,6 +1,7 @@
 package com.bookSystem.useCase;
 
 
+import com.bookSystem.entity.Book.Book;
 import com.bookSystem.entity.User.Staff;
 import com.bookSystem.entity.User.Student;
 import org.springframework.stereotype.Component;
@@ -19,6 +20,7 @@ public class UserLoginManager implements IUserLoginManager {
     public Student currentStudent;
     public Staff currentStaff;
     private final ArrayList<Order> cart = new ArrayList<>();
+    private final ArrayList<Book>  bookList = new ArrayList<>();
 
 
 
@@ -31,7 +33,7 @@ public class UserLoginManager implements IUserLoginManager {
     }
 
     public ArrayList<Order> getCart() {
-        return cart;
+        return this.cart;
     }
 
     /**
@@ -103,6 +105,15 @@ public class UserLoginManager implements IUserLoginManager {
     @Override
     public int borrowedBookAmount() {
         return currentStudent.getCurrentBorrowingRecords().size();
+    }
+
+
+    public void addToBookList(Book book){
+        this.bookList.add(book);
+    }
+
+    public ArrayList<Book> getBookList() {
+        return this.bookList;
     }
 
 
