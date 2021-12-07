@@ -18,10 +18,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.ArrayList;
 import java.util.Objects;
 
+
+
 @Controller
 @RequestMapping("searchBook")
 
+
 public class searchBookController {
+
+    /**
+     ** The controller that can be used by student users to search book by ID, ISBN, author and type.
+     **/
 
     @Autowired
     private IDBUserManager um;
@@ -48,6 +55,13 @@ public class searchBookController {
         return "searchBook";
     }
 
+    /**
+     * SearchBook method which takes options like by ID, by Type and an input that the student want to search.
+     * @param option search by ID, Type, ISBN and Author
+     * @param input the input that the student wants to search
+     * @param model for Spring boot
+     * @return "searchBook" page
+     */
     @PostMapping("")
     public String searchBook(@RequestParam ("books") String option, @RequestParam ("input") String input, Model model){
         ArrayList<Book> results = new ArrayList<>();

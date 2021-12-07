@@ -20,6 +20,10 @@ import java.time.LocalDate;
 
 public class returnBookController {
 
+    /**
+     * Controller that allows staff to return books for the student.
+     */
+
         @Autowired
         private IDBUserManager um;
 
@@ -40,7 +44,7 @@ public class returnBookController {
 
 
     /**
-     * change the book status to unlended if the book condition is GOOD, delete the book if it is determined as DAMAGED
+     * Change the book status to unlended if the book condition is GOOD, delete the book if it is determined as DAMAGED
      * @param bookID id of the book wish to be returned
      * @param userName username
      * @param bookCondition book's condition

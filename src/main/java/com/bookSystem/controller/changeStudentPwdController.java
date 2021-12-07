@@ -17,6 +17,10 @@ import java.util.Random;
 @RequestMapping("changeOtherPwd")
 public class changeStudentPwdController {
 
+    /**
+     * Controller class for staff to change student's password.
+     */
+
     @Autowired
     private IDBUserManager um;
 
@@ -32,6 +36,13 @@ public class changeStudentPwdController {
 
         return "changeStudentPassword";
     }
+
+    /**
+     * Method that can change student's password.
+     * @param username student's username
+     * @param model for Spring boot
+     * @return "changeStudentPassword" page
+     */
     @PostMapping
     public String changeStudentPwd(@RequestParam("userName") String username, Model model){
         if (!sm.checkStudent(username)){

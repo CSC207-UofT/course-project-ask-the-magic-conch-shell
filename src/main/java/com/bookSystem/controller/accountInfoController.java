@@ -15,6 +15,9 @@ import java.util.ArrayList;
 @RequestMapping("info")
 public class accountInfoController {
 
+    /**
+     * Controller class for student account info slide bar.
+     */
 
     @Autowired
     private IUserLoginManager ulm;

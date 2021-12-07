@@ -18,6 +18,10 @@ import java.util.Objects;
 
 public class StudentChangePasswordController {
 
+    /**
+     ** The controller that allows students to change their own password.
+     **/
+
         @Autowired
         private IDBUserManager um;
 
@@ -33,6 +37,14 @@ public class StudentChangePasswordController {
             return "studentChangePassword";
         }
 
+    /**
+     * Method that allows students to change their own password.
+     * @param Opassword student's old password
+     * @param Npassword1 student's new password
+     * @param Npassword2 confirmation of new password
+     * @param model for Spring boot
+     * @return "studentChangePassword" page
+     */
         @PostMapping()
         public String changeStudentPassword(@RequestParam("oldPassword") String Opassword,
                                             @RequestParam("new_password") String Npassword1,

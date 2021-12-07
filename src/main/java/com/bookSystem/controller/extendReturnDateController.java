@@ -18,6 +18,10 @@ import java.time.LocalDate;
 @RequestMapping("extend")
 public class extendReturnDateController {
 
+    /**
+     * Controller that extend return date of a book for the student.
+     */
+
     @Autowired
     private IUserLoginManager ulm;
 
@@ -35,8 +39,12 @@ public class extendReturnDateController {
     }
 
 
-
-
+    /**
+     * Method that extend return date of a book for the student.
+     * @param book_id id of the book
+     * @param model for Spring boot
+     * @return "extendReturnDate" page
+     */
     @PostMapping
     public String extendDate(@RequestParam("bookidToExtend") int book_id, Model model){
         if(ulm.getCurrentStudent().getCreditScore() >=90 ){

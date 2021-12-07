@@ -17,6 +17,10 @@ import java.util.Objects;
 @RequestMapping("staffChange")
 public class changeStaffPasswordController {
 
+    /**
+     * Controller class for staff to change password.
+     */
+
         @Autowired
         private IDBUserManager um;
 
@@ -32,6 +36,14 @@ public class changeStaffPasswordController {
             return "staffChangePassword";
         }
 
+    /**
+     * Method for staff to change own password.
+     * @param Opassword staff's old password
+     * @param Npassword1 staff's new password
+     * @param Npassword2 staff's new password for confirmation
+     * @param model fro Spring boot
+     * @return "staffChangePassword" page
+     */
         @PostMapping("")
         public String changeStaffPassword(@RequestParam("old_password") String Opassword,
                                           @RequestParam("new_password") String Npassword1,

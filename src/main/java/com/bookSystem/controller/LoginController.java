@@ -21,6 +21,10 @@ import java.util.Objects;
 @RequestMapping("login")
 public class LoginController {
 
+    /**
+     * Controller that allows a user to login.
+     */
+
     @Autowired
     private IDBUserManager um;
 
@@ -39,8 +43,6 @@ public class LoginController {
 
         return "login";
     }
-
-
 
 
     /**
@@ -97,7 +99,7 @@ public class LoginController {
     }
 
     @GetMapping("/studentMenu")
-    public String loadStudnetMenu(){
+    public String loadStudentMenu(){
         return "studentMenu";
     }
 

@@ -1,20 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Search A Book</title>
     <style>
 
         form {
-            position: fixed;
-            top: 30%;
-            left: 30%;
+            margin: 2rem 2rem;
         }
     </style>
 </head>
 <body onload="closeNav()">
 
-<form action="">
+
+<form th:action="@{/searchBook}" th:method="POST">
     <label for="books" style="color: white">Choose a type:</label>
     <select name="books" id="books">
         <option value="Book ID">Book ID</option>
@@ -24,17 +23,37 @@
     </select>
     <br><br>
     <label for="data_type"></label>
-    <input id="data_type" type="search" value="">
-    <button id="Submit" class="Submit" onclick="goToMenu()">Search</button>
+    <input id="data_type" type="search" name = "input">
+    <button id="Submit" class="Submit" type="submit">Search</button>
 </form>
 
-<!--<div style="padding-left:16px">-->
-<!--    <h2>Notice</h2>-->
-<!--    <p>You have successfully borrowed... Please return before...</p>-->
-<!--    <p>Sorry! Your credit score is too low to borrow ... books.</p>-->
-<!--    <p>Sorry! The book you wish to borrow has been lent.</p>-->
-<!--    <p>Sorry! You reached the maximum borrow no. under your account.</p>-->
-<!--</div>-->
+
+<div>
+<h4>Search Result</h4>
+<div th:if="${ not#lists.isEmpty(results)}">
+    <table>
+        <tr>
+            <th>Book ID</th>
+            <th>Book Name</th>
+            <th>Author</th>
+            <th>ISBN</th>
+            <th>Book Status</th>
+            <th>Return Date</th>
+            <th>Book Type</th>
+        </tr>
+        <tr th:each="book : ${results}">
+            <td th:text="${book.getBookID()}"></td>
+            <td th:text="${book.getBookName()}"></td>
+            <td th:text="${book.getAuthor()}"></td>
+            <td th:text="${book.getISBN()}"></td>
+            <td th:text="${book.getStatus()}"></td>
+            <td th:text="${book.getReturnDate()}"></td>
+            <td th:text="${book.getType()}"></td>
+        </tr>
+    </table>
+</div>
+</div>
+
 
 </body>
 </html>

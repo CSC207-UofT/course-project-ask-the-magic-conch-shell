@@ -24,6 +24,10 @@ import java.util.Objects;
 @RequestMapping("addNewBook")
 public class addNewBookController {
 
+    /**
+     * Controller class for staff to add new books into inventory.
+     */
+
 
     @Autowired
     private IDBbookManager bm;

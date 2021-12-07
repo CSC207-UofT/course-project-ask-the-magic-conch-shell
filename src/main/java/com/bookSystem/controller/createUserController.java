@@ -21,6 +21,10 @@ import java.util.Random;
 @RequestMapping("create")
 public class createUserController {
 
+    /**
+     * Controller that create a new user by staff and store into the database.
+     */
+
     @Autowired
     private IDBUserManager um;
 
@@ -39,6 +43,13 @@ public class createUserController {
         return "createNewUser";
     }
 
+    /**
+     * Method that create a new user by staff and store into database.
+     * @param desired_username username of the student
+     * @param user_type type of the user (student/staff)
+     * @param model for Sprint boot
+     * @return "createNewUser" page
+     */
     @PostMapping("")
     public String createNewUser(@RequestParam("createNewUser") String desired_username,
                                 @RequestParam(defaultValue = "null", name = "user_type") String user_type, Model model) {
