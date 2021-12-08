@@ -5,6 +5,7 @@ import com.bookSystem.mongoDBGateway.IMongoDBBookMethods;
 import com.bookSystem.useCase.IDBbookManager;
 import com.bookSystem.useCase.IUserLoginManager;
 import org.springframework.beans.factory.annotation.Autowired;
+import com.bookSystem.entity.User.Student;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,16 +34,18 @@ public class accountInfoController {
     @GetMapping
     public String loadInfo() {
 
-
         return "studentInfo";
     }
 
     @PostMapping
     public String displayInfo(Model model){
+        Student s = ulm.getCurrentStudent();
+        String username = s.getUsername();
+        int credit = s.getCreditScore();
 
-        model.addAttribute("username", ulm.getCurrentStudent().getUsername());
-        model.addAttribute("credit", ulm.getCurrentStudent().getCreditScore());
-        ArrayList<Integer> lst = ulm.getCurrentStudent().getCurrentBorrowingRecords();
+        model.addAttribute("username", username);
+        model.addAttribute("credit", credit);
+        ArrayList<Integer> lst = s.getCurrentBorrowingRecords();
         ArrayList<Book> lst2 = new ArrayList<>();
 
         for (Integer bookID : lst) {
@@ -55,4 +58,3 @@ public class accountInfoController {
         return "studentInfo";
     }
 }
-
