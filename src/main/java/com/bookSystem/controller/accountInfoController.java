@@ -1,6 +1,6 @@
 package com.bookSystem.controller;
 import com.bookSystem.entity.Book.Book;
-import com.bookSystem.entity.User.Student;
+import com.bookSystem.entity.User.User;
 import com.bookSystem.mongoDBGateway.IMongoDBBookMethods;
 import com.bookSystem.useCase.IDBbookManager;
 import com.bookSystem.useCase.IUserLoginManager;
@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.ArrayList;
 
@@ -30,14 +31,18 @@ public class accountInfoController {
 
 
     @GetMapping
-    public String loadInfo(Model model) {
-      Student s = ulm.getCurrentStudent();
-        String username = s.getUsername();
-        int credit = s.getCreditScore();
+    public String loadInfo() {
 
-        model.addAttribute("username", username);
-        model.addAttribute("credit", credit);
-        ArrayList<Integer> lst = s.getCurrentBorrowingRecords();
+
+        return "studentInfo";
+    }
+
+    @PostMapping
+    public String displayInfo(Model model){
+
+        model.addAttribute("username", ulm.getCurrentStudent().getUsername());
+        model.addAttribute("credit", ulm.getCurrentStudent().getCreditScore());
+        ArrayList<Integer> lst = ulm.getCurrentStudent().getCurrentBorrowingRecords();
         ArrayList<Book> lst2 = new ArrayList<>();
 
         for (Integer bookID : lst) {
