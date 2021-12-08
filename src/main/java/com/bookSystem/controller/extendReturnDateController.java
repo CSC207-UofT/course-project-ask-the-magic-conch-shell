@@ -47,10 +47,12 @@ public class extendReturnDateController {
      */
     @PostMapping
     public String extendDate(@RequestParam("bookidToExtend") int book_id, Model model){
-        if(ulm.getCurrentStudent().getCreditScore() >=90 ){
-            bm.changeReturnDate(book_id, LocalDate.now().plusDays(7), mbm);
+        if(ulm.getCurrentStudent().getCreditScore() >=80 ){
+
+            bm.changeReturnDate(book_id, bm.checkReturnDate(book_id, mbm).plusDays(7) , mbm);
             model.addAttribute("message", "Your return date is extended to"+
-                    LocalDate.now().plusDays(7));}
+                    bm.checkReturnDate(book_id, mbm));
+        }
 
         else{
             model.addAttribute("message", "Sorry, your credit score is not high enough to" +

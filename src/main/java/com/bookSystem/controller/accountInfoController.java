@@ -1,11 +1,13 @@
 package com.bookSystem.controller;
+
 import com.bookSystem.entity.Book.Book;
-import com.bookSystem.entity.User.User;
+import com.bookSystem.entity.User.Student;
+import com.bookSystem.useCase.IDBUserManager;
 import com.bookSystem.mongoDBGateway.IMongoDBBookMethods;
 import com.bookSystem.useCase.IDBbookManager;
 import com.bookSystem.useCase.IUserLoginManager;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.bookSystem.entity.User.Student;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,9 +19,6 @@ import java.util.ArrayList;
 @RequestMapping("info")
 public class accountInfoController {
 
-    /**
-     * Controller class for student account info slide bar.
-     */
 
     @Autowired
     private IUserLoginManager ulm;
@@ -32,15 +31,29 @@ public class accountInfoController {
 
 
     @GetMapping
-    public String loadInfo() {
+    public String loadInfo(Model model){
+        Student s = ulm.getCurrentStudent();
+        String username = s.getUsername();
 
+        int credit = s.getCreditScore();
+
+        model.addAttribute("username", username);
+        model.addAttribute("credit", credit);
+        ArrayList<Integer> lst = s.getCurrentBorrowingRecords();
+        ArrayList<Book> lst2 = new ArrayList<>();
+
+        for (Integer bookID : lst) {
+            lst2.add(bm.searchBookByID(bookID, mbm));
+        }
+        model.addAttribute("record", lst2);
         return "studentInfo";
     }
 
-    @PostMapping
-    public String displayInfo(Model model){
+
+/*    public String display(Model model){
         Student s = ulm.getCurrentStudent();
         String username = s.getUsername();
+
         int credit = s.getCreditScore();
 
         model.addAttribute("username", username);
@@ -55,6 +68,7 @@ public class accountInfoController {
         model.addAttribute("record", lst2);
 
 
-        return "studentInfo";
+        return "studentInfo";*/
     }
-}
+
+

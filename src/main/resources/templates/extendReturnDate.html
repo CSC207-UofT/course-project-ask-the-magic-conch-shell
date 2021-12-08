@@ -127,7 +127,7 @@
     </div>
 
     <div class="menu">
-        <form class="step2" th:action="@{/extend}">
+        <form class="step2" th:action="@{/extend}" th:method="POST">
             <label style="color:white;" for="bookidToExtend">Please input the book ID of the book that you wish to extend the return date for
             </label><br><br>
             <input class="pass_box" type="text" id="bookidToExtend" name="bookidToExtend">
