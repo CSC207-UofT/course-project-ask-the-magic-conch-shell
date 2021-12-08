@@ -119,7 +119,7 @@
     </div>
 
     <div class="menu">
-        <form name=type>
+        <!--<form name=type th:action="@{/addNewBook}" th:method="POST" >-->
             <label for="books">Choose a type:</label>
             <select name="books" id="books">
                 <option value="Dictionary">Dictionary</option>
@@ -128,11 +128,8 @@
                 <option value="ResearchPaper">ResearchPaper</option>
                 <option value="Textbook">Textbook</option>
             </select>
-
-            <input id="select_book_input" type=button value="select" onclick="go()">
-            <br><br>
-
-        </form>
+            <button id="select_book_input" type="">Select </button>
+        <!--</form>-->
         <iframe id="sub_web" src="" height="200" width="300" title="searchBook" ></iframe>
 
 
@@ -150,23 +147,21 @@
 <script>
     document.getElementById("select_book_input").onclick = function () {
         const b = document.getElementById("books");
-        if (b.value === "Book") {
-            document.getElementById("sub_web").src = "Book.html"
-        }
-        else if (b.value === "Dictionary"){
-            document.getElementById("sub_web").src = "Dictionary.html"
+
+        if (b.value === "Dictionary"){
+            document.getElementById("sub_web").src = "/addNewBook/dictionary"
         }
         else if (b.value === "Literature"){
-            document.getElementById("sub_web").src = "Literature.html"
+            document.getElementById("sub_web").src = "/addNewBook/literature"
         }
         else if (b.value === "Magazine"){
-            document.getElementById("sub_web").src = "Magazine.html"
+            document.getElementById("sub_web").src = "/addNewBook/magazine"
         }
         else if (b.value === "ResearchPaper"){
-            document.getElementById("sub_web").src = "ResearchPaper.html"
+            document.getElementById("sub_web").src = "/addNewBook/researchPaper"
         }
         else if (b.value === "Textbook"){
-            document.getElementById("sub_web").src = "Textbook.html"
+            document.getElementById("sub_web").src = "/addNewBook/textbook"
         }
 
 
