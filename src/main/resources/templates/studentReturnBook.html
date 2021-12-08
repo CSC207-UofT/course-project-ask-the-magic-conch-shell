@@ -109,7 +109,7 @@
         two business days.</h3>
     </div>
     <div class="messages" id="message">
-        <button id="returnToMenu" class="returnToMenu" onclick="goToMenu()">Go Back To Menu</button>
+        <a id="returnToMenu" class="returnToMenu" th:href="@{~/login/studentMenu}">Go Back To Menu</a>
     </div>
 
 
@@ -135,7 +135,5 @@
     }
 
 
-    function goToMenu() {
-        location.href = "studentMenu.html"
-    }
+
 </script>

@@ -111,6 +111,12 @@
             cursor: pointer;
         }
 
+        #sen {
+            font-size: 16px;
+            text-align: center;
+            color: white;
+        }
+
 
     </style>
 </head>
@@ -122,12 +128,12 @@
     </div>
     <div id="account" class="accountInfo">
         <a id="crossButton" class="closebtn" onclick="closeNav()">&times;</a>
-        <iframe th:src="@{/info}" width="230" height="400" style="border: none"></iframe>
+        <iframe th:src="@{/info}" width="230" height="300" style="border: none"></iframe>
         <a id="logout" th:href="@{~/login}">Log out</a>
     </div>
 
     <div class="menu">
-        <form class="step2" th:action="@{/extend}">
+        <form class="step2" th:action="@{/extend}" th:method="POST">
             <label style="color:white;" for="bookidToExtend">Please input the book ID of the book that you wish to extend the return date for
             </label><br><br>
             <input class="pass_box" type="text" id="bookidToExtend" name="bookidToExtend">

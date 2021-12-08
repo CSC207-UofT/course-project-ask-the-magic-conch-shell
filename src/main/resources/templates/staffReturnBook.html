@@ -92,6 +92,11 @@
             margin: 2rem 2rem;
             cursor: pointer;
         }
+        #sen {
+            font-size: 16px;
+            text-align: center;
+            color: white;
+        }
 
     </style>
 </head>
@@ -127,7 +132,7 @@
     </div>
     <div class="messages" id="message">
         <p class="b" th:text="*{message}" id="sen"></p>
-        <button id="returnToMenu" class="returnToMenu" onclick="goToMenu()">Go Back To Menu</button>
+        <a id="returnToMenu" class="returnToMenu" th:href="@{~/login/staffMenu}">Go Back To Menu</a>
     </div>
 
 

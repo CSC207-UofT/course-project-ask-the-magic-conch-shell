@@ -8,9 +8,15 @@
         form {
             margin: 2rem 2rem;
         }
+
+        table {
+            margin: 2rem 2rem;
+            color: white;
+            text-align: center;
+        }
     </style>
 </head>
-<body onload="closeNav()">
+<body>
 
 
 <form th:action="@{/searchBook}" th:method="POST">
@@ -29,7 +35,7 @@
 
 
 <div>
-<h4>Search Result</h4>
+<h4 style="color: white">Search Result</h4>
 <div th:if="${ not#lists.isEmpty(results)}">
     <table>
         <tr>

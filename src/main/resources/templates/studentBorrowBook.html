@@ -128,6 +128,20 @@
             margin: 3rem 3rem;
         }
 
+        table {
+            margin: 2rem 2rem;
+            color: white;
+        }
+        #sen {
+            font-size: 16px;
+            text-align: center;
+            color: white;
+        }
+         h4 {
+             margin: 2rem 2rem;
+             color: white
+         }
+
     </style>
 </head>
 <body onload="closeNav()">
@@ -173,33 +187,25 @@
             <form class="step2" th:action="@{/studentBorrowBook/borrowAll}" th:method="POST">
                 <button type="submit">Borrow All</button>
             </form>
+            <div th:if="${ not#lists.isEmpty(messageList)}">
+                <table>
+                    <tr>
+                        <th>Borrow Result</th>
+                    </tr>
+                    <tr th:each="s : ${messageList}">
+                        <td th:text="${s}"></td>
+                    </tr>
+                </table>
 
+            </div>
         </div>
-
-
-
-
 
     </div>
 
     <div class="messages" id="message">
         <p class="b" th:text="*{message}" id="sen"></p>
-        <div th:if="${ not#lists.isEmpty(messageList)}">
-            <table>
-                <tr>
-                    <th>Borrow Result</th>
-                </tr>
-                <tr th:each="s : ${messageList}">
-                    <td th:text="${s}"></td>
-                </tr>
-            </table>
 
-        </div>
-
-
-        </tr>
-
-        <button id="returnToMenu" class="returnToMenu" onclick="goToMenu()">Go Back To Menu</button>
+        <a id="returnToMenu" class="returnToMenu" th:href="@{~/login/studentMenu}">Go Back To Menu</a>
     </div>
 
 

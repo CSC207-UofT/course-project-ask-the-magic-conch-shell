@@ -97,11 +97,6 @@
             color: white;
         }
 
-        iframe {
-            width: 80%;
-            height: 20rem;
-            margin: 3rem 3rem;
-        }
 
 
     </style>
@@ -136,7 +131,7 @@
     </div>
 
     <div class="messages" id="message">
-        <button id="returnToMenu" class="returnToMenu" onclick="goToMenu()">Go Back To Menu</button>
+        <a id="returnToMenu" class="returnToMenu" th:href="@{~/login/staffMenu}">Go Back To Menu</a>
     </div>
 
 

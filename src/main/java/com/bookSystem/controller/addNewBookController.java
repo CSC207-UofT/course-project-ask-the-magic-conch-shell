@@ -102,7 +102,7 @@ public class addNewBookController {
             randomNum = (int)(Math.random()*100000);
         }
         final LocalDate dt = LocalDate.parse(publishDate);
-        Book book = new dictionary(randomNum, name, ISBN, dt, author, language, "dictionary");
+        Book book = new dictionary(randomNum, name, ISBN, dt, author, language, "Dictionary");
         bm.addBook(book, mbm);
         return "Dictionary";
     }
@@ -128,7 +128,7 @@ public class addNewBookController {
             randomNum = (int)(Math.random()*100000);
         }
         final LocalDate dt = LocalDate.parse(publishDate);
-        Book book = new magazine(randomNum, name, ISBN, dt, author, seriesName, category, "magazine");
+        Book book = new magazine(randomNum, name, ISBN, dt, author, seriesName, category, "Magazine");
         bm.addBook(book, mbm);
         return "Magazine";
     }
@@ -153,7 +153,7 @@ public class addNewBookController {
             randomNum = (int)(Math.random()*100000);
         }
         final LocalDate dt = LocalDate.parse(publishDate);
-        Book book = new literature(randomNum, name, ISBN, dt, author, period, "literature");
+        Book book = new literature(randomNum, name, ISBN, dt, author, period, "Literature");
         bm.addBook(book, mbm);
         return "Literature";
     }
@@ -184,13 +184,13 @@ public class addNewBookController {
         final LocalDate dt = LocalDate.parse(publishDate);
         if (peer_review_status.equals("True")){
             Book book = new researchPaper(randomNum, name, ISBN, dt, author, subject, language,
-                    true, "researchPaper");
+                    true, "ResearchPaper");
             bm.addBook(book, mbm);
             return "ResearchPaper";
         }
         else if (peer_review_status.equals("False")){
             Book book = new researchPaper(randomNum, name, ISBN, dt, author, subject, language,
-                    false, "researchPaper");
+                    false, "ResearchPaper");
             bm.addBook(book, mbm);
             return "ResearchPaper";
         }
@@ -220,7 +220,7 @@ public class addNewBookController {
             randomNum = (int)(Math.random()*100000);
         }
         final LocalDate dt = LocalDate.parse(publishDate);
-        Book book = new textbook(randomNum, name, ISBN, dt, author, subject, "textbook");
+        Book book = new textbook(randomNum, name, ISBN, dt, author, subject, "Textbook");
         bm.addBook(book, mbm);
         return "Textbook";
     }

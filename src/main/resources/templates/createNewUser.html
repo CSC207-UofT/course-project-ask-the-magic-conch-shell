@@ -119,6 +119,7 @@
         #me {
             font-size: 16px;
             text-align: center;
+            color: white;
         }
 
 
@@ -158,7 +159,7 @@
 
     <div class="messages" id="message">
         <p id = "me" th:text="*{message}"></p>
-        <button id="returnToMenu" class="returnToMenu" onclick="goToMenu()">Go Back To Menu</button>
+        <a id="returnToMenu" class="returnToMenu" th:href="@{~/login/staffMenu}">Go Back To Menu</a>
     </div>
 
 
