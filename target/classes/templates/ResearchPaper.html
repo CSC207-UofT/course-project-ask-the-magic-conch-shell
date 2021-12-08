@@ -15,7 +15,7 @@
     }
 </style>
 <body>
-<form action="">
+<form th:action="@{/addNewBook/researchPaper}" th:method="POST">
     <h2>Please Input Information</h2>
     <label for="bookName">Book name:</label>
     <input name="bookName" id="bookName" type="text" value="">
@@ -35,11 +35,12 @@
     <label for="Language">Language:</label>
     <input name="Language" id="Language" type="text" value="">
     <br><br>
-    <label for="peer_review_status">Category:</label>
+    <label for="peer_review_status">peer_review_status:</label>
     <input name="peer_review_status" id="peer_review_status" type="text" value="">
     <br><br>
-    <button style="float: right" id="Submit" class="Submit" onclick="addToDB()">Add</button>
+    <button style="float: right" id="Submit" type="submit">Add</button>
     <input type="reset">
 </form>
+<p class="b" th:text="*{message}" id="sen"></p>
 </body>
 </html>

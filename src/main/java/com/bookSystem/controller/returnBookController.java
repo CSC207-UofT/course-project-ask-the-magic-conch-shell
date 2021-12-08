@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 @Controller
 @RequestMapping("staffReturnBook")
@@ -31,6 +32,8 @@ public class returnBookController {
 
         @Autowired
         private IMongoDBBookMethods mb;
+
+
 
         @GetMapping
         public String loadReturnBook() {
@@ -50,38 +53,75 @@ public class returnBookController {
                              @RequestParam("book_condition") String bookCondition,
                              @RequestParam("username") String userName,
                              Model model){
-        if (bookCondition.equals("good")
-                && (bm.checkReturnDate(bookID, mb).equals(LocalDate.now())
-                || bm.checkReturnDate(bookID, mb).isBefore(LocalDate.now()))){
-            if (um.DBGetCreditScore(userName, sum) <= 97){
-                um.modifyDBCreditScore(userName, 3, sum);
-                bm.changeBookStatus(bookID, BookPositionStatus.UNLENDED, mb);
-                model.addAttribute("message", "Return successfully");
-                return "staffReturnBook";
-            }
-            else if (um.DBGetCreditScore(userName, sum) > 97){
-                um.modifyDBCreditScore(userName, 100-um.DBGetCreditScore(userName, sum), sum);
-                bm.changeBookStatus(bookID, BookPositionStatus.UNLENDED, mb);
-                model.addAttribute("message", "Return successfully");
-                return "staffReturnBook";
-            }
-
-            else if( bm.checkReturnDate(bookID, mb).isAfter(LocalDate.now())){
-                if (um.DBGetCreditScore(userName, sum) >= 5){
-                    um.modifyDBCreditScore(userName, -5, sum);
+        if (bookCondition.equals("good")){
+            if (bm.checkReturnDate(bookID, mb).equals(LocalDate.now())
+                    || bm.checkReturnDate(bookID, mb).isAfter(LocalDate.now())){
+                if (um.DBGetCreditScore(userName, sum) <= 97){
+                    um.modifyDBCreditScore(userName, 3, sum);
                     bm.changeBookStatus(bookID, BookPositionStatus.UNLENDED, mb);
+                    int a = 0;
+                    ArrayList<Integer> newBR = um.DBGetBorrowingRecord(userName, sum);
+                    while (a < newBR.size()){
+                        if (newBR.get(a) == bookID){
+                            newBR.remove(a);
+                        }
+                        a += 1;
+                    }
+                    um.studentDBModifyBorrowRecord(userName, newBR, sum);
                     model.addAttribute("message", "Return successfully");
                     return "staffReturnBook";
                 }
-                else if (um.DBGetCreditScore(userName, sum) < 5){
-                    um.modifyDBCreditScore(userName, um.DBGetCreditScore(userName, sum), sum);
+                else if (um.DBGetCreditScore(userName, sum) > 97){
+                    um.modifyDBCreditScore(userName, 100-um.DBGetCreditScore(userName, sum), sum);
                     bm.changeBookStatus(bookID, BookPositionStatus.UNLENDED, mb);
+                    int a = 0;
+                    ArrayList<Integer> newBR = um.DBGetBorrowingRecord(userName, sum);
+                    while (a < newBR.size()){
+                        if (newBR.get(a) == bookID){
+                            newBR.remove(a);
+                        }
+                        a += 1;
+                    }
+                    um.studentDBModifyBorrowRecord(userName, newBR, sum);
                     model.addAttribute("message", "Return successfully");
                     return "staffReturnBook";
                 }
-            }
 
-        }
+                else if( bm.checkReturnDate(bookID, mb).isBefore(LocalDate.now())){
+                    if (um.DBGetCreditScore(userName, sum) >= 5){
+                        um.modifyDBCreditScore(userName, -5, sum);
+                        bm.changeBookStatus(bookID, BookPositionStatus.UNLENDED, mb);
+                        int a = 0;
+                        ArrayList<Integer> newBR = um.DBGetBorrowingRecord(userName, sum);
+                        while (a < newBR.size()){
+                            if (newBR.get(a) == bookID){
+                                newBR.remove(a);
+                            }
+                            a += 1;
+                        }
+                        um.studentDBModifyBorrowRecord(userName, newBR, sum);
+                        model.addAttribute("message", "Return successfully");
+                        return "staffReturnBook";
+                    }
+                    else if (um.DBGetCreditScore(userName, sum) < 5){
+                        um.modifyDBCreditScore(userName, um.DBGetCreditScore(userName, sum), sum);
+                        bm.changeBookStatus(bookID, BookPositionStatus.UNLENDED, mb);
+                        int a = 0;
+                        ArrayList<Integer> newBR = um.DBGetBorrowingRecord(userName, sum);
+                        while (a < newBR.size()){
+                            if (newBR.get(a) == bookID){
+                                newBR.remove(a);
+                            }
+                            a += 1;
+                        }
+                        um.studentDBModifyBorrowRecord(userName, newBR, sum);
+                        model.addAttribute("message", "Return successfully");
+                        return "staffReturnBook";
+                    }
+                }
+
+            }
+            }
 
         else if(bookCondition.equals("damaged")){
             bm.deleteBook(bookID, mb);
