@@ -32,8 +32,6 @@ public interface IUserLoginManager {
 
     void addToCart(Order order);
 
-    void deleteFromCart(Integer index);
-
     ArrayList<Boolean> placeOrders();
 
     void setCurrentStudent(Student currentStudent);

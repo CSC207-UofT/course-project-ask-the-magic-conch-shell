@@ -23,15 +23,26 @@ public class UserLoginManager implements IUserLoginManager {
     private final ArrayList<Book>  bookList = new ArrayList<>();
 
 
-
+    /**
+     * Set a student to be current student.
+     * @param currentStudent the student to set
+     */
     public void setCurrentStudent(Student currentStudent) {
         this.currentStudent = currentStudent;
     }
 
+    /**
+     * Set a staff to be current staff.
+     * @param currentStaff the staff to set
+     */
     public void setCurrentStaff(Staff currentStaff) {
         this.currentStaff = currentStaff;
     }
 
+    /**
+     * Help other methods to get the chart
+     * @return the cart
+     */
     public ArrayList<Order> getCart() {
         return this.cart;
     }
@@ -107,25 +118,34 @@ public class UserLoginManager implements IUserLoginManager {
         return currentStudent.getCurrentBorrowingRecords().size();
     }
 
-
+    /**
+     * To add a book to the booklist
+     * @param book the book to add
+     */
     public void addToBookList(Book book){
         this.bookList.add(book);
     }
 
+    /**
+     * Help other methods to get the booklist
+     * @return the booklist
+     */
     public ArrayList<Book> getBookList() {
         return this.bookList;
     }
 
-
+    /**
+     * Add an order to cart
+     * @param order the order to add
+     */
     public void addToCart(Order order){
         this.cart.add(order);
     }
 
-    public void deleteFromCart(Integer index){
-        this.cart.remove(index);
-    }
-
-
+    /**
+     * Check whether every order is executable and return the result and clear the cart.
+     * @return  the arraylist that contains whether the order are executable or not
+     */
     public ArrayList<Boolean> placeOrders(){
         ArrayList<Boolean> result = new ArrayList<>();
         for (Order order : this.cart) {
