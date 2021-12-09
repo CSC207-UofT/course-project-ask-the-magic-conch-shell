@@ -46,7 +46,6 @@ public class Student extends User {
      * To check if a student is able to borrow a new book based on numbers of book a Student
      * currently owned
      * @param book a book
-     * @return false if the Student has 5 or more books, otherwise true
      */
     public void addToCurrentBorrowingRecords(Book book){
 

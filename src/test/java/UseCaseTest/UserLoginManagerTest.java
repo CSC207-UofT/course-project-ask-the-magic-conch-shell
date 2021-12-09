@@ -5,7 +5,7 @@ package UseCaseTest;
 import com.bookSystem.entity.Book.Book;
 import com.bookSystem.entity.User.Staff;
 import com.bookSystem.entity.User.Student;
-import com.bookSystem.useCase.IUserLoginManager;
+
 import com.bookSystem.useCase.Order;
 import com.bookSystem.useCase.UserLoginManager;
 import org.junit.*;
@@ -15,7 +15,14 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
+/**
+ * Tests for UserLoginManager use case.
+ */
+
 public class UserLoginManagerTest {
+
+
+
     Student a = new Student("Martin");
     Staff b = new Staff("Jason");
     ArrayList<Integer> arr = new ArrayList<>();
@@ -37,28 +44,46 @@ public class UserLoginManagerTest {
         ulm2.setCurrentStaff(b);
     }
 
+    /**
+     * test the getCurrentStudent method.
+     */
     @Test
     public void testgetCurrentStudent() {
         assertEquals(a, ulm1.getCurrentStudent());
     }
 
+
+    /**
+     * test the getCurrentStaff method.
+     */
     @Test
     public void testgetCurrentStaff() {
         assertEquals(b, ulm2.getCurrentStaff());
     }
 
+
+    /**
+     * test for the ModifyCreditScore method.
+     */
     @Test
     public void testModifyCreditScore() {
         ulm1.modifyCreditScore(-5);
         assertEquals(35, ulm1.currentStudent.getCreditScore());
     }
 
+
+    /**
+     * test the getStudentModifyPassword method.
+     */
     @Test
     public void testStudentModifyPassword() {
         ulm1.studentModifyPassword("Martin", "aae9e13", "martin789");
         assertEquals("martin789", ulm1.currentStudent.getPassword());
     }
 
+    /**
+     * test the getStaffModifyPassword method.
+     */
     @Test
     public void testStaffModifyPassword() {
         ulm2.staffModifyPassword("Jason", "e3r23r3", "a654321");
@@ -66,23 +91,35 @@ public class UserLoginManagerTest {
 
     }
 
+    /**
+     * test the getBorrowedBookAmount method.
+     */
     @Test
     public void testBorrowedBookAmount() {
         assertEquals(2, ulm1.borrowedBookAmount());
     }
 
+
+    /**
+     * test the addToBookList method.
+     */
     @Test
     public void testaddToBookList(){
         ulm1.addToBookList(book1);
         assertEquals(1, ulm1.getBookList().size());
     }
-
+    /**
+     * test the addToCart method.
+     */
     @Test
     public void testaddToCart(){
         ulm1.addToCart(o1);
         assertEquals(1, ulm1.getCart().size());
     }
 
+    /**
+     * test the placeOrders method.
+     */
     @Test
     public void testplaceOrders(){
         ulm1.addToCart(o1);

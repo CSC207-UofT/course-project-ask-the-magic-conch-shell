@@ -10,6 +10,11 @@ import java.time.LocalDate;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TestBooksubclasses {
+
+    /**
+     * Tests for subclasses of Book Entity.
+     */
+
     literature book1;
     magazine book2;
     textbook book3;
@@ -21,7 +26,7 @@ public class TestBooksubclasses {
     LocalDate publishDate4 = LocalDate.of(2002,6,5);
     LocalDate publishDate5 = LocalDate.of(1998,1,22);
     LocalDate returnDate1;
-    LocalDate returnDate2 = LocalDate.of(2021,12,3);;
+    LocalDate returnDate2 = LocalDate.of(2021,12,3);
 
     @Before
     public void setUp() {

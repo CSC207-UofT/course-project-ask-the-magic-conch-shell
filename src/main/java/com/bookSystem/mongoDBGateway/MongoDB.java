@@ -10,6 +10,10 @@ import java.util.logging.Logger;
 
 
 public class MongoDB {
+    /**
+     * Connection to MongoDB.
+     */
+
     public  HashMap<String, DBObject> database;
     public DBCollection coll;
     public  void store(String collectionName, String keyname){

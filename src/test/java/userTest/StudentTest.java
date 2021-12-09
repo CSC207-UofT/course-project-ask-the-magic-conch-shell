@@ -12,6 +12,11 @@ import static org.junit.Assert.*;
 
 
 public class StudentTest {
+
+    /**
+     * Tests for Student from the user Entity.
+     */
+
     Student h;
     Student j;
     ArrayList<Book> empty_record;

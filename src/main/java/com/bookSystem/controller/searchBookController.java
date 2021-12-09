@@ -2,11 +2,9 @@ package com.bookSystem.controller;
 
 import com.bookSystem.entity.Book.Book;
 import com.bookSystem.mongoDBGateway.IMongoDBBookMethods;
-import com.bookSystem.mongoDBGateway.IMongoDBStaffMethods;
-import com.bookSystem.mongoDBGateway.IMongoDBStudentMethods;
-import com.bookSystem.useCase.IDBUserManager;
+
 import com.bookSystem.useCase.IDBbookManager;
-import com.bookSystem.useCase.IUserLoginManager;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,8 +28,6 @@ public class searchBookController {
      ** The controller that can be used by student users to search book by ID, ISBN, author and type.
      **/
 
-    @Autowired
-    private IDBUserManager um;
 
     @Autowired
     private IDBbookManager bookManager;
@@ -39,14 +35,7 @@ public class searchBookController {
     @Autowired
     private IMongoDBBookMethods bookMethods;
 
-    @Autowired
-    private IMongoDBStudentMethods sm;
 
-    @Autowired
-    private IMongoDBStaffMethods sam;
-
-    @Autowired
-    private IUserLoginManager ulm;
 
     @GetMapping
     public String loadSearch() {

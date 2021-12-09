@@ -7,7 +7,13 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 
+/**
+ * Interface for methods in MongoDBBookMethods.
+ */
 public interface IMongoDBBookMethods {
+
+
+
     void updateMagazine(String bookID, String name, String ISBN, String publishDate, String author, String status, String returnDate, String seriesname, String category);
 
     void updateRearchPaper(String bookID, String name, String ISBN, String publishDate, String author, String status, String returnDate, String language, String subject, String peerstatus);

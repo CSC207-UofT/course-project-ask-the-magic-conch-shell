@@ -7,6 +7,12 @@ import static org.junit.Assert.*;
 
 
 public class StaffTest {
+
+    /**
+     * Tests for Staff from the user Entity.
+     */
+
+
     Staff h;
 
     @Before

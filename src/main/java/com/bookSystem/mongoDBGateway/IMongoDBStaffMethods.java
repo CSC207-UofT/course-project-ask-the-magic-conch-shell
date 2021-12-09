@@ -1,6 +1,9 @@
 package com.bookSystem.mongoDBGateway;
 
 
+/**
+ * Interface for methods in MongoDBStaffMethods.
+ */
 
 public interface IMongoDBStaffMethods {
     void update(String userName, String passWord);

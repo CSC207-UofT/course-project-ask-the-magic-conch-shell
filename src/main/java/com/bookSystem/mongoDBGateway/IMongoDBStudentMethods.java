@@ -3,7 +3,9 @@ package com.bookSystem.mongoDBGateway;
 
 import java.util.ArrayList;
 
-
+/**
+ * Interface for methods in MongoDBStudentMethods.
+ */
 public interface IMongoDBStudentMethods {
 
     void update(String userName, String passWord, Integer creditScore, ArrayList<String> borrowingRecords);

@@ -14,10 +14,12 @@ import java.util.Collections;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+
 
 public class OrderTest {
-    //Tests for Order Use Case
+    /**
+     * Tests for Order Use Case
+     **/
 
     Order order0;
     Order order1;
@@ -61,8 +63,9 @@ public class OrderTest {
     }
 
 
-    //Check if book status is Lended
-
+    /**
+     * Check if book status is Lended
+     * */
 
     @Test
     public void testexecute0() {
@@ -72,8 +75,9 @@ public class OrderTest {
     }
 
 
-    //Check if a student exceed the borrow limit
-
+    /**
+     * Check if a student exceed the borrow limit
+     * */
 
     @Test
     public void testexecute1() {
@@ -83,8 +87,9 @@ public class OrderTest {
     }
 
 
-    //Check if a student does not have enough credit to borrow
-
+    /**
+     * Check if a student does not have enough credit to borrow
+     * */
 
     @Test
     public void testexecute3() {
@@ -94,8 +99,9 @@ public class OrderTest {
     }
 
 
-    //Check if a student satisfies all borrowing requirements and the book is unlended
-
+    /**
+     * Check if a student satisfies all borrowing requirements and the book is unlended
+     * */
 
     @Test
     public void testexecute2() {

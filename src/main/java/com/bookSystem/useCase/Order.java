@@ -64,10 +64,6 @@ public class Order {
         }
 
 
-    public String toString(){
-        return this.book.getBookID() + ":" +this.book.getBookName();
-
-    }
 }
 
 

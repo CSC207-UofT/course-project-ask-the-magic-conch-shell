@@ -9,6 +9,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class TestBook {
+
+    /**
+     * Tests for Book Entity.
+     */
+
     Book book1;
     Book book2;
     Book book3;
@@ -16,7 +21,7 @@ public class TestBook {
     LocalDate publishDate2 = LocalDate.of(2000,8,11);
     LocalDate publishDate3 = LocalDate.of(2011,12,1);
     LocalDate returnDate1;
-    LocalDate returnDate2 = LocalDate.of(2021,12,3);;
+    LocalDate returnDate2 = LocalDate.of(2021,12,3);
 
     @Before
     public void setUp(){
