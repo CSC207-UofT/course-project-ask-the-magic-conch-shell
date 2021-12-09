@@ -45,7 +45,7 @@
             right:1rem;
         }
 
-        .crossButton a {
+        #crossButton {
             padding: 8px 8px 8px 32px;
             text-decoration: none;
             font-size: 30px;
@@ -54,13 +54,17 @@
             transition: 0.3s;
         }
 
-        .logout a{
-            padding: 8px 8px 8px 32px;
+        #logout{
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: right;
             text-decoration: none;
-            font-size: 30px;
-            color: #818181;
-            display: block;
-            transition: 0.3s;
+            font-size: 16px;
+            margin: 2rem 2rem;
+            cursor: pointer;
+
         }
 
         .message {
@@ -98,10 +102,7 @@
     </div>
     <div id="account" class="accountInfo">
         <a id="crossButton" class="closebtn" onclick="closeNav()">&times;</a>
-        <h5>Username:</h5> <p>admin</p>
-        <h5>User Type:</h5> <p>student</p>
-        <h5>Credit Score:</h5> <p>100</p>
-        <h5>Current Borrowed Book(s):</h5> <p>you are not currently borrowing book(s) right now</p>
+        <iframe th:src="@{/info}" width="230" height="500" style="border: none"></iframe>
         <a id="logout" th:href="@{~/login}">Log out</a>
     </div>
     <div class="menu">

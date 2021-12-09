@@ -11,18 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("staffInfo")
-public class staffInfo {
+public class staffInfoController {
 
     @Autowired
     private IUserLoginManager ulm;
 
     @GetMapping
-    public String loadPage(){
-        return "staffInfo";
-    }
+    public String loadPage(Model model){
 
-    @PostMapping
-    public String display(Model model){
         Staff s = ulm.getCurrentStaff();
         model.addAttribute("username", s.getUsername());
         return "staffInfo";

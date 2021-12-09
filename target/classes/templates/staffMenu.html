@@ -46,24 +46,29 @@
             right:1rem;
         }
 
-        .crossButton a {
+        #crossButton {
             padding: 8px 8px 8px 32px;
             text-decoration: none;
             font-size: 30px;
             color: #818181;
             display: block;
             transition: 0.3s;
+            cursor: pointer;
         }
 
-        .logout a{
-            padding: 8px 8px 8px 32px;
+
+        #logout{
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: right;
             text-decoration: none;
-            font-size: 30px;
-            color: #818181;
-            display: block;
-            transition: 0.3s;
-        }
+            font-size: 16px;
+            margin: 2rem 2rem;
+            cursor: pointer;
 
+        }
         .account a:hover {
             color: #f1f1f1;
         }
@@ -100,8 +105,8 @@
     </div>
     <div id="account" class="accountInfo">
         <a id="crossButton" class="closebtn" onclick="closeNav()">&times;</a>
-        <iframe th:src="@{/staffInfo}" width="230" height="400"></iframe>
-        <button id="logout" onclick="logout()">Log out</button>
+        <iframe th:src="@{/staffInfo}" width="230" height="400" style="border: none"></iframe>
+        <a id="logout" th:href="@{~/login}">Log out</a>
     </div>
     <div class="menu serviceOption">
         <a th:href="@{~/staffReturnBook}">Return Book</a>
@@ -110,7 +115,9 @@
         <a th:href="@{~/staffChange}">Change my password</a>
         <a th:href="@{~/create}">Create New User</a>
     </div>
-    <div class="messages" id="message"></div>
+    <div class="messages" id="message">
+
+    </div>
 
 
 </div>

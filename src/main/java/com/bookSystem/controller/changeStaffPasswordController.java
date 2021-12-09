@@ -41,7 +41,7 @@ public class changeStaffPasswordController {
      * @param Opassword staff's old password
      * @param Npassword1 staff's new password
      * @param Npassword2 staff's new password for confirmation
-     * @param model fro Spring boot
+     * @param model for Spring boot
      * @return "staffChangePassword" page
      */
         @PostMapping("")
